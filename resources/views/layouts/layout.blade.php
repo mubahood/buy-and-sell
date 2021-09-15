@@ -30,10 +30,9 @@
             <div class="header-content">
                 <div class="header-left"><button type="button" class="header-widget sidebar-btn"><i
                             class="fas fa-align-left"></i></button><a href="index-2.html" class="header-logo"><img
-                            src="<?= (URL::asset("assets/"));?>/images/logo.png" alt="logo"></a><a href="user-form.html"
-                        class="header-widget header-user"><img src="<?= (URL::asset("assets/"));?>/images/user.png" alt="user"><span>join
-                            me</span></a><button type="button" class="header-widget search-btn"><i
-                            class="fas fa-search"></i></button></div>
+                            src="<?= URL::asset('assets/') ?>/images/logo.png" alt="logo"></a>
+
+                </div>
                 <form class="header-form">
                     <div class="header-search"><button type="submit" title="Search Submit "><i
                                 class="fas fa-search"></i></button><input type="text"
@@ -61,7 +60,8 @@
                                 </div>
                                 <ul class="message-list">
                                     <li class="message-item unread"><a href="message.html" class="message-link">
-                                            <div class="message-img active"><img src="<?= (URL::asset("assets/"));?>/images/avatar/01.jpg"
+                                            <div class="message-img active"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg"
                                                     alt="avatar"></div>
                                             <div class="message-text">
                                                 <h6>miron mahmud <span>now</span></h6>
@@ -69,7 +69,8 @@
                                             </div><span class="message-count">4</span>
                                         </a></li>
                                     <li class="message-item"><a href="message.html" class="message-link">
-                                            <div class="message-img active"><img src="<?= (URL::asset("assets/"));?>/images/avatar/03.jpg"
+                                            <div class="message-img active"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/03.jpg"
                                                     alt="avatar"></div>
                                             <div class="message-text">
                                                 <h6>shipu ahmed <span>3m</span></h6>
@@ -77,7 +78,9 @@
                                             </div>
                                         </a></li>
                                     <li class="message-item unread"><a href="message.html" class="message-link">
-                                            <div class="message-img"><img src="<?= (URL::asset("assets/"));?>/images/avatar/02.jpg" alt="avatar">
+                                            <div class="message-img"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg"
+                                                    alt="avatar">
                                             </div>
                                             <div class="message-text">
                                                 <h6>tahmina bonny <span>2h</span></h6>
@@ -85,7 +88,8 @@
                                             </div><span class="message-count">12</span>
                                         </a></li>
                                     <li class="message-item"><a href="message.html" class="message-link">
-                                            <div class="message-img active"><img src="<?= (URL::asset("assets/"));?>/images/avatar/04.jpg"
+                                            <div class="message-img active"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/04.jpg"
                                                     alt="avatar"></div>
                                             <div class="message-text">
                                                 <h6>nasrullah <span>5d</span></h6>
@@ -93,14 +97,17 @@
                                             </div>
                                         </a></li>
                                     <li class="message-item"><a href="message.html" class="message-link">
-                                            <div class="message-img"><img src="<?= (URL::asset("assets/"));?>/images/user.png" alt="avatar"></div>
+                                            <div class="message-img"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/user.png" alt="avatar">
+                                            </div>
                                             <div class="message-text">
                                                 <h6>saikul azam <span>7w</span></h6>
                                                 <p><span>me:</span>How are you my best frien...</p>
                                             </div>
                                         </a></li>
                                     <li class="message-item"><a href="message.html" class="message-link">
-                                            <div class="message-img active"><img src="<?= (URL::asset("assets/"));?>/images/avatar/02.jpg"
+                                            <div class="message-img active"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg"
                                                     alt="avatar"></div>
                                             <div class="message-text">
                                                 <h6>munni akter <span>9m</span></h6>
@@ -108,7 +115,8 @@
                                             </div>
                                         </a></li>
                                     <li class="message-item"><a href="message.html" class="message-link">
-                                            <div class="message-img active"><img src="<?= (URL::asset("assets/"));?>/images/avatar/03.jpg"
+                                            <div class="message-img active"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/03.jpg"
                                                     alt="avatar"></div>
                                             <div class="message-text">
                                                 <h6>shahin alam <span>1y</span></h6>
@@ -126,7 +134,9 @@
                                 </div>
                                 <ul class="notify-list">
                                     <li class="notify-item active"><a href="#" class="notify-link">
-                                            <div class="notify-img"><img src="<?= (URL::asset("assets/"));?>/images/avatar/01.jpg" alt="avatar">
+                                            <div class="notify-img"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg"
+                                                    alt="avatar">
                                             </div>
                                             <div class="notify-content">
                                                 <p class="notify-text"><span>miron mahmud</span>has added the
@@ -135,7 +145,9 @@
                                             </div>
                                         </a></li>
                                     <li class="notify-item"><a href="#" class="notify-link">
-                                            <div class="notify-img"><img src="<?= (URL::asset("assets/"));?>/images/avatar/02.jpg" alt="avatar">
+                                            <div class="notify-img"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg"
+                                                    alt="avatar">
                                             </div>
                                             <div class="notify-content">
                                                 <p class="notify-text"><span>tahmina bonny</span>gave you a
@@ -144,7 +156,9 @@
                                             </div>
                                         </a></li>
                                     <li class="notify-item"><a href="#" class="notify-link">
-                                            <div class="notify-img"><img src="<?= (URL::asset("assets/"));?>/images/avatar/03.jpg" alt="avatar">
+                                            <div class="notify-img"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/03.jpg"
+                                                    alt="avatar">
                                             </div>
                                             <div class="notify-content">
                                                 <p class="notify-text"><span>shipu ahmed</span>and <span>4
@@ -153,7 +167,9 @@
                                             </div>
                                         </a></li>
                                     <li class="notify-item"><a href="#" class="notify-link">
-                                            <div class="notify-img"><img src="<?= (URL::asset("assets/"));?>/images/avatar/02.jpg" alt="avatar">
+                                            <div class="notify-img"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg"
+                                                    alt="avatar">
                                             </div>
                                             <div class="notify-content">
                                                 <p class="notify-text"><span>miron mahmud</span>has added the
@@ -162,7 +178,9 @@
                                             </div>
                                         </a></li>
                                     <li class="notify-item"><a href="#" class="notify-link">
-                                            <div class="notify-img"><img src="<?= (URL::asset("assets/"));?>/images/avatar/04.jpg" alt="avatar">
+                                            <div class="notify-img"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/04.jpg"
+                                                    alt="avatar">
                                             </div>
                                             <div class="notify-content">
                                                 <p class="notify-text"><span>labonno khan</span>gave you a
@@ -171,7 +189,9 @@
                                             </div>
                                         </a></li>
                                     <li class="notify-item"><a href="#" class="notify-link">
-                                            <div class="notify-img"><img src="<?= (URL::asset("assets/"));?>/images/avatar/01.jpg" alt="avatar">
+                                            <div class="notify-img"><img
+                                                    src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg"
+                                                    alt="avatar">
                                             </div>
                                             <div class="notify-content">
                                                 <p class="notify-text"><span>azam khan</span>and <span>4
@@ -182,7 +202,20 @@
                                 </ul>
                             </div>
                         </li>
-                    </ul><a href="ad-post.html" class="btn btn-inline post-btn"><i
+                    </ul>
+                    @auth
+                    <a href="user-form.html" class="header-widget header-user"><img
+                        src="<?= URL::asset('assets/') ?>/images/user.png" alt="user"><span>My Dashboard</span></a><button type="button" class="header-widget search-btn"><i
+                        class="fas fa-search"></i></button>
+                    @endauth
+                    @guest
+                    <a href="/login" class="header-widget header-user"><img
+                        src="<?= URL::asset('assets/') ?>/images/user.png" alt="user"><span>join
+                        me</span></a><button type="button" class="header-widget search-btn"><i
+                        class="fas fa-search"></i></button>
+                    @endguest
+
+                    <a href="ad-post.html" class="btn btn-inline post-btn"><i
                             class="fas fa-plus-circle"></i><span>post your ad</span></a>
                 </div>
             </div>
@@ -190,11 +223,12 @@
     </header>
     <aside class="sidebar-part">
         <div class="sidebar-body">
-            <div class="sidebar-header"><a href="index-2.html" class="sidebar-logo"><img src="<?= (URL::asset("assets/"));?>/images/logo.png"
-                        alt="logo"></a><button class="sidebar-cross"><i class="fas fa-times"></i></button></div>
+            <div class="sidebar-header"><a href="index-2.html" class="sidebar-logo"><img
+                        src="<?= URL::asset('assets/') ?>/images/logo.png" alt="logo"></a><button
+                    class="sidebar-cross"><i class="fas fa-times"></i></button></div>
             <div class="sidebar-content">
-                <div class="sidebar-profile"><a href="#" class="sidebar-avatar"><img src="<?= (URL::asset("assets/"));?>/images/avatar/01.jpg"
-                            alt="avatar"></a>
+                <div class="sidebar-profile"><a href="#" class="sidebar-avatar"><img
+                            src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg" alt="avatar"></a>
                     <h4><a href="#" class="sidebar-name">Jackon Honson</a></h4><a href="ad-post.html"
                         class="btn btn-inline sidebar-post"><i class="fas fa-plus-circle"></i><span>post your
                             ad</span></a>
@@ -302,51 +336,51 @@
     <section class="suggest-part">
         <div class="container">
             <div class="suggest-slider slider-arrow"><a href="ad-list-column3.html" class="suggest-card"><img
-                        src="<?= (URL::asset("assets/"));?>/images/suggest/automobile.png" alt="car">
+                        src="<?= URL::asset('assets/') ?>/images/suggest/automobile.png" alt="car">
                     <h6>automobile</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/furniture.png"
-                        alt="furniture">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/furniture.png" alt="furniture">
                     <h6>furniture</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/properties.png"
-                        alt="house">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/properties.png" alt="house">
                     <h6>properties</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/fashion.png"
-                        alt="food">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/fashion.png" alt="food">
                     <h6>fashion</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/electronics.png"
-                        alt="cycle">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/electronics.png" alt="cycle">
                     <h6>electronics</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/hospitality.png"
-                        alt="clothes">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/hospitality.png" alt="clothes">
                     <h6>hospitality</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/gadgets.png"
-                        alt="computer">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/gadgets.png" alt="computer">
                     <h6>gadgets</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/education.png"
-                        alt="phone">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/education.png" alt="phone">
                     <h6>education</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/software.png"
-                        alt="scooter">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/software.png" alt="scooter">
                     <h6>software</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/food.png"
-                        alt="television">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/food.png" alt="television">
                     <h6>food</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/services.png"
-                        alt="truck">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/services.png" alt="truck">
                     <h6>services</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img src="<?= (URL::asset("assets/"));?>/images/suggest/animals.png"
-                        alt="pet">
+                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                        src="<?= URL::asset('assets/') ?>/images/suggest/animals.png" alt="pet">
                     <h6>animals</h6>
                     <p>(4,521) ads</p>
                 </a></div>
@@ -368,7 +402,7 @@
                 <div class="col-md-7 col-lg-7">
                     <div class="feature-card-slider slider-arrow">
                         <div class="feature-card"><a href="#" class="feature-img"><img
-                                    src="<?= (URL::asset("assets/"));?>/images/product/10.jpg" alt="feature"></a>
+                                    src="<?= URL::asset('assets/') ?>/images/product/10.jpg" alt="feature"></a>
                             <div class="cross-inline-badge feature-badge"><span>featured</span><i
                                     class="fas fa-book-open"></i></div><button type="button" class="feature-wish"><i
                                     class="fas fa-heart"></i></button>
@@ -387,7 +421,7 @@
                             </div>
                         </div>
                         <div class="feature-card"><a href="#" class="feature-img"><img
-                                    src="<?= (URL::asset("assets/"));?>/images/product/01.jpg" alt="feature"></a>
+                                    src="<?= URL::asset('assets/') ?>/images/product/01.jpg" alt="feature"></a>
                             <div class="cross-inline-badge feature-badge"><span>featured</span><i
                                     class="fas fa-book-open"></i></div><button type="button" class="feature-wish"><i
                                     class="fas fa-heart"></i></button>
@@ -406,7 +440,7 @@
                             </div>
                         </div>
                         <div class="feature-card"><a href="#" class="feature-img"><img
-                                    src="<?= (URL::asset("assets/"));?>/images/product/08.jpg" alt="feature"></a>
+                                    src="<?= URL::asset('assets/') ?>/images/product/08.jpg" alt="feature"></a>
                             <div class="cross-inline-badge feature-badge"><span>featured</span><i
                                     class="fas fa-book-open"></i></div><button type="button" class="feature-wish"><i
                                     class="fas fa-heart"></i></button>
@@ -425,7 +459,7 @@
                             </div>
                         </div>
                         <div class="feature-card"><a href="#" class="feature-img"><img
-                                    src="<?= (URL::asset("assets/"));?>/images/product/06.jpg" alt="feature"></a>
+                                    src="<?= URL::asset('assets/') ?>/images/product/06.jpg" alt="feature"></a>
                             <div class="cross-inline-badge feature-badge"><span>featured</span><i
                                     class="fas fa-book-open"></i></div><button type="button" class="feature-wish"><i
                                     class="fas fa-heart"></i></button>
@@ -445,10 +479,14 @@
                         </div>
                     </div>
                     <div class="feature-thumb-slider">
-                        <div class="feature-thumb"><img src="<?= (URL::asset("assets/"));?>/images/product/10.jpg" alt="feature"></div>
-                        <div class="feature-thumb"><img src="<?= (URL::asset("assets/"));?>/images/product/01.jpg" alt="feature"></div>
-                        <div class="feature-thumb"><img src="<?= (URL::asset("assets/"));?>/images/product/08.jpg" alt="feature"></div>
-                        <div class="feature-thumb"><img src="<?= (URL::asset("assets/"));?>/images/product/06.jpg" alt="feature"></div>
+                        <div class="feature-thumb"><img src="<?= URL::asset('assets/') ?>/images/product/10.jpg"
+                                alt="feature"></div>
+                        <div class="feature-thumb"><img src="<?= URL::asset('assets/') ?>/images/product/01.jpg"
+                                alt="feature"></div>
+                        <div class="feature-thumb"><img src="<?= URL::asset('assets/') ?>/images/product/08.jpg"
+                                alt="feature"></div>
+                        <div class="feature-thumb"><img src="<?= URL::asset('assets/') ?>/images/product/06.jpg"
+                                alt="feature"></div>
                     </div>
                 </div>
             </div>
@@ -470,7 +508,8 @@
                     <div class="recomend-slider slider-arrow">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/01.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/01.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-clipboard-check"></i><span>recommend</span></div>
                                 <div class="product-type"><span class="flat-badge booking">booking</span></div>
@@ -500,7 +539,8 @@
                         </div>
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/03.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/03.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-clipboard-check"></i><span>recommend</span></div>
                                 <div class="product-type"><span class="flat-badge sale">sale</span></div>
@@ -530,7 +570,8 @@
                         </div>
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/10.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/10.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-clipboard-check"></i><span>recommend</span></div>
                                 <div class="product-type"><span class="flat-badge rent">rent</span></div>
@@ -560,7 +601,8 @@
                         </div>
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/09.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/09.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-clipboard-check"></i><span>recommend</span></div>
                                 <div class="product-type"><span class="flat-badge sale">sale</span></div>
@@ -590,7 +632,8 @@
                         </div>
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/02.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/02.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-clipboard-check"></i><span>recommend</span></div>
                                 <div class="product-type"><span class="flat-badge sale">sale</span></div>
@@ -644,7 +687,8 @@
                 <div class="col-md-11 col-lg-8 col-xl-6">
                     <div class="product-card standard">
                         <div class="product-media">
-                            <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/01.jpg" alt="product"></div>
+                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/01.jpg"
+                                    alt="product"></div>
                             <div class="cross-vertical-badge product-badge"><i
                                     class="fas fa-bolt"></i><span>trending</span></div>
                             <div class="product-type"><span class="flat-badge booking">booking</span></div>
@@ -677,7 +721,8 @@
                 <div class="col-md-11 col-lg-8 col-xl-6">
                     <div class="product-card standard">
                         <div class="product-media">
-                            <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/02.jpg" alt="product"></div>
+                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/02.jpg"
+                                    alt="product"></div>
                             <div class="cross-vertical-badge product-badge"><i
                                     class="fas fa-bolt"></i><span>trending</span></div>
                             <div class="product-type"><span class="flat-badge sale">sale</span></div>
@@ -710,7 +755,8 @@
                 <div class="col-md-11 col-lg-8 col-xl-6">
                     <div class="product-card standard">
                         <div class="product-media">
-                            <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/03.jpg" alt="product"></div>
+                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/03.jpg"
+                                    alt="product"></div>
                             <div class="cross-vertical-badge product-badge"><i
                                     class="fas fa-bolt"></i><span>trending</span></div>
                             <div class="product-type"><span class="flat-badge sale">sale</span></div>
@@ -743,7 +789,8 @@
                 <div class="col-md-11 col-lg-8 col-xl-6">
                     <div class="product-card standard">
                         <div class="product-media">
-                            <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/04.jpg" alt="product"></div>
+                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/04.jpg"
+                                    alt="product"></div>
                             <div class="cross-vertical-badge product-badge"><i
                                     class="fas fa-bolt"></i><span>trending</span></div>
                             <div class="product-type"><span class="flat-badge sale">sale</span></div>
@@ -776,7 +823,8 @@
                 <div class="col-md-11 col-lg-8 col-xl-6">
                     <div class="product-card standard">
                         <div class="product-media">
-                            <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/05.jpg" alt="product"></div>
+                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/05.jpg"
+                                    alt="product"></div>
                             <div class="cross-vertical-badge product-badge"><i
                                     class="fas fa-bolt"></i><span>trending</span></div>
                             <div class="product-type"><span class="flat-badge sale">sale</span></div>
@@ -809,7 +857,8 @@
                 <div class="col-md-11 col-lg-8 col-xl-6">
                     <div class="product-card standard">
                         <div class="product-media">
-                            <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/06.jpg" alt="product"></div>
+                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/06.jpg"
+                                    alt="product"></div>
                             <div class="cross-vertical-badge product-badge"><i
                                     class="fas fa-bolt"></i><span>trending</span></div>
                             <div class="product-type"><span class="flat-badge rent">rent</span></div>
@@ -875,7 +924,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/07.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/07.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -908,7 +958,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/08.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/08.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -941,7 +992,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/09.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/09.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -974,7 +1026,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/10.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/10.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1007,7 +1060,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/11.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/11.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1040,7 +1094,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/13.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/13.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1073,7 +1128,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/14.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/14.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1106,7 +1162,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/15.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/15.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1143,7 +1200,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/08.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/08.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1176,7 +1234,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/07.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/07.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1209,7 +1268,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/10.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/10.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1242,7 +1302,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/09.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/09.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1275,7 +1336,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/13.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/13.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1308,7 +1370,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/11.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/11.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1341,7 +1404,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/15.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/15.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1374,7 +1438,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/14.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/14.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1411,7 +1476,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/15.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/15.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1444,7 +1510,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/07.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/07.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1477,7 +1544,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/09.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/09.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1510,7 +1578,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/10.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/10.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1543,7 +1612,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/08.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/08.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1576,7 +1646,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/13.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/13.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1609,7 +1680,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/14.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/14.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1642,7 +1714,8 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="product-card">
                             <div class="product-media">
-                                <div class="product-img"><img src="<?= (URL::asset("assets/"));?>/images/product/11.jpg" alt="product"></div>
+                                <div class="product-img"><img
+                                        src="<?= URL::asset('assets/') ?>/images/product/11.jpg" alt="product"></div>
                                 <div class="cross-vertical-badge product-badge"><i
                                         class="fas fa-fire"></i><span>top
                                         niche</span></div>
@@ -1759,7 +1832,8 @@
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="category-card">
-                        <div class="category-head"><img src="<?= (URL::asset("assets/"));?>/images/category/electronics.jpg" alt="category"><a
+                        <div class="category-head"><img
+                                src="<?= URL::asset('assets/') ?>/images/category/electronics.jpg" alt="category"><a
                                 href="category-details.html" class="category-content">
                                 <h4>electronics</h4>
                                 <p>(3678)</p>
@@ -1790,7 +1864,8 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="category-card">
-                        <div class="category-head"><img src="<?= (URL::asset("assets/"));?>/images/category/gadgets.jpg" alt="category"><a
+                        <div class="category-head"><img
+                                src="<?= URL::asset('assets/') ?>/images/category/gadgets.jpg" alt="category"><a
                                 href="category-details.html" class="category-content">
                                 <h4>gadgets</h4>
                                 <p>(3678)</p>
@@ -1821,7 +1896,8 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="category-card">
-                        <div class="category-head"><img src="<?= (URL::asset("assets/"));?>/images/category/furnitures.jpg" alt="category"><a
+                        <div class="category-head"><img
+                                src="<?= URL::asset('assets/') ?>/images/category/furnitures.jpg" alt="category"><a
                                 href="category-details.html" class="category-content">
                                 <h4>furnitures</h4>
                                 <p>(3678)</p>
@@ -1852,7 +1928,8 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="category-card">
-                        <div class="category-head"><img src="<?= (URL::asset("assets/"));?>/images/category/animals.jpg" alt="category"><a
+                        <div class="category-head"><img
+                                src="<?= URL::asset('assets/') ?>/images/category/animals.jpg" alt="category"><a
                                 href="category-details.html" class="category-content">
                                 <h4>animals</h4>
                                 <p>(3678)</p>
@@ -1883,7 +1960,8 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="category-card">
-                        <div class="category-head"><img src="<?= (URL::asset("assets/"));?>/images/category/fashions.jpg" alt="category"><a
+                        <div class="category-head"><img
+                                src="<?= URL::asset('assets/') ?>/images/category/fashions.jpg" alt="category"><a
                                 href="category-details.html" class="category-content">
                                 <h4>fashions</h4>
                                 <p>(3678)</p>
@@ -1914,7 +1992,8 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="category-card">
-                        <div class="category-head"><img src="<?= (URL::asset("assets/"));?>/images/category/motorbikes.jpg" alt="category"><a
+                        <div class="category-head"><img
+                                src="<?= URL::asset('assets/') ?>/images/category/motorbikes.jpg" alt="category"><a
                                 href="category-details.html" class="category-content">
                                 <h4>motorbikes</h4>
                                 <p>(3678)</p>
@@ -1945,7 +2024,8 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="category-card">
-                        <div class="category-head"><img src="<?= (URL::asset("assets/"));?>/images/category/properties.jpg" alt="category"><a
+                        <div class="category-head"><img
+                                src="<?= URL::asset('assets/') ?>/images/category/properties.jpg" alt="category"><a
                                 href="category-details.html" class="category-content">
                                 <h4>properties</h4>
                                 <p>(3678)</p>
@@ -1976,7 +2056,8 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="category-card">
-                        <div class="category-head"><img src="<?= (URL::asset("assets/"));?>/images/category/automobiles.jpg" alt="category"><a
+                        <div class="category-head"><img
+                                src="<?= URL::asset('assets/') ?>/images/category/automobiles.jpg" alt="category"><a
                                 href="category-details.html" class="category-content">
                                 <h4>automobiles</h4>
                                 <p>(3678)</p>
@@ -2139,11 +2220,12 @@
                 <div class="col-lg-12">
                     <div class="blog-slider slider-arrow">
                         <div class="blog-card">
-                            <div class="blog-img"><img src="<?= (URL::asset("assets/"));?>/images/blog/01.jpg" alt="blog">
+                            <div class="blog-img"><img src="<?= URL::asset('assets/') ?>/images/blog/01.jpg"
+                                    alt="blog">
                                 <div class="blog-overlay"><span class="marketing">Marketing</span></div>
                             </div>
                             <div class="blog-content"><a href="#" class="blog-avatar"><img
-                                        src="<?= (URL::asset("assets/"));?>/images/avatar/01.jpg" alt="avatar"></a>
+                                        src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg" alt="avatar"></a>
                                 <ul class="blog-meta">
                                     <li><i class="fas fa-user"></i>
                                         <p><a href="#">MironMahmud</a></p>
@@ -2162,11 +2244,12 @@
                             </div>
                         </div>
                         <div class="blog-card">
-                            <div class="blog-img"><img src="<?= (URL::asset("assets/"));?>/images/blog/02.jpg" alt="blog">
+                            <div class="blog-img"><img src="<?= URL::asset('assets/') ?>/images/blog/02.jpg"
+                                    alt="blog">
                                 <div class="blog-overlay"><span class="advertise">advertise</span></div>
                             </div>
                             <div class="blog-content"><a href="#" class="blog-avatar"><img
-                                        src="<?= (URL::asset("assets/"));?>/images/avatar/02.jpg" alt="avatar"></a>
+                                        src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg" alt="avatar"></a>
                                 <ul class="blog-meta">
                                     <li><i class="fas fa-user"></i>
                                         <p><a href="#">LabonnoKhan</a></p>
@@ -2185,11 +2268,12 @@
                             </div>
                         </div>
                         <div class="blog-card">
-                            <div class="blog-img"><img src="<?= (URL::asset("assets/"));?>/images/blog/03.jpg" alt="blog">
+                            <div class="blog-img"><img src="<?= URL::asset('assets/') ?>/images/blog/03.jpg"
+                                    alt="blog">
                                 <div class="blog-overlay"><span class="safety">safety</span></div>
                             </div>
                             <div class="blog-content"><a href="#" class="blog-avatar"><img
-                                        src="<?= (URL::asset("assets/"));?>/images/avatar/03.jpg" alt="avatar"></a>
+                                        src="<?= URL::asset('assets/') ?>/images/avatar/03.jpg" alt="avatar"></a>
                                 <ul class="blog-meta">
                                     <li><i class="fas fa-user"></i>
                                         <p><a href="#">MironMahmud</a></p>
@@ -2208,11 +2292,12 @@
                             </div>
                         </div>
                         <div class="blog-card">
-                            <div class="blog-img"><img src="<?= (URL::asset("assets/"));?>/images/blog/04.jpg" alt="blog">
+                            <div class="blog-img"><img src="<?= URL::asset('assets/') ?>/images/blog/04.jpg"
+                                    alt="blog">
                                 <div class="blog-overlay"><span class="security">security</span></div>
                             </div>
                             <div class="blog-content"><a href="#" class="blog-avatar"><img
-                                        src="<?= (URL::asset("assets/"));?>/images/avatar/04.jpg" alt="avatar"></a>
+                                        src="<?= URL::asset('assets/') ?>/images/avatar/04.jpg" alt="avatar"></a>
                                 <ul class="blog-meta">
                                     <li><i class="fas fa-user"></i>
                                         <p><a href="#">TahminaBonny</a></p>
@@ -2299,7 +2384,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-3">
-                    <div class="footer-info"><a href="#"><img src="<?= (URL::asset("assets/"));?>/images/logo.png" alt="logo"></a>
+                    <div class="footer-info"><a href="#"><img src="<?= URL::asset('assets/') ?>/images/logo.png"
+                                alt="logo"></a>
                         <ul class="footer-count">
                             <li>
                                 <h5>929,238</h5>
@@ -2316,16 +2402,19 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-card-content">
-                        <div class="footer-payment"><a href="#"><img src="<?= (URL::asset("assets/"));?>/images/pay-card/01.jpg" alt="01"></a><a
-                                href="#"><img src="<?= (URL::asset("assets/"));?>/images/pay-card/02.jpg" alt="02"></a><a href="#"><img
-                                    src="<?= (URL::asset("assets/"));?>/images/pay-card/03.jpg" alt="03"></a><a href="#"><img
-                                    src="<?= (URL::asset("assets/"));?>/images/pay-card/04.jpg" alt="04"></a></div>
+                        <div class="footer-payment"><a href="#"><img
+                                    src="<?= URL::asset('assets/') ?>/images/pay-card/01.jpg" alt="01"></a><a
+                                href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/02.jpg" alt="02"></a><a
+                                href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/03.jpg" alt="03"></a><a
+                                href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/04.jpg" alt="04"></a>
+                        </div>
                         <div class="footer-option"><button type="button" data-toggle="modal"
                                 data-target="#language"><i class="fas fa-globe"></i>English</button><button
                                 type="button" data-toggle="modal" data-target="#currency"><i
                                     class="fas fa-dollar-sign"></i>USD</button></div>
-                        <div class="footer-app"><a href="#"><img src="<?= (URL::asset("assets/"));?>/images/play-store.png"
-                                    alt="play-store"></a><a href="#"><img src="<?= (URL::asset("assets/"));?>/images/app-store.png"
+                        <div class="footer-app"><a href="#"><img
+                                    src="<?= URL::asset('assets/') ?>/images/play-store.png" alt="play-store"></a><a
+                                href="#"><img src="<?= URL::asset('assets/') ?>/images/app-store.png"
                                     alt="app-store"></a></div>
                     </div>
                 </div>
