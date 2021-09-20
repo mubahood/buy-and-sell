@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -33,15 +34,19 @@ class MainController extends Controller
                     ->withInput();
             }
 
-            $u['name'] ="";
-            $u['email'] = $request->input("phone_number").rand(10000,100000);
+            $u['name'] = "";
+            $u['email'] = $request->input("phone_number") . rand(10000, 100000);
             $u['password'] = Hash::make($request->input("password"));
             $users = User::create($u);
 
-            if ($validated) {
-                die("good");
+            $credentials['email'] = $u['email'];
+            $credentials['password'] = $request->input("password");
+
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->intended('dashboard');
             } else {
-                die("bad");
+                return redirect()->intended('login');
             }
         }
         return view('main.register');

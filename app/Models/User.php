@@ -17,25 +17,27 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        self::creating(function($model){ });
-
-        self::created(function($model){
-            dd($model->id);
+        self::creating(function ($model) {
         });
 
-        self::updating(function($model){
+        self::created(function ($model) {
+            $pro['user_id'] = $model->id;
+            Profile::create($pro);
+        });
+
+        self::updating(function ($model) {
             // ... code here
         });
 
-        self::updated(function($model){
+        self::updated(function ($model) {
             // ... code here
         });
 
-        self::deleting(function($model){
+        self::deleting(function ($model) {
             // ... code here
         });
 
-        self::deleted(function($model){
+        self::deleted(function ($model) {
             // ... code here
         });
     }
@@ -61,6 +63,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function profile()
+    {
+        return $this->hasManhasOney(Profile::class);
+    }
 
     /**
      * The attributes that should be cast.

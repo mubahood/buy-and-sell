@@ -15,6 +15,7 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
+        if (!Schema::hasTable('products'))
         //Schema::dropIfExists('products');
         Schema::create('products', function (Blueprint $table) {
             $table->id();

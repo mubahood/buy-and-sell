@@ -16,6 +16,7 @@ class CreateAttributesTable extends Migration
      */
     public function up()
     {
+        if (!Schema::hasTable('attributes'))
         //Schema::dropIfExists('attributes');
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();

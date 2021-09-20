@@ -29,7 +29,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-left"><button type="button" class="header-widget sidebar-btn"><i
-                            class="fas fa-align-left"></i></button><a href="index-2.html" class="header-logo"><img
+                            class="fas fa-align-left"></i></button><a href="<?= URL::asset('/') ?>" class="header-logo"><img
                             src="<?= URL::asset('assets/') ?>/images/logo.png" alt="logo"></a>
 
                 </div>
@@ -50,16 +50,16 @@
                 </form>
                 <div class="header-right">
                     <ul class="header-list">
-                        <li class="header-item"><a href="bookmark.html" class="header-widget"><i
+                        <li class="header-item"><a href="<?= URL::asset('/') ?>" class="header-widget"><i
                                     class="fas fa-heart"></i><sup>0</sup></a></li>
                         <li class="header-item"><button type="button" class="header-widget"><i
                                     class="fas fa-envelope"></i><sup>0</sup></button>
                             <div class="dropdown-card">
                                 <div class="dropdown-header">
-                                    <h5>message (2)</h5><a href="message.html">view all</a>
+                                    <h5>message (2)</h5><a href="<?= URL::asset('/') ?>">view all</a>
                                 </div>
                                 <ul class="message-list">
-                                    <li class="message-item unread"><a href="message.html" class="message-link">
+                                    <li class="message-item unread"><a href="<?= URL::asset('/') ?>" class="message-link">
                                             <div class="message-img active"><img
                                                     src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg"
                                                     alt="avatar"></div>
@@ -68,7 +68,7 @@
                                                 <p>How are you my best frien...</p>
                                             </div><span class="message-count">4</span>
                                         </a></li>
-                                    <li class="message-item"><a href="message.html" class="message-link">
+                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
                                             <div class="message-img active"><img
                                                     src="<?= URL::asset('assets/') ?>/images/avatar/03.jpg"
                                                     alt="avatar"></div>
@@ -77,7 +77,7 @@
                                                 <p><span>me:</span>How are you my best frien...</p>
                                             </div>
                                         </a></li>
-                                    <li class="message-item unread"><a href="message.html" class="message-link">
+                                    <li class="message-item unread"><a href="<?= URL::asset('/') ?>" class="message-link">
                                             <div class="message-img"><img
                                                     src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg"
                                                     alt="avatar">
@@ -87,7 +87,7 @@
                                                 <p>How are you my best frien...</p>
                                             </div><span class="message-count">12</span>
                                         </a></li>
-                                    <li class="message-item"><a href="message.html" class="message-link">
+                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
                                             <div class="message-img active"><img
                                                     src="<?= URL::asset('assets/') ?>/images/avatar/04.jpg"
                                                     alt="avatar"></div>
@@ -96,7 +96,7 @@
                                                 <p>How are you my best frien...</p>
                                             </div>
                                         </a></li>
-                                    <li class="message-item"><a href="message.html" class="message-link">
+                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
                                             <div class="message-img"><img
                                                     src="<?= URL::asset('assets/') ?>/images/user.png" alt="avatar">
                                             </div>
@@ -105,7 +105,7 @@
                                                 <p><span>me:</span>How are you my best frien...</p>
                                             </div>
                                         </a></li>
-                                    <li class="message-item"><a href="message.html" class="message-link">
+                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
                                             <div class="message-img active"><img
                                                     src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg"
                                                     alt="avatar"></div>
@@ -114,7 +114,7 @@
                                                 <p>How are you my best frien...</p>
                                             </div>
                                         </a></li>
-                                    <li class="message-item"><a href="message.html" class="message-link">
+                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
                                             <div class="message-img active"><img
                                                     src="<?= URL::asset('assets/') ?>/images/avatar/03.jpg"
                                                     alt="avatar"></div>
@@ -130,7 +130,7 @@
                                     class="fas fa-bell"></i><sup>0</sup></button>
                             <div class="dropdown-card">
                                 <div class="dropdown-header">
-                                    <h5>Notification (1)</h5><a href="notification.html">view all</a>
+                                    <h5>Notification (1)</h5><a href="<?= URL::asset('/') ?>">view all</a>
                                 </div>
                                 <ul class="notify-list">
                                     <li class="notify-item active"><a href="#" class="notify-link">
@@ -204,18 +204,18 @@
                         </li>
                     </ul>
                     @auth
-                    <a href="user-form.html" class="header-widget header-user"><img
+                    <a href="<?= URL::asset('/') ?>" class="header-widget header-user"><img
                         src="<?= URL::asset('assets/') ?>/images/user.png" alt="user"><span>My Dashboard</span></a><button type="button" class="header-widget search-btn"><i
                         class="fas fa-search"></i></button>
                     @endauth
                     @guest
-                    <a href="/login" class="header-widget header-user"><img
+                    <a href="/register" class="header-widget header-user"><img
                         src="<?= URL::asset('assets/') ?>/images/user.png" alt="user"><span>join
                         me</span></a><button type="button" class="header-widget search-btn"><i
                         class="fas fa-search"></i></button>
                     @endguest
 
-                    <a href="ad-post.html" class="btn btn-inline post-btn"><i
+                    <a href="<?= URL::asset('/') ?>" class="btn btn-inline post-btn"><i
                             class="fas fa-plus-circle"></i><span>post your ad</span></a>
                 </div>
             </div>
@@ -223,13 +223,13 @@
     </header>
     <aside class="sidebar-part">
         <div class="sidebar-body">
-            <div class="sidebar-header"><a href="index-2.html" class="sidebar-logo"><img
+            <div class="sidebar-header"><a href="<?= URL::asset('/') ?>" class="sidebar-logo"><img
                         src="<?= URL::asset('assets/') ?>/images/logo.png" alt="logo"></a><button
                     class="sidebar-cross"><i class="fas fa-times"></i></button></div>
             <div class="sidebar-content">
                 <div class="sidebar-profile"><a href="#" class="sidebar-avatar"><img
                             src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg" alt="avatar"></a>
-                    <h4><a href="#" class="sidebar-name">Jackon Honson</a></h4><a href="ad-post.html"
+                    <h4><a href="#" class="sidebar-name">Jackon Honson</a></h4><a href="<?= URL::asset('/') ?>"
                         class="btn btn-inline sidebar-post"><i class="fas fa-plus-circle"></i><span>post your
                             ad</span></a>
                 </div>
@@ -240,68 +240,68 @@
                     </ul>
                     <div class="tab-pane active" id="main-menu">
                         <ul class="navbar-list">
-                            <li class="navbar-item"><a class="navbar-link" href="index-2.html">Home</a></li>
+                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Home</a></li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link"
                                     href="#"><span>Categories</span><i class="fas fa-plus"></i></a>
                                 <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="category-list.html">category list</a></li>
-                                    <li><a class="dropdown-link" href="category-details.html">category details</a>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">category list</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">category details</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>Advertise
                                         List</span><i class="fas fa-plus"></i></a>
                                 <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="ad-list-column3.html">ad list column 3</a></li>
-                                    <li><a class="dropdown-link" href="ad-list-column2.html">ad list column 2</a></li>
-                                    <li><a class="dropdown-link" href="ad-list-column1.html">ad list column 1</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad list column 3</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad list column 2</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad list column 1</a></li>
                                 </ul>
                             </li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>Advertise
                                         details</span><i class="fas fa-plus"></i></a>
                                 <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="ad-details-grid.html">ad details grid</a></li>
-                                    <li><a class="dropdown-link" href="ad-details-left.html">ad details left</a></li>
-                                    <li><a class="dropdown-link" href="ad-details-right.html">ad details right</a>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad details grid</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad details left</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad details right</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link"
                                     href="#"><span>Pages</span><i class="fas fa-plus"></i></a>
                                 <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="about.html">About Us</a></li>
-                                    <li><a class="dropdown-link" href="compare.html">Ad Compare</a></li>
-                                    <li><a class="dropdown-link" href="cities.html">Ad by Cities</a></li>
-                                    <li><a class="dropdown-link" href="price.html">Pricing Plan</a></li>
-                                    <li><a class="dropdown-link" href="user-form.html">User Form</a></li>
-                                    <li><a class="dropdown-link" href="404.html">404</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">About Us</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">Ad Compare</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">Ad by Cities</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">Pricing Plan</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">User Form</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">404</a></li>
                                 </ul>
                             </li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link"
                                     href="#"><span>blogs</span><i class="fas fa-plus"></i></a>
                                 <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="blog-list.html">Blog list</a></li>
-                                    <li><a class="dropdown-link" href="blog-details.html">blog details</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">Blog list</a></li>
+                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">blog details</a></li>
                                 </ul>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="contact.html">Contact</a></li>
+                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Contact</a></li>
                         </ul>
                     </div>
                     <div class="tab-pane" id="author-menu">
                         <ul class="navbar-list">
-                            <li class="navbar-item"><a class="navbar-link" href="dashboard.html">Dashboard</a>
+                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Dashboard</a>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="profile.html">Profile</a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="ad-post.html">Ad Post</a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="my-ads.html">My Ads</a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="setting.html">Settings</a></li>
+                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Profile</a></li>
+                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Ad Post</a></li>
+                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">My Ads</a></li>
+                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Settings</a></li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="bookmark.html"><span>bookmark</span><span>0</span></a></li>
+                                    href="<?= URL::asset('/') ?>"><span>bookmark</span><span>0</span></a></li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="message.html"><span>Message</span><span>0</span></a></li>
+                                    href="<?= URL::asset('/') ?>"><span>Message</span><span>0</span></a></li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="notification.html"><span>Notification</span><span>0</span></a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="user-form.html">Logout</a></li>
+                                    href="<?= URL::asset('/') ?>"><span>Notification</span><span>0</span></a></li>
+                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -314,12 +314,12 @@
     </aside>
     <nav class="mobile-nav">
         <div class="container">
-            <div class="mobile-group"><a href="index-2.html" class="mobile-widget"><i
-                        class="fas fa-home"></i><span>home</span></a><a href="user-form.html"
+            <div class="mobile-group"><a href="<?= URL::asset('/') ?>" class="mobile-widget"><i
+                        class="fas fa-home"></i><span>home</span></a><a href="<?= URL::asset('/') ?>"
                     class="mobile-widget"><i class="fas fa-user"></i><span>join me</span></a><a
-                    href="ad-post.html" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad
-                        Post</span></a><a href="notification.html" class="mobile-widget"><i
-                        class="fas fa-bell"></i><span>notify</span><sup>0</sup></a><a href="message.html"
+                    href="<?= URL::asset('/') ?>" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad
+                        Post</span></a><a href="<?= URL::asset('/') ?>" class="mobile-widget"><i
+                        class="fas fa-bell"></i><span>notify</span><sup>0</sup></a><a href="<?= URL::asset('/') ?>"
                     class="mobile-widget"><i class="fas fa-envelope"></i><span>message</span><sup>0</sup></a></div>
         </div>
     </nav>
@@ -328,58 +328,58 @@
             <div class="banner-content">
                 <h1>You can #Buy, #Rent, #Booking anything from here.</h1>
                 <p>Buy and sell everything from used cars to mobile phones and computers, or search for property, jobs
-                    and more in the world.</p><a href="ad-list-column3.html" class="btn btn-outline"><i
+                    and more in the world.</p><a href="<?= URL::asset('/') ?>" class="btn btn-outline"><i
                         class="fas fa-eye"></i><span>Show all ads</span></a>
             </div>
         </div>
     </section>
     <section class="suggest-part">
         <div class="container">
-            <div class="suggest-slider slider-arrow"><a href="ad-list-column3.html" class="suggest-card"><img
+            <div class="suggest-slider slider-arrow"><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/automobile.png" alt="car">
                     <h6>automobile</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/furniture.png" alt="furniture">
                     <h6>furniture</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/properties.png" alt="house">
                     <h6>properties</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/fashion.png" alt="food">
                     <h6>fashion</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/electronics.png" alt="cycle">
                     <h6>electronics</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/hospitality.png" alt="clothes">
                     <h6>hospitality</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/gadgets.png" alt="computer">
                     <h6>gadgets</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/education.png" alt="phone">
                     <h6>education</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/software.png" alt="scooter">
                     <h6>software</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/food.png" alt="television">
                     <h6>food</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/services.png" alt="truck">
                     <h6>services</h6>
                     <p>(4,521) ads</p>
-                </a><a href="ad-list-column3.html" class="suggest-card"><img
+                </a><a href="<?= URL::asset('/') ?>" class="suggest-card"><img
                         src="<?= URL::asset('assets/') ?>/images/suggest/animals.png" alt="pet">
                     <h6>animals</h6>
                     <p>(4,521) ads</p>
@@ -394,7 +394,7 @@
                         <h2>Find your needs in our best <span>Featured Ads</span></h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit aspernatur illum vel sunt libero
                             voluptatum repudiandae veniam maxime tenetur fugiat eaque alias nobis doloremque culpa nam.
-                        </p><a href="ad-list-column3.html" class="btn btn-inline"><i
+                        </p><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                 class="fas fa-eye"></i><span>view
                                 all featured</span></a>
                     </div>
@@ -412,7 +412,7 @@
                                     <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">private car</li>
                                 </ol>
-                                <h3 class="feature-title"><a href="ad-details-left.html">Unde eveniet ducimus nostrum
+                                <h3 class="feature-title"><a href="<?= URL::asset('/') ?>">Unde eveniet ducimus nostrum
                                         maiores soluta temporibus ipsum dolor sit amet.</a></h3>
                                 <div class="feature-meta"><span
                                         class="feature-price">$1200<small>/Monthly</small></span><span
@@ -431,7 +431,7 @@
                                     <li class="breadcrumb-item"><a href="#">Property</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">House</li>
                                 </ol>
-                                <h3 class="feature-title"><a href="ad-details-left.html">Unde eveniet ducimus nostrum
+                                <h3 class="feature-title"><a href="<?= URL::asset('/') ?>">Unde eveniet ducimus nostrum
                                         maiores soluta temporibus ipsum dolor sit amet.</a></h3>
                                 <div class="feature-meta"><span
                                         class="feature-price">$800<small>/perday</small></span><span
@@ -450,7 +450,7 @@
                                     <li class="breadcrumb-item"><a href="#">gadget</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">iphone</li>
                                 </ol>
-                                <h3 class="feature-title"><a href="ad-details-left.html">Unde eveniet ducimus nostrum
+                                <h3 class="feature-title"><a href="<?= URL::asset('/') ?>">Unde eveniet ducimus nostrum
                                         maiores soluta temporibus ipsum dolor sit amet.</a></h3>
                                 <div class="feature-meta"><span
                                         class="feature-price">$1150<small>/Negotiable</small></span><span
@@ -469,7 +469,7 @@
                                     <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">cycle</li>
                                 </ol>
-                                <h3 class="feature-title"><a href="ad-details-left.html">Unde eveniet ducimus nostrum
+                                <h3 class="feature-title"><a href="<?= URL::asset('/') ?>">Unde eveniet ducimus nostrum
                                         maiores soluta temporibus ipsum dolor sit amet.</a></h3>
                                 <div class="feature-meta"><span
                                         class="feature-price">$455<small>/fixed</small></span><span
@@ -525,13 +525,13 @@
                                     <li class="breadcrumb-item"><a href="#">Luxury</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Duplex House</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1500<span>/Per Day</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -556,13 +556,13 @@
                                     <li class="breadcrumb-item"><a href="#">stationary</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">books</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$470<span>/fixed</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -587,13 +587,13 @@
                                     <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">private car</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$3300<span>/per month</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -618,13 +618,13 @@
                                     <li class="breadcrumb-item"><a href="#">animals</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">cat</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$900<span>/Negotiable</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -649,13 +649,13 @@
                                     <li class="breadcrumb-item"><a href="#">fashion</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">shoes</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$384<span>/fixed</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -666,7 +666,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="center-50"><a href="ad-list-column3.html" class="btn btn-inline"><i
+                    <div class="center-50"><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                 class="fas fa-eye"></i><span>view all recommend</span></a></div>
                 </div>
             </div>
@@ -704,14 +704,14 @@
                                 <li class="breadcrumb-item"><a href="#">property</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">house</li>
                             </ol>
-                            <h5 class="product-title"><a href="ad-details-right.html">Lorem ipsum dolor sit amet
+                            <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                     consect
                                     adipisicing elit</a></h5>
                             <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                     Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                             <div class="product-info">
                                 <h5 class="product-price">$974<span>/per day</span></h5>
-                                <div class="product-btn"><a href="compare.html" title="Compare"
+                                <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                         class="fas fa-compress"></a><button type="button" title="Wishlist"
                                         class="far fa-heart"></button></div>
                             </div>
@@ -738,14 +738,14 @@
                                 <li class="breadcrumb-item"><a href="#">fashion</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">shoes</li>
                             </ol>
-                            <h5 class="product-title"><a href="ad-details-right.html">Lorem ipsum dolor sit amet
+                            <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                     consect
                                     adipisicing elit</a></h5>
                             <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                     Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                             <div class="product-info">
                                 <h5 class="product-price">$384<span>/fixed</span></h5>
-                                <div class="product-btn"><a href="compare.html" title="Compare"
+                                <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                         class="fas fa-compress"></a><button type="button" title="Wishlist"
                                         class="far fa-heart"></button></div>
                             </div>
@@ -772,14 +772,14 @@
                                 <li class="breadcrumb-item"><a href="#">stationary</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">book</li>
                             </ol>
-                            <h5 class="product-title"><a href="ad-details-right.html">Lorem ipsum dolor sit amet
+                            <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                     consect
                                     adipisicing elit</a></h5>
                             <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                     Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                             <div class="product-info">
                                 <h5 class="product-price">$78<span>/Negotiable</span></h5>
-                                <div class="product-btn"><a href="compare.html" title="Compare"
+                                <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                         class="fas fa-compress"></a><button type="button" title="Wishlist"
                                         class="far fa-heart"></button></div>
                             </div>
@@ -806,14 +806,14 @@
                                 <li class="breadcrumb-item"><a href="#">electronics</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">television</li>
                             </ol>
-                            <h5 class="product-title"><a href="ad-details-right.html">Lorem ipsum dolor sit amet
+                            <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                     consect
                                     adipisicing elit</a></h5>
                             <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                     Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                             <div class="product-info">
                                 <h5 class="product-price">$756<span>/fixed</span></h5>
-                                <div class="product-btn"><a href="compare.html" title="Compare"
+                                <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                         class="fas fa-compress"></a><button type="button" title="Wishlist"
                                         class="far fa-heart"></button></div>
                             </div>
@@ -840,14 +840,14 @@
                                 <li class="breadcrumb-item"><a href="#">gadget</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">headphone</li>
                             </ol>
-                            <h5 class="product-title"><a href="ad-details-right.html">Lorem ipsum dolor sit amet
+                            <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                     consect
                                     adipisicing elit</a></h5>
                             <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                     Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                             <div class="product-info">
                                 <h5 class="product-price">$245<span>/Negotiable</span></h5>
-                                <div class="product-btn"><a href="compare.html" title="Compare"
+                                <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                         class="fas fa-compress"></a><button type="button" title="Wishlist"
                                         class="far fa-heart"></button></div>
                             </div>
@@ -874,14 +874,14 @@
                                 <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">cycle</li>
                             </ol>
-                            <h5 class="product-title"><a href="ad-details-right.html">Lorem ipsum dolor sit amet
+                            <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                     consect
                                     adipisicing elit</a></h5>
                             <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                     Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                             <div class="product-info">
                                 <h5 class="product-price">$75<span>/per hour</span></h5>
-                                <div class="product-btn"><a href="compare.html" title="Compare"
+                                <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                         class="fas fa-compress"></a><button type="button" title="Wishlist"
                                         class="far fa-heart"></button></div>
                             </div>
@@ -891,7 +891,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="center-20"><a href="ad-list-column3.html" class="btn btn-inline"><i
+                    <div class="center-20"><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                 class="fas fa-eye"></i><span>view all trend</span></a></div>
                 </div>
             </div>
@@ -942,13 +942,13 @@
                                     <li class="breadcrumb-item"><a href="#">Luxury</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">resort</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1590<span>/per week</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -976,13 +976,13 @@
                                     <li class="breadcrumb-item"><a href="#">gadget</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">mobile</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$454<span>/fixed</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1010,13 +1010,13 @@
                                     <li class="breadcrumb-item"><a href="#">animal</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">cat</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$235<span>/Negotiable</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1044,13 +1044,13 @@
                                     <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">private car</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$768<span>/per month</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1078,13 +1078,13 @@
                                     <li class="breadcrumb-item"><a href="#">Luxury</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Duplex house</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1470<span>/per day</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1112,13 +1112,13 @@
                                     <li class="breadcrumb-item"><a href="#">electronics</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">laptop</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1550<span>/fixed</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1146,13 +1146,13 @@
                                     <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">bike</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$90<span>/per hour</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1180,13 +1180,13 @@
                                     <li class="breadcrumb-item"><a href="#">gadget</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">camera</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1200<span>/Negotiable</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1218,13 +1218,13 @@
                                     <li class="breadcrumb-item"><a href="#">gadget</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">mobile</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$454<span>/fixed</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1252,13 +1252,13 @@
                                     <li class="breadcrumb-item"><a href="#">Luxury</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">resort</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1590<span>/per week</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1286,13 +1286,13 @@
                                     <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">private car</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$768<span>/per month</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1320,13 +1320,13 @@
                                     <li class="breadcrumb-item"><a href="#">animal</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">cat</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$235<span>/Negotiable</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1354,13 +1354,13 @@
                                     <li class="breadcrumb-item"><a href="#">electronics</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">laptop</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1550<span>/fixed</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1388,13 +1388,13 @@
                                     <li class="breadcrumb-item"><a href="#">Luxury</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Duplex house</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1470<span>/per day</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1422,13 +1422,13 @@
                                     <li class="breadcrumb-item"><a href="#">gadget</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">camera</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1200<span>/Negotiable</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1456,13 +1456,13 @@
                                     <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">bike</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$90<span>/per hour</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1494,13 +1494,13 @@
                                     <li class="breadcrumb-item"><a href="#">gadget</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">camera</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1200<span>/Negotiable</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1528,13 +1528,13 @@
                                     <li class="breadcrumb-item"><a href="#">Luxury</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">resort</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1590<span>/per week</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1562,13 +1562,13 @@
                                     <li class="breadcrumb-item"><a href="#">animal</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">cat</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$235<span>/Negotiable</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1596,13 +1596,13 @@
                                     <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">private car</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$768<span>/per month</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1630,13 +1630,13 @@
                                     <li class="breadcrumb-item"><a href="#">gadget</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">mobile</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$454<span>/fixed</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1664,13 +1664,13 @@
                                     <li class="breadcrumb-item"><a href="#">electronics</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">laptop</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1550<span>/fixed</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1698,13 +1698,13 @@
                                     <li class="breadcrumb-item"><a href="#">automobile</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">bike</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$90<span>/per hour</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1732,13 +1732,13 @@
                                     <li class="breadcrumb-item"><a href="#">Luxury</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Duplex house</li>
                                 </ol>
-                                <h5 class="product-title"><a href="ad-details-left.html">Lorem ipsum dolor sit amet
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet
                                         consect adipisicing elit</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">
                                     <h5 class="product-price">$1470<span>/per day</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
+                                    <div class="product-btn"><a href="<?= URL::asset('/') ?>" title="Compare"
                                             class="fas fa-compress"></a><button type="button" title="Wishlist"
                                             class="far fa-heart"></button></div>
                                 </div>
@@ -1749,7 +1749,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="center-20"><a href="ad-list-column3.html" class="btn btn-inline"><i
+                    <div class="center-20"><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                 class="fas fa-eye"></i><span>view all ads</span></a></div>
                 </div>
             </div>
@@ -1767,42 +1767,42 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-3"><a href="ad-list-column3.html" class="city-card"
+                <div class="col-sm-6 col-md-6 col-lg-3"><a href="<?= URL::asset('/') ?>" class="city-card"
                         style="background: url(images/cities/01.jpg) no-repeat center; background-size: cover">
                         <div class="city-content">
                             <h4>Los Angeles</h4>
                             <p>(25) ads</p>
                         </div>
                     </a></div>
-                <div class="col-sm-6 col-md-6 col-lg-4"><a href="ad-list-column3.html" class="city-card"
+                <div class="col-sm-6 col-md-6 col-lg-4"><a href="<?= URL::asset('/') ?>" class="city-card"
                         style="background: url(images/cities/02.jpg) no-repeat center; background-size: cover">
                         <div class="city-content">
                             <h4>san francisco</h4>
                             <p>(25) ads</p>
                         </div>
                     </a></div>
-                <div class="col-sm-6 col-md-6 col-lg-5"><a href="ad-list-column3.html" class="city-card"
+                <div class="col-sm-6 col-md-6 col-lg-5"><a href="<?= URL::asset('/') ?>" class="city-card"
                         style="background: url(images/cities/03.jpg) no-repeat center; background-size: cover">
                         <div class="city-content">
                             <h4>california</h4>
                             <p>(25) ads</p>
                         </div>
                     </a></div>
-                <div class="col-sm-6 col-md-6 col-lg-5"><a href="ad-list-column3.html" class="city-card"
+                <div class="col-sm-6 col-md-6 col-lg-5"><a href="<?= URL::asset('/') ?>" class="city-card"
                         style="background: url(images/cities/04.jpg) no-repeat center; background-size: cover">
                         <div class="city-content">
                             <h4>new york</h4>
                             <p>(25) ads</p>
                         </div>
                     </a></div>
-                <div class="col-sm-6 col-md-6 col-lg-4"><a href="ad-list-column3.html" class="city-card"
+                <div class="col-sm-6 col-md-6 col-lg-4"><a href="<?= URL::asset('/') ?>" class="city-card"
                         style="background: url(images/cities/05.jpg) no-repeat center; background-size: cover">
                         <div class="city-content">
                             <h4>manhattan</h4>
                             <p>(25) ads</p>
                         </div>
                     </a></div>
-                <div class="col-sm-6 col-md-6 col-lg-3"><a href="ad-list-column3.html" class="city-card"
+                <div class="col-sm-6 col-md-6 col-lg-3"><a href="<?= URL::asset('/') ?>" class="city-card"
                         style="background: url(images/cities/06.jpg) no-repeat center; background-size: cover">
                         <div class="city-content">
                             <h4>Baltimore</h4>
@@ -1812,7 +1812,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="center-20"><a href="cities.html" class="btn btn-inline"><i
+                    <div class="center-20"><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                 class="fas fa-eye"></i><span>view all Cities</span></a></div>
                 </div>
             </div>
@@ -1834,7 +1834,7 @@
                     <div class="category-card">
                         <div class="category-head"><img
                                 src="<?= URL::asset('assets/') ?>/images/category/electronics.jpg" alt="category"><a
-                                href="category-details.html" class="category-content">
+                                href="<?= URL::asset('/') ?>" class="category-content">
                                 <h4>electronics</h4>
                                 <p>(3678)</p>
                             </a></div>
@@ -1866,7 +1866,7 @@
                     <div class="category-card">
                         <div class="category-head"><img
                                 src="<?= URL::asset('assets/') ?>/images/category/gadgets.jpg" alt="category"><a
-                                href="category-details.html" class="category-content">
+                                href="<?= URL::asset('/') ?>" class="category-content">
                                 <h4>gadgets</h4>
                                 <p>(3678)</p>
                             </a></div>
@@ -1898,7 +1898,7 @@
                     <div class="category-card">
                         <div class="category-head"><img
                                 src="<?= URL::asset('assets/') ?>/images/category/furnitures.jpg" alt="category"><a
-                                href="category-details.html" class="category-content">
+                                href="<?= URL::asset('/') ?>" class="category-content">
                                 <h4>furnitures</h4>
                                 <p>(3678)</p>
                             </a></div>
@@ -1930,7 +1930,7 @@
                     <div class="category-card">
                         <div class="category-head"><img
                                 src="<?= URL::asset('assets/') ?>/images/category/animals.jpg" alt="category"><a
-                                href="category-details.html" class="category-content">
+                                href="<?= URL::asset('/') ?>" class="category-content">
                                 <h4>animals</h4>
                                 <p>(3678)</p>
                             </a></div>
@@ -1962,7 +1962,7 @@
                     <div class="category-card">
                         <div class="category-head"><img
                                 src="<?= URL::asset('assets/') ?>/images/category/fashions.jpg" alt="category"><a
-                                href="category-details.html" class="category-content">
+                                href="<?= URL::asset('/') ?>" class="category-content">
                                 <h4>fashions</h4>
                                 <p>(3678)</p>
                             </a></div>
@@ -1994,7 +1994,7 @@
                     <div class="category-card">
                         <div class="category-head"><img
                                 src="<?= URL::asset('assets/') ?>/images/category/motorbikes.jpg" alt="category"><a
-                                href="category-details.html" class="category-content">
+                                href="<?= URL::asset('/') ?>" class="category-content">
                                 <h4>motorbikes</h4>
                                 <p>(3678)</p>
                             </a></div>
@@ -2026,7 +2026,7 @@
                     <div class="category-card">
                         <div class="category-head"><img
                                 src="<?= URL::asset('assets/') ?>/images/category/properties.jpg" alt="category"><a
-                                href="category-details.html" class="category-content">
+                                href="<?= URL::asset('/') ?>" class="category-content">
                                 <h4>properties</h4>
                                 <p>(3678)</p>
                             </a></div>
@@ -2058,7 +2058,7 @@
                     <div class="category-card">
                         <div class="category-head"><img
                                 src="<?= URL::asset('assets/') ?>/images/category/automobiles.jpg" alt="category"><a
-                                href="category-details.html" class="category-content">
+                                href="<?= URL::asset('/') ?>" class="category-content">
                                 <h4>automobiles</h4>
                                 <p>(3678)</p>
                             </a></div>
@@ -2089,7 +2089,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="center-20"><a href="category-list.html" class="btn btn-inline"><i
+                    <div class="center-20"><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                 class="fas fa-eye"></i><span>view all categories</span></a></div>
                 </div>
             </div>
@@ -2102,7 +2102,7 @@
                     <div class="section-center-heading">
                         <h2>Do you have something to advertise?</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit aspernatur illum vel sunt libero
-                            voluptatum repudiandae veniam maxime tenetur.</p><a href="ad-post.html"
+                            voluptatum repudiandae veniam maxime tenetur.</p><a href="<?= URL::asset('/register') ?>"
                             class="btn btn-outline"><i class="fas fa-plus-circle"></i><span>post your ad</span></a>
                     </div>
                 </div>
@@ -2144,7 +2144,7 @@
                                 <p>Limited Support</p>
                             </li>
                         </ul>
-                        <div class="price-btn"><a href="user-form.html" class="btn btn-inline"><i
+                        <div class="price-btn"><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                     class="fas fa-sign-in-alt"></i><span>Register Now</span></a></div>
                     </div>
                 </div>
@@ -2171,7 +2171,7 @@
                                 <p>Basic Support</p>
                             </li>
                         </ul>
-                        <div class="price-btn"><a href="user-form.html" class="btn btn-inline"><i
+                        <div class="price-btn"><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                     class="fas fa-sign-in-alt"></i><span>Register Now</span></a></div>
                     </div>
                 </div>
@@ -2198,7 +2198,7 @@
                                 <p>Priority Support</p>
                             </li>
                         </ul>
-                        <div class="price-btn"><a href="user-form.html" class="btn btn-inline"><i
+                        <div class="price-btn"><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                     class="fas fa-sign-in-alt"></i><span>Register Now</span></a></div>
                     </div>
                 </div>
@@ -2235,11 +2235,11 @@
                                     </li>
                                 </ul>
                                 <div class="blog-text">
-                                    <h4><a href="blog-details.html">Lorem ipsum dolor sit amet eius minus elit cum
+                                    <h4><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet eius minus elit cum
                                             quaerat volupt.</a></h4>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus veniam ad
                                         dolore labore laborum perspiciatis...</p>
-                                </div><a href="blog-details.html" class="blog-read"><span>read more</span><i
+                                </div><a href="<?= URL::asset('/') ?>" class="blog-read"><span>read more</span><i
                                         class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
                         </div>
@@ -2259,11 +2259,11 @@
                                     </li>
                                 </ul>
                                 <div class="blog-text">
-                                    <h4><a href="blog-details.html">Lorem ipsum dolor sit amet eius minus elit cum
+                                    <h4><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet eius minus elit cum
                                             quaerat volupt.</a></h4>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus veniam ad
                                         dolore labore laborum perspiciatis...</p>
-                                </div><a href="blog-details.html" class="blog-read"><span>read more</span><i
+                                </div><a href="<?= URL::asset('/') ?>" class="blog-read"><span>read more</span><i
                                         class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
                         </div>
@@ -2283,11 +2283,11 @@
                                     </li>
                                 </ul>
                                 <div class="blog-text">
-                                    <h4><a href="blog-details.html">Lorem ipsum dolor sit amet eius minus elit cum
+                                    <h4><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet eius minus elit cum
                                             quaerat volupt.</a></h4>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus veniam ad
                                         dolore labore laborum perspiciatis...</p>
-                                </div><a href="blog-details.html" class="blog-read"><span>read more</span><i
+                                </div><a href="<?= URL::asset('/') ?>" class="blog-read"><span>read more</span><i
                                         class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
                         </div>
@@ -2307,11 +2307,11 @@
                                     </li>
                                 </ul>
                                 <div class="blog-text">
-                                    <h4><a href="blog-details.html">Lorem ipsum dolor sit amet eius minus elit cum
+                                    <h4><a href="<?= URL::asset('/') ?>">Lorem ipsum dolor sit amet eius minus elit cum
                                             quaerat volupt.</a></h4>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus veniam ad
                                         dolore labore laborum perspiciatis...</p>
-                                </div><a href="blog-details.html" class="blog-read"><span>read more</span><i
+                                </div><a href="<?= URL::asset('/') ?>" class="blog-read"><span>read more</span><i
                                         class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
                         </div>
@@ -2320,7 +2320,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="blog-btn"><a href="blog-list.html" class="btn btn-inline"><i
+                    <div class="blog-btn"><a href="<?= URL::asset('/') ?>" class="btn btn-inline"><i
                                 class="fas fa-eye"></i><span>view all blogs</span></a></div>
                 </div>
             </div>
