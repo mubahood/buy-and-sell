@@ -7,14 +7,15 @@
     <body>
         <section class="user-form-part">
             <div class="user-form-banner">
-                <div class="user-form-content"><a href="#"><img src="images/logo.png" alt="logo"></a>
+                <div class="user-form-content"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo.png"
+                            alt="logo"></a>
                     <h1>Advertise your assets <span>Buy what are you needs.</span></h1>
                     <p>Biggest Online Advertising Marketplace in the World.</p>
                 </div>
             </div>
             <div class="user-form-category">
-                <div class="user-form-header"><a href="#"><img src="images/logo.png" alt="logo"></a><a href="index-2.html"><i
-                            class="fas fa-arrow-left"></i></a></div>
+                <div class="user-form-header"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo.png"
+                            alt="logo"></a><a href="{{ url('') }}"><i class="fas fa-home"></i></a></div>
                 <div class="user-form-category-btn">
                     <ul class="nav nav-tabs">
                         <li><a href="#register-tab" class="nav-link active" data-toggle="tab">sign up</a></li>
@@ -65,14 +66,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox"><input type="checkbox"
-                                            class="custom-control-input" id="signup-check"><label
-                                            class="custom-control-label" for="signup-check">I agree to the all <a
-                                                href="#">terms & consitions</a>of bebostha.</label></div>
-                                </div>
-                            </div>
+                           
                             <div class="col-12">
                                 <div class="form-group"><button type="submit" class="btn btn-inline"><i
                                             class="fas fa-user-check"></i><span>Create new account</span></button></div>
@@ -80,7 +74,7 @@
                         </div>
                     </form>
                     <div class="user-form-direction">
-                        <p>Already have an account? click on the <span>( sign in )</span>button above.</p>
+                        <p>Already have an account? <a href="{{ route('login') }}">Login</a> </p>
                     </div>
                 </div>
             </div>

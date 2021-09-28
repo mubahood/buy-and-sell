@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Hamcrest\Arrays\IsArray;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -16,6 +17,13 @@ class Utils
         if ($files == null || empty($files)) {
             return [];
         }
+        if (!isset($files['name'])) {
+            return [];
+        }
+        if (!is_array($files['name'])) {
+            return [];
+        }
+
         $uploaded_images = array();
         if (isset($files['name'])) {
             for ($i = 0; $i < count($files['name']); $i++) {
@@ -92,8 +100,8 @@ class Utils
         $image->preserve_time = true;
         $image->handle_exif_orientation_tag = true;
 
-        $width = 200;
-        $heigt = 200;
+        $width = 380;
+        $heigt = 220;
         if (isset($params['width'])) {
             $width = $params['width'];
         }

@@ -2,135 +2,82 @@
 
 @section('title', 'Page Title')
 
-@section('sidebar')
-    @parent
-
-    <p>This is appended to the master sidebar.</p>
+@section('head')
+    <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/my-ads.css') }}">
 @endsection
 
 @section('content')
-
-
-    <section class="dashboard-part mt-0 pt-3 pt-md-4 ">
-        <div class="container  mt-0">
+    @php
+    use Illuminate\Support\Facades\Auth;
+    use App\Models\Product;
+    $user_id = Auth::id();
+    $products = Product::where('user_id', $user_id)->get();
+    @endphp
+    <section class="myads-part">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="account-card alert fade show">
-                        <div class="account-title">
-                            <h3>Newsletter</h3><button data-dismiss="alert">close</button>
-                        </div>
-                        <div class="dash-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore enim illum quos sed
-                                dolore iusto necessitatibus ut voluptatibus repellat Eaque molestiae cum laborum nobis
-                                quidem vel modi ab quam ipsum eligendi excepturi reiciendis aspernatur veniam ex.
-                                Debitis excepturi atque. Ducimus dignissimos. Illo ut dolorem in vel blanditiis facere
-                                aliquid ipsum.</p>
+                <div class="col-lg-12">
+                    <div class="header-filter">
+                        <div class="filter-show"><label class="filter-label">Show :</label><select
+                                class="custom-select filter-select">
+                                <option value="1">12</option>
+                                <option value="2">24</option>
+                                <option value="3">36</option>
+                            </select></div>
+                        <div class="filter-short"><label class="filter-label">Short by :</label><select
+                                class="custom-select filter-select">
+                                <option selected>all ads</option>
+                                <option value="3">booking ads</option>
+                                <option value="2">rental ads</option>
+                                <option value="1">sale ads</option>
+                            </select></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @foreach ($products as $item)
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="product-card">
+                            <div class="product-media">
+                                <div class="product-img"><img src="{{$item->get_thumbnail()}}"
+                                        alt="{{$item->get_thumbnail()}}"></div>
+                                <div class="cross-vertical-badge product-badge"><i class="fas fa-fire"></i><span>top
+                                        niche</span></div>
+                                <div class="product-type"><span class="flat-badge booking">new</span></div>
+                                <ul class="product-action">
+                                    <li class="view"><i class="fas fa-eye"></i><span>264</span></li>
+                                    <li class="click"><i class="fas fa-mouse"></i><span>134</span></li>
+                                    <li class="rating"><i class="fas fa-star"></i><span>4.5/7</span></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <ol class="breadcrumb product-category">
+                                    <li><i class="fas fa-tags"></i></li>
+                                    <li class="breadcrumb-item"><a href="#">Luxury</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">resort</li>
+                                </ol>
+                                <h5 class="product-title"><a href="ad-details-left.html">{{ $item->name }}</a></h5>
+                                <div class="product-meta"><span><i
+                                            class="fas fa-map-marker-alt"></i>{{ $item->category->name }},
+                                        {{ $item->category->name }}</span><span><i
+                                            class="fas fa-clock"></i>{{ $item->updated_at }}</span></div>
+                                <div class="product-info">
+                                    <h5 class="product-price">${{ $item->price }}<span>/starting price</span></h5>
+                                    <div class="product-btn">
+                                        <a href="#" title="Delete" class="fas fa-trash text-danger"></a><button
+                                            type="button" title="Edit" class="far fa-edit"></button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="account-card alert fade show">
-                        <div class="account-title">
-                            <h3>Reviews</h3><button data-dismiss="alert">close</button>
-                        </div>
-                        <div class="dash-review-widget">
-                            <h4>(4) Unread Review</h4><select class="custom-select">
-                                <option selected>Unread Review</option>
-                                <option value="1">All Review</option>
-                                <option value="2">5 Star Review</option>
-                                <option value="3">4 Star Review</option>
-                                <option value="3">3 Star Review</option>
-                                <option value="3">2 Star Review</option>
-                                <option value="3">1 Star Review</option>
-                            </select>
-                        </div>
-                        <ul class="review-list">
-                            <li class="review-item">
-                                <div class="review-user">
-                                    <div class="review-head">
-                                        <div class="review-profile"><a href="#" class="review-avatar"><img
-                                                    src="{{ URL::asset('/assets/') }}/images/avatar/03.jpg" alt="review"></a>
-                                            <div class="review-meta">
-                                                <h6><a href="#">miron mahmud -</a><span>June 02, 2020</span></h6>
-                                                <ul>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li>
-                                                        <h5>- for delivery system</h5>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="review-widget"><button class="review-dots-btn"><i
-                                                    class="fas fa-ellipsis-v"></i></button>
-                                            <ul class="review-widget-list">
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i>Delete</a></li>
-                                                <li><a href="#"><i class="fas fa-flag"></i>Report</a></li>
-                                                <li><a href="#"><i class="fas fa-shield-alt"></i>Block</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p class="review-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit Non
-                                        quibusdam harum ipsum dolor cumque quas magni voluptatibus cupiditate minima
-                                        quis.</p>
-                                </div>
-                            </li>
-                            <li class="review-item">
-                                <div class="review-user">
-                                    <div class="review-head">
-                                        <div class="review-profile"><a href="#" class="review-avatar"><img
-                                                    src="{{ URL::asset('/assets/') }}/images/avatar/02.jpg" alt="review"></a>
-                                            <div class="review-meta">
-                                                <h6><a href="#">labonno khan -</a><span>June 02, 2020</span></h6>
-                                                <ul>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li>
-                                                        <h5>- for product quality</h5>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="review-widget"><button class="review-dots-btn"><i
-                                                    class="fas fa-ellipsis-v"></i></button>
-                                            <ul class="review-widget-list">
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i>Delete</a></li>
-                                                <li><a href="#"><i class="fas fa-flag"></i>Report</a></li>
-                                                <li><a href="#"><i class="fas fa-shield-alt"></i>Block</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p class="review-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit Non
-                                        quibusdam harum ipsum dolor cumque quas magni voluptatibus cupiditate minima
-                                        quis.</p>
-                                </div>
-                                <div class="review-author">
-                                    <div class="review-head">
-                                        <div class="review-profile"><a href="#" class="review-avatar"><img
-                                                    src="{{ URL::asset('/assets/') }}/images/avatar/04.jpg" alt="review"></a>
-                                            <div class="review-meta">
-                                                <h6><a href="#">Miron Mahmud</a></h6>
-                                                <h6>Author - <span>June 02, 2020</span></h6>
-                                            </div>
-                                        </div>
-                                        <div class="review-widget"><button class="review-dots-btn"><i
-                                                    class="fas fa-ellipsis-v"></i></button>
-                                            <ul class="review-widget-list">
-                                                <li><a href="#"><i class="fas fa-edit"></i>Edit</a></li>
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i>Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p class="review-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit Non
-                                        quibusdam harum ipsum dolor cumque quas magni voluptatibus cupiditate minima.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
+                @endforeach
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-pagection">
+                        <p class="page-info">Showing 12 of 60 Results</p>
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#"><i
                                         class="fas fa-long-arrow-alt-left"></i></a></li>
@@ -141,75 +88,6 @@
                             <li class="page-item"><a class="page-link" href="#">67</a></li>
                             <li class="page-item"><a class="page-link" href="#"><i
                                         class="fas fa-long-arrow-alt-right"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="account-card alert fade show">
-                        <div class="account-title">
-                            <h3>Membership</h3><button data-dismiss="alert">close</button>
-                        </div>
-                        <ul class="account-card-list">
-                            <li>
-                                <h5>Status</h5>
-                                <p>Premium</p>
-                            </li>
-                            <li>
-                                <h5>Joined</h5>
-                                <p>February 02, 2021</p>
-                            </li>
-                            <li>
-                                <h5>Spand</h5>
-                                <p>4,587</p>
-                            </li>
-                            <li>
-                                <h5>Earn</h5>
-                                <p>97,325</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="account-card alert fade show">
-                        <div class="account-title">
-                            <h3>Current Info</h3><button data-dismiss="alert">close</button>
-                        </div>
-                        <ul class="account-card-list">
-                            <li>
-                                <h5>Active Ads</h5>
-                                <h6>3</h6>
-                            </li>
-                            <li>
-                                <h5>Booking Ads</h5>
-                                <h6>0</h6>
-                            </li>
-                            <li>
-                                <h5>Rental Ads</h5>
-                                <h6>1</h6>
-                            </li>
-                            <li>
-                                <h5>Sales Ads</h5>
-                                <h6>2</h6>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="account-card alert fade show">
-                        <div class="account-title">
-                            <h3>Fun fact</h3><button data-dismiss="alert">close</button>
-                        </div>
-                        <div class="account-card-content">
-                            <p>Your last ad running was 3 days ago and only have 5 hours left until your last ad
-                                expires.</p>
-                        </div>
-                    </div>
-                    <div class="account-card alert fade show">
-                        <div class="account-title">
-                            <h3>Resources</h3><button data-dismiss="alert">close</button>
-                        </div>
-                        <ul class="account-card-link">
-                            <li><a href="#"><i class="fas fa-dot-circle"></i><span>Asset Use Guidelines</span></a></li>
-                            <li><a href="#"><i class="fas fa-dot-circle"></i><span>Authoring Tutorial</span></a></li>
-                            <li><a href="#"><i class="fas fa-dot-circle"></i><span>Knowledgebase</span></a></li>
-                            <li><a href="#"><i class="fas fa-dot-circle"></i><span>Watermarks</span></a></li>
-                            <li><a href="#"><i class="fas fa-dot-circle"></i><span>Selling Tips</span></a></li>
                         </ul>
                     </div>
                 </div>

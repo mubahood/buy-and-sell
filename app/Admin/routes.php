@@ -1,5 +1,6 @@
 <?php
 
+use Encore\Admin\Facades\Admin;
 use Illuminate\Routing\Router;
 
 
@@ -17,4 +18,6 @@ Route::group([
     $router->resource('products', ProductController::class);
     $router->resource('categories', CategoryController::class);
     $router->resource('attributes', AttributeController::class);
+    $router->resource('countries', CountryController::class);
+    $router->resource('cities', CityController::class);
 });

@@ -26,7 +26,6 @@
 </head>
 
 <body>
-
     @yield('content')
     <script src="{{ URL::asset('/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/popper.min.js') }}"></script>

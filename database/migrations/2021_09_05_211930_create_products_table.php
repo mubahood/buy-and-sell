@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\category;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -23,13 +25,17 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->foreignIdFor(category::class);
             $table->foreignIdFor(User::class);
-            $table->string('price');
+            $table->foreignIdFor(Country::class);
+            $table->foreignIdFor(City::class);
+            $table->string('price')->nullable();
             $table->string('slug')->nullable();
             $table->string('status')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('quantity')->nullable();
-            $table->string('images')->nullable();
-            $table->string('attributes')->nullable();
+            $table->text('images')->nullable();
+            $table->text('thumbnail')->nullable();
+            $table->string('attributes')->nullable(); 
+            $table->integer('sub_category_id')->nullable();
             
         });
     }

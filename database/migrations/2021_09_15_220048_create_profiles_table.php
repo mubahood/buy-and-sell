@@ -26,7 +26,7 @@ class CreateProfilesTable extends Migration
                 $table->string('email')->nullable();
                 $table->string('phone_number')->nullable();
                 $table->string('location')->nullable();
-                $table->string('about')->nullable();
+                $table->text('about')->nullable();
                 $table->string('services')->nullable();
                 $table->string('longitude')->nullable();
                 $table->string('latitude')->nullable();

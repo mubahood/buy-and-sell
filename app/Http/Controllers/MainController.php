@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +15,37 @@ class MainController extends Controller
         return view('main.index');
     }
 
-    public function login()
+    public function slugSwitcher()
     {
+        $seg = request()->segment(1);
+        $pro = Product::where('slug', $seg)->first();
+        if ($pro) {
+            return view('main.display-ad');
+            return;
+        }
+        return dd($seg);
+    }
+
+    public function login(Request  $request)
+    {
+        if (isset($_POST['phone_number'])) {
+
+            $u['email'] = $_POST['phone_number'];
+            $u['password'] = $_POST['password'];
+
+            if (Auth::attempt($u)) {
+                $errors['success'] = "Account created successfully!";
+                return redirect('dashboard')
+                    ->withErrors($errors)
+                    ->withInput();
+            } else {
+                $errors['password'] = "Wrong password";
+                return redirect('login')
+                    ->withErrors($errors)
+                    ->withInput();
+            }
+        }
+
         return view('main.login');
     }
 
@@ -35,7 +65,7 @@ class MainController extends Controller
             }
 
             $u['name'] = "";
-            $u['email'] = $request->input("phone_number") . rand(10000, 100000);
+            $u['email'] = $request->input("phone_number");
             $u['password'] = Hash::make($request->input("password"));
             $users = User::create($u);
 

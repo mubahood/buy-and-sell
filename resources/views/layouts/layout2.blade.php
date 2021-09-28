@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+@php
+    $id = Auth::id();
+@endphp<!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
@@ -26,7 +28,12 @@
 
 <body>
     @php
+        
         $seg = request()->segment(1);
+        
+        use Illuminate\Support\Facades\Auth;
+        $user = Auth::user();
+        
     @endphp
 
 
@@ -36,7 +43,7 @@
                 <div class="header-left"><button type="button" class="header-widget sidebar-btn"><i
                             class="fas fa-align-left"></i></button><a href="/" class="header-logo"><img
                             src="{{ URL::asset('/assets/') }}/images/logo.png" alt="logo"></a><a href="user-form.html"
-                        class="header-widget header-user"><img src="{{ URL::asset('/assets/') }}/images/user.png"
+                        class="header-widget header-user"><img src="{{ URL::asset('/assets') }}/images/user.png"
                             alt="user"><span>join
                             me</span></a><button type="button" class="header-widget search-btn"><i
                             class="fas fa-search"></i></button></div>
@@ -209,7 +216,7 @@
                                 </ul>
                             </div>
                         </li>
-                    </ul><a href="ad-post.html" class="btn btn-inline post-btn"><i
+                    </ul><a href="{{route('post-ad')}}" class="btn btn-inline post-btn"><i
                             class="fas fa-plus-circle"></i><span>post your ad</span></a>
                 </div>
             </div>
@@ -223,7 +230,7 @@
             <div class="sidebar-content">
                 <div class="sidebar-profile"><a href="#" class="sidebar-avatar"><img
                             src="{{ URL::asset('/assets/') }}/images/avatar/01.jpg" alt="avatar"></a>
-                    <h4><a href="#" class="sidebar-name">Jackon Honson</a></h4><a href="ad-post.html"
+                    <h4><a href="#" class="sidebar-name">Jackon Honson</a></h4><a href="{{route('post-ad')}}"
                         class="btn btn-inline sidebar-post"><i class="fas fa-plus-circle"></i><span>post your
                             ad</span></a>
                 </div>
@@ -283,19 +290,30 @@
                     </div>
                     <div class="tab-pane" id="author-menu">
                         <ul class="navbar-list">
-                            <li class="navbar-item"><a class="navbar-link" href="dashboard.html">Dashboard</a>
+
+                            <li class="navbar-item"><a class="navbar-link"
+                                    href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="profile.html">Profile</a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="ad-post.html">Ad Post</a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="my-ads.html">My Ads</a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="setting.html">Settings</a></li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="bookmark.html"><span>bookmark</span><span>0</span></a></li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="message.html"><span>Message</span><span>0</span></a></li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="notification.html"><span>Notification</span><span>0</span></a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="user-form.html">Logout</a></li>
+
+                            <li class="navbar-item"><a class="navbar-link"
+                                    href="{{ route('dashboard') }}">Messages</a>
+                            </li>
+
+                            <li class="navbar-item"><a class="navbar-link"
+                                    href="{{ route('dashboard') }}">Settings</a>
+                            </li>
+
+                            <li class="navbar-item"><a class="navbar-link" href="#">Membership</a>
+                            </li>
+
+                            <li class="navbar-item"><a class="navbar-link" href="profile-edit">My
+                                    Profile</a>
+                            </li>
+
+                            <li class="navbar-item"><a class="navbar-link"
+                                    href="{{ route('dashboard') }}">Logout</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -311,7 +329,7 @@
             <div class="mobile-group"><a href="/" class="mobile-widget"><i
                         class="fas fa-home"></i><span>home</span></a><a href="user-form.html"
                     class="mobile-widget"><i class="fas fa-user"></i><span>join me</span></a><a
-                    href="ad-post.html" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad
+                    href="{{route('post-ad')}}" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad
                         Post</span></a><a href="notification.html" class="mobile-widget"><i
                         class="fas fa-bell"></i><span>notify</span><sup>0</sup></a><a href="message.html"
                     class="mobile-widget"><i class="fas fa-envelope"></i><span>message</span><sup>0</sup></a></div>
@@ -320,29 +338,44 @@
 
 
     <section class="dash-header-part mt-4">
-        <div class="container ">
+        {{-- <div class="container ">
             <div class="dash-header-card  mt-0 pt-0">
                 <div class="row  ">
                     <div class="col-lg-12  ">
                         <div class="dash-menu-list  mt-0 pt-0">
                             <ul>
-                                <li><a href="dashboard.html">dashboard</a></li>
-                                <li><a href="profile.html">Profile</a></li>
+                                <li><a @if ($seg == 'dashboard')
+                                        class="active"
+                                        @endif href="{{ route('dashboard') }}">dashboard</a></li>
+
                                 <li><a @if ($seg == 'post-ad')
                                         class="active"
-                                        @endif href="ad-post.html">ad post</a></li>
-                                <li><a href="my-ads.html">my ads</a></li>
-                                <li><a href="setting.html">settings</a></li>
-                                <li><a href="bookmark.html">bookmarks</a></li>
-                                <li><a href="message.html">message</a></li>
-                                <li><a href="notification.html">notification</a></li>
-                                <li><a href="user-form.html">logout</a></li>
+                                        @endif href="{{ route('post-ad') }}">Post ad</a></li>
+
+                                <li><a @if ($seg == 'messages')
+                                        class="active"
+                                        @endif href="{{ route('messages') }}">Messages</a></li>
+
+                                <li><a @if ($seg == 'membership')
+                                        class="active"
+                                        @endif href="{{ route('membership') }}">Membership</a></li>
+                                <li><a @if ($seg == 'profile-edit')
+                                        class="active"
+                                        @endif href="{{ url('profile-edit') }}/{{ $id }}">My Profile</a></li>
+                                <li><a @if ($seg == 'post-ad')
+                                        class="active"
+                                        @endif href="{{ url('profile-edit') }}/{{ $id }}">Settings</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
+        @error('success')
+            <div class="alert alert-success ml-5 mr-5 mt-5 p-3">{{ $message }}</div>
+        @enderror
+
     </section>
     @yield('content')
 
@@ -406,7 +439,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-3">
-                    <div class="footer-info"><a href="#"><img src="images/logo.png" alt="logo"></a>
+                    <div class="footer-info"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo.png"
+                                alt="logo"></a>
                         <ul class="footer-count">
                             <li>
                                 <h5>929,238</h5>
@@ -423,16 +457,20 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-card-content">
-                        <div class="footer-payment"><a href="#"><img src="images/pay-card/01.jpg" alt="01"></a><a
-                                href="#"><img src="images/pay-card/02.jpg" alt="02"></a><a href="#"><img
-                                    src="images/pay-card/03.jpg" alt="03"></a><a href="#"><img
-                                    src="images/pay-card/04.jpg" alt="04"></a></div>
+                        <div class="footer-payment"><a href="#"><img
+                                    src="{{ URL::asset('/assets') }}/images/pay-card/01.jpg" alt="01"></a><a
+                                href="#"><img src="{{ URL::asset('/assets') }}/images/pay-card/02.jpg"
+                                    alt="02"></a><a href="#"><img
+                                    src="{{ URL::asset('/assets') }}/images/pay-card/03.jpg" alt="03"></a><a
+                                href="#"><img src="{{ URL::asset('/assets') }}/images/pay-card/04.jpg" alt="04"></a>
+                        </div>
                         <div class="footer-option"><button type="button" data-toggle="modal"
                                 data-target="#language"><i class="fas fa-globe"></i>English</button><button
                                 type="button" data-toggle="modal" data-target="#currency"><i
                                     class="fas fa-dollar-sign"></i>USD</button></div>
-                        <div class="footer-app"><a href="#"><img src="images/play-store.png"
-                                    alt="play-store"></a><a href="#"><img src="images/app-store.png"
+                        <div class="footer-app"><a href="#"><img
+                                    src="{{ URL::asset('/assets') }}/images/play-store.png" alt="play-store"></a><a
+                                href="#"><img src="{{ URL::asset('/assets') }}/images/app-store.png"
                                     alt="app-store"></a></div>
                     </div>
                 </div>
