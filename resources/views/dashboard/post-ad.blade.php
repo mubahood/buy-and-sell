@@ -160,7 +160,6 @@ $cities = City::all();
             });
             console.log(event.currentTarget.options.selectedIndex);
 
-        });
-
+        }); 
     });
 </script>
