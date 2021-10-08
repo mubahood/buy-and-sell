@@ -12,6 +12,22 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function account_status()
+    {
+        if (!$this->profile) {
+            return "not_active";
+        }
+        if (!$this->profile->status) {
+            return "not_active";
+        }
+        if ($this->profile->status == "active") {
+            return "active";
+        }
+        if (strlen($this->profile->cover_photo) > 4) {
+            return "pending";
+        }
+        return "not_active";
+    }
 
     public static function boot()
     {
@@ -66,7 +82,7 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return $this->hasManhasOney(Profile::class);
+        return $this->hasOne(Profile::class);
     }
 
     /**

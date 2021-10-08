@@ -20,4 +20,5 @@ Route::group([
     $router->resource('attributes', AttributeController::class);
     $router->resource('countries', CountryController::class);
     $router->resource('cities', CityController::class);
+    $router->resource('profiles', ProfileController::class);
 });

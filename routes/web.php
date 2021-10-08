@@ -12,6 +12,7 @@ Route::get('/register', [MainController::class, 'register'])->name("register");
 Route::match(['get', 'post'], '/login', [MainController::class, 'login'])->name("login");
 Route::post('/register', [MainController::class, 'register'])->name("register");
 Route::get('/dashboard', [Dashboard::class, 'index'])->name("dashboard")->middleware(Authenticate::class);
+Route::get('/complete-profile-request', [Dashboard::class, 'complete_profile_request'])->name("complete_profile_request")->middleware(Authenticate::class);
 Route::get('/membership', [Dashboard::class, 'membership'])->name("membership")->middleware(Authenticate::class);
 Route::get('/messages', [Dashboard::class, 'messages'])->name("messages");
 Route::match(['get', 'post'], '/post-ad', [Dashboard::class, 'postAdCategpryPick'])->name("post-ad")->middleware(Authenticate::class);
