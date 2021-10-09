@@ -22,7 +22,7 @@ class CreateAttributesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(category::class);
-            $table->text('name')->unique();
+            $table->text('name');
             $table->text('type');
             $table->text('options')->nullable();
             $table->tinyInteger('is_required')->nullable();
