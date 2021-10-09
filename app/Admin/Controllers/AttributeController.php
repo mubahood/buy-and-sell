@@ -94,7 +94,14 @@ class AttributeController extends AdminController
         $form->select('category_id', 'Category')->options($cats)->required();
 
         $form->text('name', __('Name'))->rules('required');
-        $form->select('type')->options(['', 'text', 'textarea', 'number', 'select', 'radio', 'checkbox'])->rules('required');
+        $options["text"] = "text";
+        $options["textarea"] = "textarea";
+        $options["number"] = "number";
+        $options["select"] = "select";
+        $options["radio"] = "radio";
+        $options["checkbox"] = "checkbox";
+        //$form->select('type')->options(['', 'text', 'textarea', 'number', 'select', 'radio', 'checkbox'])->rules('required');
+        $form->select('type')->options($options)->rules('required');
 
         $form->tags('options', __('Options'));
 

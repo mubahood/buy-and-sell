@@ -34,7 +34,7 @@ class CreateProductsTable extends Migration
             $table->string('quantity')->nullable();
             $table->text('images')->nullable();
             $table->text('thumbnail')->nullable();
-            $table->string('attributes')->nullable(); 
+            $table->text('attributes')->nullable(); 
             $table->integer('sub_category_id')->nullable();
             
         });

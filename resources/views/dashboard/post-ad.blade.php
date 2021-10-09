@@ -44,101 +44,239 @@ $cities = City::all();
                                 @foreach ($cats->attributes as $item)
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="form-group"><label class="form-label">Service Title</label>
-                                            <input type="text" value="{{ old('name') }}" required name="name"
-                                                minlength="2" class="form-control"
-                                                placeholder="Which service do you offer?, start with, I will...">
 
+                                        @if ($item->type == "checkbox")
+                                        <div class="form-group"><label class="form-label" for="{{ $item->name }}">
+                                                @if ($item->is_required)
+                                                <span class="text-danger">*</span>
+                                                @endif </label>
+                                            {{$item->name}}
+                                            @php
+                                            $_options = (explode(",",$item->options));
+                                            @endphp
+                                            <div class="row">
+                                                @for ($i = 0; $i < count($_options); $i++) <div class="col-md-4">
+                                                    <small class="d-block">
+                                                        <input type="checkbox" value="{{ $_options[$i]  }}"
+                                                            id="{{ $_options[$i] }}" name="{{ "__".$item->id."[]" }}" 
+                                                            @if ($item->is_required)
+                                                        required
+                                                        @endif >
+                                                        <label for="{{ $_options[$i] }}">{{ $_options[$i] }}</label>
+                                                    </small>
+                                            </div>
+                                            @endfor
+                                        </div>
+                                        @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    @endif
+
+                                    @if ($item->type == "radio")
+                                    <div class="form-group"><label class="form-label" for="{{ $item->name }}">
+                                            @if ($item->is_required)
+                                            <span class="text-danger">*</span>
+                                            @endif </label>
+                                        {{$item->name}}
+                                        @php
+                                        $_options = (explode(",",$item->options));
+                                        @endphp
+                                        @for ($i = 0; $i < count($_options); $i++) <small class="d-block">
+                                            <input type="radio" value="{{ $_options[$i] }}"
+                                                id="{{ $_options[$i] }}" name="{{ "__".$item->id }}" 
+                                                @if ($item->is_required)
+                                            required
+                                            @endif >
+                                            <label for="{{ $_options[$i] }}">{{ $_options[$i] }}</label>
+                                            </small>
+                                            @endfor
                                             @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
-                                        </div>
                                     </div>
+                                    @endif
+
+
+                                    @if ($item->type == "select")
+                                    <div class="form-group"><label class="form-label" for="{{ $item->name }}">
+                                            @if ($item->is_required)
+                                            <span class="text-danger">*</span>
+                                            @endif </label>
+                                        {{$item->name}}
+
+                                        <select value="{{ old("__".$item->id ) }}" id="{{ $item->name }}"
+                                            name="{{ "__".$item->id }}" @if ($item->is_required)
+                                            required
+                                            @php
+                                            $_options = (explode(",",$item->options));
+                                            @endphp
+                                            @endif class="form-control">
+                                            <option value=""></option>
+                                            @for ($i = 0; $i < count($_options); $i++) <option
+                                                value="{{$_options[$i]}}">{{$_options[$i]}}</option>
+                                                @endfor
+                                        </select>
+                                        @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    @endif
+
+                                    @if ($item->type == "text")
+                                    <div class="form-group"><label class="form-label" for="{{ $item->name }}">
+                                            @if ($item->is_required)
+                                            <span class="text-danger">*</span>
+                                            @endif </label>
+                                        {{$item->name}}
+
+                                        <input type="text" value="{{ old("__".$item->id ) }}" id="{{ $item->name }}"
+                                            name="{{ "__".$item->id }}" @if ($item->is_required)
+                                        required
+                                        @endif class="form-control">
+                                        @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    @endif
+
+                                    @if($item->type == "number")
+                                    <div class="form-group"><label class="form-label" for="{{ $item->name }}">
+                                            @if ($item->is_required)
+                                            <span class="text-danger">*</span>
+                                            @endif
+                                            {{$item->name}}
+
+                                            @if ($item->units)
+                                            <small>({{$item->units}})</small>
+                                            @endif
+                                        </label>
+                                        <input type="number" value="{{ old("__".$item->id ) }}" id="{{ $item->name }}"
+                                            name="{{ "__".$item->id }}" @if ($item->is_required)
+                                        required
+                                        @endif class="form-control">
+                                        @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    @endif
+
+                                    @if($item->type == "textarea")
+                                    <div class="form-group"><label class="form-label" for="{{ $item->name }}">
+                                            @if ($item->is_required)
+                                            <span class="text-danger">*</span>
+                                            @endif
+
+                                            {{$item->name}}
+
+                                            @if ($item->units)
+                                            <small>({{$item->units}})</small>
+                                            @endif
+                                        </label>
+                                        <textarea name="{{ "__".$item->id }}" id="{{ $item->name }}" @if ($item->is_required)
+                                                required
+                                                @endif class="form-control">{{ old("__".$item->id ) }}</textarea>
+                                        @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    @endif
+
                                 </div>
-                                @endforeach
-
-                                <div class="row">
-
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group"><label class="form-label">product image</label>
-                                            <input type="file" name="images[]" required value="{{ old('images') }}"
-                                                accept=".jpeg,.jpg,.png,.gif" class="form-control" multiple>
-                                            @error('images')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="form-label">Country</label>
-                                            <select name="country_id" required class="form-control  custom-select"
-                                                id="countries">
-                                                <option selected>Select Country</option>
-                                                @foreach ($countries as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('country_id')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label for="city_id" class="form-label">City</label>
-                                            <select name="city_id" class="form-control  custom-select" required
-                                                id="city_id">
-                                                <option selected>Select city</option>
-                                                @foreach ($cities as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('city_id')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group"><label class="form-label" for="price">Starting
-                                                Price</label><input type="number" class="form-control" id="price"
-                                                required name="price" placeholder="Enter your pricing amount">
-                                            @error('price')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group"><label class="form-label">Service
-                                                description</label><textarea class="form-control"
-                                                placeholder="Describe your service here" required
-                                                value="{{ old('description') }}" name="description"></textarea>
-                                            @error('description')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
-                            <div class="col-md-2"></div>
-                        </div>
+                            @endforeach
 
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group"><label class="form-label" for="name">Product title
+                                        </label><input type="text" class="form-control" id="name" required
+                                            name="name" placeholder="Enter your pricing amount">
+                                        @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group"><label class="form-label">product image</label>
+                                        <input type="file" name="images[]" required value="{{ old('images') }}"
+                                            accept=".jpeg,.jpg,.png,.gif" class="form-control" multiple>
+                                        @error('images')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"><label class="form-label">Country</label>
+                                        <select name="country_id" required class="form-control  custom-select"
+                                            id="countries">
+                                            <option selected>Select Country</option>
+                                            @foreach ($countries as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('country_id')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"><label for="city_id" class="form-label">City</label>
+                                        <select name="city_id" class="form-control  custom-select" required
+                                            id="city_id">
+                                            <option selected>Select city</option>
+                                            @foreach ($cities as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('city_id')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <div class="form-group"><label class="form-label" for="price">Starting
+                                            Price</label><input type="number" class="form-control" id="price" required
+                                            name="price" placeholder="Enter your pricing amount">
+                                        @error('price')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group"><label class="form-label">Service
+                                            description</label><textarea class="form-control"
+                                            placeholder="Describe your service here" required
+                                            value="{{ old('description') }}" name="description"></textarea>
+                                        @error('description')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2"></div>
                     </div>
 
-
-                    <div class="adpost-card pb-2">
-                        <div class="adpost-agree">
-                            <div class="form-group"><input type="checkbox" class="form-check"></div>
-                            <p>Send me Trade Email/SMS Alerts for people looking to buy mobile handsets in www By
-                                clicking "Post", you agree to our <a href="#">Terms of Use</a>and <a href="#">Privacy
-                                    Policy</a>and acknowledge that you are the rightful owner of
-                                this item and using Trade to find a genuine buyer.</p>
-                        </div>
-                        <div class="form-group text-right"><button class="btn btn-inline"><i
-                                    class="fas fa-check-circle"></i><span>publish service</span></button></div>
-                    </div>
-                </form>
             </div>
+
+
+            <div class="adpost-card pb-2">
+                <div class="adpost-agree">
+                    <div class="form-group"><input type="checkbox" class="form-check"></div>
+                    <p>Send me Trade Email/SMS Alerts for people looking to buy mobile handsets in www By
+                        clicking "Post", you agree to our <a href="#">Terms of Use</a>and <a href="#">Privacy
+                            Policy</a>and acknowledge that you are the rightful owner of
+                        this item and using Trade to find a genuine buyer.</p>
+                </div>
+                <div class="form-group text-right"><button class="btn btn-inline"><i
+                            class="fas fa-check-circle"></i><span>publish service</span></button></div>
+            </div>
+            </form>
         </div>
+    </div>
     </div>
 </section>
 

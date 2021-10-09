@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Profile;
 use App\Models\Utils;
+use App\Models\Attribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -99,14 +100,42 @@ class Dashboard extends Controller
     }
     public function postAdCategpryPick(Request $request)
     {
-        if ($request->has("name")) {
+        if ($request->has("price")) {
+ 
+            $attr_nodes = [];
+            $pro['attributes'] = "[]";
+            foreach ($_POST as $key => $v) {
+                if(substr($key,0,2) != "__"){
+                    continue;
+                }
+                $attr_id = (int)(str_replace("__","",$key));
+                if($attr_id<1){
+                    continue;
+                }
+                $attr =  Attribute::where('id', $attr_id)->first();
+                if(!$attr){
+                    continue;
+                }
+ 
+
+                $attr_node['id'] = $attr->id;
+                $attr_node['name'] = $attr->name;
+                $attr_node['type'] = $attr->type;
+                $attr_node['options'] = $attr->options;
+                $attr_node['is_required'] = $attr->is_required;
+                $attr_node['units'] = $attr->units;
+                $attr_node['value'] = $v;
+                $attr_nodes[] = $attr_node;
+
+            }
+
 
             $validated = $request->validate([
                 'name' => 'required|min:2',
                 'price' => 'required'
             ]);
 
-
+            $pro['attributes'] = json_encode($attr_nodes);
             $images = Utils::upload_images($_FILES['images']);
             $pro['images'] = "[]";
             $pro['thumbnail'] = "";
@@ -114,17 +143,12 @@ class Dashboard extends Controller
                 $pro['images'] = json_encode($images);
                 $pro['thumbnail'] = json_encode($images[0]);
             }
-            // $thumbnail = URL::asset('storage/'.str_replace("public/", "", json_decode($pro['thumbnail'])->thumbnail));
-            // echo '<code>'.$thumbnail.'</code>';
-            // echo '<img src="'.$thumbnail.'" alt="">';
-            // die();
-
+         
             $pro['name'] = $request->input("name");
             $pro['city_id'] = $request->input("city_id");
             $pro['country_id'] = $request->input("country_id");
             $pro['price'] = $request->input("price");
             $pro['status'] = "0";
-            $pro['attributes'] = "[]";
             $pro['description'] = $request->input("description");
             $pro['category_id'] = $request->input("category_id");
             $pro['sub_category_id'] = $request->input("sub_category_id");
@@ -140,10 +164,12 @@ class Dashboard extends Controller
             $product->name = "I will " . $product->name;
 
             if ($product->save()) {
+                $errors['success'] = "Product was uploaded successfully!";
             } else {
+                die("failed to upload product.");
             }
 
-            return redirect()->intended('dashboard');
+            return redirect()->intended('dashboard')->withErrors($errors);
         }
 
         return view('dashboard.post-ad-category-pick');
