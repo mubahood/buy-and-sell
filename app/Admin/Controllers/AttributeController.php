@@ -84,7 +84,6 @@ class AttributeController extends AdminController
 
         $items = Category::all();
         $cats = [];
-        $cats[0] = "None";
         foreach ($items as $key => $item) {
             if ($item->parent < 1) {
                 continue;
