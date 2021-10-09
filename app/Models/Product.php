@@ -51,7 +51,7 @@ class Product extends Model
             if (strlen($this->thumbnail) > 3) {
                 $thumb = json_decode($this->thumbnail);
                 if (isset($thumb->src)) {
-                    $thumbnail = URL::asset('storage/'.str_replace("public/", "", $thumb->src));
+                    $thumbnail = URL::asset('storage/thumb_'.str_replace("public/", "", $thumb->src));
                     
                 }
             }
