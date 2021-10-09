@@ -16,7 +16,7 @@ class Dashboard extends Controller
     public function index()
     {
         return view('dashboard.index');
-    } 
+    }
 
     public function profile()
     {
@@ -33,6 +33,11 @@ class Dashboard extends Controller
         return view('dashboard.messages');
     }
 
+    public function complete_profile_request()
+    {
+        return view('dashboard.complete-profile-request');
+    }
+
     public function profileEdit(Request $request)
     {
         if ($request->has("user_id")) {
@@ -47,6 +52,7 @@ class Dashboard extends Controller
             if (!$profile) {
                 die("failed to find profile.");
             }
+
             $profile->first_name = $request->input("first_name");
             $profile->last_name = $request->input("last_name");
             $profile->company_name = $request->input("company_name");
@@ -80,7 +86,9 @@ class Dashboard extends Controller
                 }
             }
 
-            return redirect()->intended('profile');
+            $profile->save();
+            $errors['success'] = "Account was updated successfully!";
+            return redirect()->intended('profile')->withErrors($errors);
         }
         return view('dashboard.profile-edit');
     }
@@ -127,13 +135,12 @@ class Dashboard extends Controller
 
             $pro['slug'] = Str::slug($pro['name'], '-');
             $product = new Product($pro);
-            $product->name = str_replace("i will","",strtolower($product->name));
-            $product->name = str_replace("will","",strtolower($product->name));
-            $product->name = "I will ".$product->name;
+            $product->name = str_replace("i will", "", strtolower($product->name));
+            $product->name = str_replace("will", "", strtolower($product->name));
+            $product->name = "I will " . $product->name;
 
             if ($product->save()) {
             } else {
-
             }
 
             return redirect()->intended('dashboard');

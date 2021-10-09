@@ -12,6 +12,7 @@ use Zebra_Image;
 
 class Utils
 {
+
     public static function upload_images($files)
     {
         if ($files == null || empty($files)) {

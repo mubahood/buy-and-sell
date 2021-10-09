@@ -137,7 +137,7 @@ $cities = City::all();
                             <li class="breadcrumb-item"><a href="#">property</a></li>
                             <li class="breadcrumb-item active" aria-current="page">house</li>
                         </ol>
-                        <h5 class="product-title"><a href="<?= URL::asset('/') ?>">{{ $item->get_name_short() }}</a>
+                        <h5 class="product-title"><a href="<?= URL::asset('/') ?>{{$item->slug}}">{{ $item->get_name_short() }}</a>
                         </h5>
                         <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                 Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>

@@ -16,84 +16,112 @@ $cats = category::where('slug', $seg)->firstOrFail();
 $countries = Country::all();
 $cities = City::all();
 @endphp
-<section class="adpost-part">
+<section class="adpost-part pt-0">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-10">
                 <form method="POST" action="{{ url('post-ad') }}" enctype="multipart/form-data" class="adpost-form">
                     @csrf
                     <input type="text" name="category_id" id="category_id" value="{{ $cats->id }}" hidden>
                     <div class="adpost-card">
-                        <div class="adpost-title">
-                            <h3>Creating a new Ad in <span class="text-primary">{{ $cats->name }}</span></h3>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group"><label class="form-label">Service Title, <span class="text-info">start with (I will...)</span></label>
-                                    <input type="text" value="{{ old('name') }}" required name="name" minlength="2"
-                                        class="form-control" placeholder="Which service do you offer?, start with, I will...">
-                                    <small class="text-info">The phrase "I will...", will automaticall be added to your service title if you don't add it.</small>
-                                    @error('name')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group"><label class="form-label">product image</label>
-                                    <input type="file" name="images[]" required value="{{ old('images') }}"
-                                        accept=".jpeg,.jpg,.png,.gif" class="form-control" multiple>
-                                    @error('images')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                        <div class="row border-bottom pb-3 mb-3">
+                            <div class="col-md-6">
+                                <div class="">
+                                    <h4>Fill in the details</h4>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group"><label class="form-label">Country</label>
-                                    <select name="country_id" required class="form-control  custom-select"
-                                        id="countries">
-                                        <option selected>Select Country</option>
-                                        @foreach ($countries as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('country_id')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group"><label for="city_id" class="form-label">City</label>
-                                    <select name="city_id" class="form-control  custom-select" required id="city_id">
-                                        <option selected>Select city</option>
-                                        @foreach ($cities as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('city_id')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group"><label class="form-label" for="price">Starting
-                                        Price</label><input type="number" class="form-control" id="price" required
-                                        name="price" placeholder="Enter your pricing amount">
-                                    @error('price')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group"><label class="form-label">Service
-                                        description</label><textarea class="form-control"
-                                        placeholder="Describe your service here" required
-                                        value="{{ old('description') }}" name="description"></textarea>
-                                    @error('description')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                                <div class=" text-right text-dark">
+                                    <img width="20" src="{{URL::asset('storage')."/".$cats->image}}"> {{ $cats->name }}
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row " style="margin-top: 2rem">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+
+                                @foreach ($cats->attributes as $item)
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group"><label class="form-label">Service Title</label>
+                                            <input type="text" value="{{ old('name') }}" required name="name"
+                                                minlength="2" class="form-control"
+                                                placeholder="Which service do you offer?, start with, I will...">
+
+                                            @error('name')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+
+                                <div class="row">
+
+
+                                    <div class="col-lg-12">
+                                        <div class="form-group"><label class="form-label">product image</label>
+                                            <input type="file" name="images[]" required value="{{ old('images') }}"
+                                                accept=".jpeg,.jpg,.png,.gif" class="form-control" multiple>
+                                            @error('images')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="form-label">Country</label>
+                                            <select name="country_id" required class="form-control  custom-select"
+                                                id="countries">
+                                                <option selected>Select Country</option>
+                                                @foreach ($countries as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('country_id')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label for="city_id" class="form-label">City</label>
+                                            <select name="city_id" class="form-control  custom-select" required
+                                                id="city_id">
+                                                <option selected>Select city</option>
+                                                @foreach ($cities as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('city_id')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group"><label class="form-label" for="price">Starting
+                                                Price</label><input type="number" class="form-control" id="price"
+                                                required name="price" placeholder="Enter your pricing amount">
+                                            @error('price')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group"><label class="form-label">Service
+                                                description</label><textarea class="form-control"
+                                                placeholder="Describe your service here" required
+                                                value="{{ old('description') }}" name="description"></textarea>
+                                            @error('description')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+
                     </div>
 
 
@@ -109,35 +137,6 @@ $cities = City::all();
                                     class="fas fa-check-circle"></i><span>publish service</span></button></div>
                     </div>
                 </form>
-            </div>
-            <div class="col-lg-4">
-                <div class="account-card alert fade show">
-                    <div class="account-title">
-                        <h3>Safety Tips</h3><button data-dismiss="alert">close</button>
-                    </div>
-                    <ul class="account-card-text">
-                        <li>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit debitis odio perferendis
-                                placeat at aperiam.</p>
-                        </li>
-                        <li>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit debitis odio perferendis
-                                placeat at aperiam.</p>
-                        </li>
-                        <li>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit debitis odio perferendis
-                                placeat at aperiam.</p>
-                        </li>
-                        <li>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit debitis odio perferendis
-                                placeat at aperiam.</p>
-                        </li>
-                        <li>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit debitis odio perferendis
-                                placeat at aperiam.</p>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>

@@ -28,9 +28,21 @@ class AttributeController extends AdminController
         $grid = new Grid(new Attribute());
 
         $grid->column('id', __('Id'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-        $grid->column('category_id', __('Category id'));
+        //$grid->column('created_at', __('Created at'));
+        //$grid->column('updated_at', __('Updated at'));
+        //$grid->column('category_id', __('Category'));
+
+        $grid->category_id()->display(function ($category_id) {
+            $cat = Category::find($category_id);
+            if (!$cat) {
+                return "-";
+            }
+            if (!isset($cat->name)) {
+                return "-";
+            }
+            return $cat->name;
+        });
+
         $grid->column('name', __('Name'));
         $grid->column('type', __('Type'));
         $grid->column('options', __('Options'));
@@ -70,10 +82,22 @@ class AttributeController extends AdminController
     {
         $form = new Form(new Attribute());
 
-        $form->select('category_id')->options(category::all()->pluck('name','id'))->rules('required');
+        $items = Category::all();
+        $cats = [];
+        foreach ($items as $key => $item) {
+            if ($item->parent < 1) {
+                continue;
+            }
+            $cats[$item->id] = $item->name;
+        }
+
+        $form->select('category_id', 'Category')->options($cats)->required();
+
         $form->text('name', __('Name'))->rules('required');
-        $form->select('type')->options(['','text','number','select','textarea'])->rules('required');
-        $form->text('options', __('Options'));
+        $form->select('type')->options(['', 'text', 'textarea', 'number', 'select', 'radio', 'checkbox'])->rules('required');
+
+        $form->tags('options', __('Options'));
+
         $form->text('units', __('Units'));
         $form->switch('is_required', __('Is required'));
 

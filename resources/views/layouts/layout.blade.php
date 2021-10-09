@@ -132,7 +132,7 @@
                     </ul>
 
                     <a href="<?= url('/dashboard') ?>" class="header-widget header-user"><img
-                            src="<?= URL::asset('assets/') ?>/images/user.png" alt="user"><span>My
+                            src="<?= URL::asset('assets/') ?>/images/user.png" alt="user"><span class="text-dark">My
                             Account</span></a><button type="button" class="header-widget search-btn"><i
                             class="fas fa-search"></i></button>
                     @endauth
@@ -161,7 +161,7 @@
             <div class="sidebar-content">
                 <div class="sidebar-profile"><a href="#" class="sidebar-avatar"><img
                             src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg" alt="avatar"></a>
-                    <h4><a href="#" class="sidebar-name">Jackon Honson</a></h4><a href="<?= URL::asset('/') ?>"
+                    <h4><a href="#" class="sidebar-name">Muhindo Mubaraka</a></h4><a href="<?= URL::asset('/') ?>"
                         class="btn btn-inline sidebar-post"><i class="fas fa-plus-circle"></i><span>post your
                             ad</span></a>
                 </div>
