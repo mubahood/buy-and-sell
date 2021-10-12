@@ -1,6 +1,7 @@
 @php
-    $id = Auth::id();
-@endphp<!DOCTYPE html>
+$id = Auth::id();
+@endphp
+<!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
@@ -28,12 +29,12 @@
 
 <body>
     @php
-        
-        $seg = request()->segment(1);
-        
-        use Illuminate\Support\Facades\Auth;
-        $user = Auth::user();
-        
+
+    $seg = request()->segment(1);
+
+    use Illuminate\Support\Facades\Auth;
+    $user = Auth::user();
+
     @endphp
 
 
@@ -42,11 +43,8 @@
             <div class="header-content">
                 <div class="header-left"><button type="button" class="header-widget sidebar-btn"><i
                             class="fas fa-align-left"></i></button><a href="/" class="header-logo"><img
-                            src="{{ URL::asset('/assets/') }}/images/logo.png" alt="logo"></a><a href="user-form.html"
-                        class="header-widget header-user"><img src="{{ URL::asset('/assets') }}/images/user.png"
-                            alt="user"><span>join
-                            me</span></a><button type="button" class="header-widget search-btn"><i
-                            class="fas fa-search"></i></button></div>
+                            src="{{ URL::asset('/assets/') }}/images/logo.png" alt="logo"></a>
+                </div>
                 <form class="header-form">
                     <div class="header-search"><button type="submit" title="Search Submit "><i
                                 class="fas fa-search"></i></button><input type="text"
@@ -267,8 +265,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="#"><span>Pages</span><i class="fas fa-plus"></i></a>
+                            <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>Pages</span><i
+                                        class="fas fa-plus"></i></a>
                                 <ul class="dropdown-list">
                                     <li><a class="dropdown-link" href="about.html">About Us</a></li>
                                     <li><a class="dropdown-link" href="compare.html">Ad Compare</a></li>
@@ -278,8 +276,8 @@
                                     <li><a class="dropdown-link" href="404.html">404</a></li>
                                 </ul>
                             </li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="#"><span>blogs</span><i class="fas fa-plus"></i></a>
+                            <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>blogs</span><i
+                                        class="fas fa-plus"></i></a>
                                 <ul class="dropdown-list">
                                     <li><a class="dropdown-link" href="blog-list.html">Blog list</a></li>
                                     <li><a class="dropdown-link" href="blog-details.html">blog details</a></li>
@@ -291,16 +289,13 @@
                     <div class="tab-pane" id="author-menu">
                         <ul class="navbar-list">
 
-                            <li class="navbar-item"><a class="navbar-link"
-                                    href="{{ route('dashboard') }}">Dashboard</a>
+                            <li class="navbar-item"><a class="navbar-link" href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
 
-                            <li class="navbar-item"><a class="navbar-link"
-                                    href="{{ route('dashboard') }}">Messages</a>
+                            <li class="navbar-item"><a class="navbar-link" href="{{ route('dashboard') }}">Messages</a>
                             </li>
 
-                            <li class="navbar-item"><a class="navbar-link"
-                                    href="{{ route('dashboard') }}">Settings</a>
+                            <li class="navbar-item"><a class="navbar-link" href="{{ route('dashboard') }}">Settings</a>
                             </li>
 
                             <li class="navbar-item"><a class="navbar-link" href="#">Membership</a>
@@ -310,8 +305,7 @@
                                     Profile</a>
                             </li>
 
-                            <li class="navbar-item"><a class="navbar-link"
-                                    href="{{ route('dashboard') }}">Logout</a>
+                            <li class="navbar-item"><a class="navbar-link" href="{{ route('dashboard') }}">Logout</a>
                             </li>
 
                         </ul>
@@ -327,9 +321,9 @@
     <nav class="mobile-nav">
         <div class="container">
             <div class="mobile-group"><a href="/" class="mobile-widget"><i
-                        class="fas fa-home"></i><span>home</span></a><a href="user-form.html"
-                    class="mobile-widget"><i class="fas fa-user"></i><span>join me</span></a><a
-                    href="{{route('post-ad')}}" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad
+                        class="fas fa-home"></i><span>home</span></a><a href="user-form.html" class="mobile-widget"><i
+                        class="fas fa-user"></i><span>join me</span></a><a href="{{route('post-ad')}}"
+                    class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad
                         Post</span></a><a href="notification.html" class="mobile-widget"><i
                         class="fas fa-bell"></i><span>notify</span><sup>0</sup></a><a href="message.html"
                     class="mobile-widget"><i class="fas fa-envelope"></i><span>message</span><sup>0</sup></a></div>
@@ -348,32 +342,23 @@
                                         class="active"
                                         @endif href="{{ route('dashboard') }}">dashboard</a></li>
 
-                                <li><a @if ($seg == 'post-ad')
-                                        class="active"
-                                        @endif href="{{ route('post-ad') }}">Post ad</a></li>
+        <li><a @if ($seg=='post-ad' ) class="active" @endif href="{{ route('post-ad') }}">Post ad</a></li>
 
-                                <li><a @if ($seg == 'messages')
-                                        class="active"
-                                        @endif href="{{ route('messages') }}">Messages</a></li>
+        <li><a @if ($seg=='messages' ) class="active" @endif href="{{ route('messages') }}">Messages</a></li>
 
-                                <li><a @if ($seg == 'membership')
-                                        class="active"
-                                        @endif href="{{ route('membership') }}">Membership</a></li>
-                                <li><a @if ($seg == 'profile-edit')
-                                        class="active"
-                                        @endif href="{{ url('profile-edit') }}/{{ $id }}">My Profile</a></li>
-                                <li><a @if ($seg == 'post-ad')
-                                        class="active"
-                                        @endif href="{{ url('profile-edit') }}/{{ $id }}">Settings</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <li><a @if ($seg=='membership' ) class="active" @endif href="{{ route('membership') }}">Membership</a></li>
+        <li><a @if ($seg=='profile-edit' ) class="active" @endif href="{{ url('profile-edit') }}/{{ $id }}">My
+                Profile</a></li>
+        <li><a @if ($seg=='post-ad' ) class="active" @endif href="{{ url('profile-edit') }}/{{ $id }}">Settings</a></li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        </div>
         </div> --}}
 
         @error('success')
-            <div class="alert alert-success ml-5 mr-5 mt-5 p-3">{{ $message }}</div>
+        <div class="alert alert-success ml-5 mr-5 mt-5 p-3">{{ $message }}</div>
         @enderror
 
     </section>
@@ -459,19 +444,16 @@
                     <div class="footer-card-content">
                         <div class="footer-payment"><a href="#"><img
                                     src="{{ URL::asset('/assets') }}/images/pay-card/01.jpg" alt="01"></a><a
-                                href="#"><img src="{{ URL::asset('/assets') }}/images/pay-card/02.jpg"
-                                    alt="02"></a><a href="#"><img
-                                    src="{{ URL::asset('/assets') }}/images/pay-card/03.jpg" alt="03"></a><a
+                                href="#"><img src="{{ URL::asset('/assets') }}/images/pay-card/02.jpg" alt="02"></a><a
+                                href="#"><img src="{{ URL::asset('/assets') }}/images/pay-card/03.jpg" alt="03"></a><a
                                 href="#"><img src="{{ URL::asset('/assets') }}/images/pay-card/04.jpg" alt="04"></a>
                         </div>
-                        <div class="footer-option"><button type="button" data-toggle="modal"
-                                data-target="#language"><i class="fas fa-globe"></i>English</button><button
-                                type="button" data-toggle="modal" data-target="#currency"><i
-                                    class="fas fa-dollar-sign"></i>USD</button></div>
-                        <div class="footer-app"><a href="#"><img
-                                    src="{{ URL::asset('/assets') }}/images/play-store.png" alt="play-store"></a><a
-                                href="#"><img src="{{ URL::asset('/assets') }}/images/app-store.png"
-                                    alt="app-store"></a></div>
+                        <div class="footer-option"><button type="button" data-toggle="modal" data-target="#language"><i
+                                    class="fas fa-globe"></i>English</button><button type="button" data-toggle="modal"
+                                data-target="#currency"><i class="fas fa-dollar-sign"></i>USD</button></div>
+                        <div class="footer-app"><a href="#"><img src="{{ URL::asset('/assets') }}/images/play-store.png"
+                                    alt="play-store"></a><a href="#"><img
+                                    src="{{ URL::asset('/assets') }}/images/app-store.png" alt="app-store"></a></div>
                     </div>
                 </div>
             </div>
@@ -501,8 +483,8 @@
                     <h4>Choose a Currency</h4><button class="fas fa-times" data-dismiss="modal"></button>
                 </div>
                 <div class="modal-body"><button class="modal-link active">United States Doller (USD) -
-                        $</button><button class="modal-link">Euro (EUR) - €</button><button
-                        class="modal-link">British Pound (GBP) -
+                        $</button><button class="modal-link">Euro (EUR) - €</button><button class="modal-link">British
+                        Pound (GBP) -
                         £</button><button class="modal-link">Australian Dollar (AUD) - A$</button><button
                         class="modal-link">Canadian Dollar (CAD) - C$</button></div>
             </div>

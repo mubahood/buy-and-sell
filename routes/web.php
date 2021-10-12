@@ -18,9 +18,9 @@ Route::get('/messages', [Dashboard::class, 'messages'])->name("messages");
 Route::match(['get', 'post'], '/post-ad', [Dashboard::class, 'postAdCategpryPick'])->name("post-ad")->middleware(Authenticate::class);
 Route::get('/post-ad/{id}', [Dashboard::class, 'postAd'])->middleware(Authenticate::class);
 Route::match(['get', 'post'], '/profile-edit/{id}', [Dashboard::class, 'profileEdit'])->name("profile-edit");
-Route::get('/profile', [Dashboard::class, 'profile']);
+Route::get('/profile', [Dashboard::class, 'profile'])->middleware(Authenticate::class);
 
-Route::get('/{id}', [MainController::class, 'slugSwitcher']);
+Route::match(['get', 'post'],'/{id}', [MainController::class, 'slugSwitcher']);
 
 /*Route::get('/', function () {
     return view('welcome');

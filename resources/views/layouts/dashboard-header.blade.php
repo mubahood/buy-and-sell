@@ -14,10 +14,10 @@ $user = Auth::user();
                 <div class="col-lg-12 ">
                     <div class="dash-menu-list pt-0 mt-0 ">
                         <ul>
-                            <li><a @if ($seg=='dashboard' || $seg == 'complete-profile-request' ) class="active" @endif
+                            <li><a @if ($seg=='dashboard'  ) class="active" @endif
                                     href="{{ route('dashboard') }}">dashboard</a></li>
 
-                            <li><a @if ($seg=='post-ad' ) class="active" @endif href="{{ route('post-ad') }}">Post
+                            <li><a @if ($seg=='post-ad' || $seg== "complete-profile-request") class="active" @endif href="{{ route('post-ad') }}">Post
                                     ad</a></li>
 
                             <li><a @if ($seg=='messages' ) class="active" @endif

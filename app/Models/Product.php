@@ -32,6 +32,11 @@ class Product extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
+
 
     public function sub_category()
     {

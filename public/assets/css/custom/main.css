@@ -10,10 +10,10 @@
     --purple: #b12fad;
     --orange: #e86121;
     --yellow: #ffab10;
-    --text: #555555;
+    --text: #707676;
     --dark: #0d0633;
     --border: #e8e8e8;
-    --heading: #232d3b;
+    --heading: black;
     --primary: #0044bb;
     --primary-light: #75a7ff;
     --primary-hover: #0022aa;
@@ -72,10 +72,10 @@ body {
 
 body {
     color: var(--text);
-    font-size: 16px;
-    font-weight: 400;
-    font-family: 'Heebo', sans-serif;
-    line-height: 26px
+    font-size: 14px;
+    font-weight: 100;
+    font-family: 'Open Sans', 'PF DinText Pro', Helvetica, sans-serif;
+    line-height: 1.71428571;
 }
 
 h1,
@@ -84,7 +84,8 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--heading)
+    color: var(--heading);
+    font-family: 'Open Sans', 'PF DinText Pro', Helvetica, sans-serif;
 }
 
 h1 {
@@ -171,7 +172,7 @@ button:focus {
     width: 100%;
     height: 40px;
     padding: 0px 20px;
-    border-radius: 5px;  
+    border-radius: 5px;
     border-bottom: 2px solid var(--border);
     transition: all linear .3s;
     -webkit-transition: all linear .3s;
@@ -201,7 +202,7 @@ textarea.form-control {
 
 .form-label {
     font-size: 14px;
-    font-weight: 100; 
+    font-weight: 100;
     margin-bottom: 1px;
     text-transform: capitalize
 }
@@ -1363,12 +1364,12 @@ textarea.form-control {
 }
 
 .product-meta {
-    margin-bottom: 12px
+    margin-bottom: 10px
 }
 
 .product-meta span {
-    font-size: 13px;
-    margin-right: 15px;
+    font-size: 12px;
+    margin-right: 13px;
     white-space: nowrap
 }
 

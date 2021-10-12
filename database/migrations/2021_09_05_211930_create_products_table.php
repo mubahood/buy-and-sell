@@ -36,6 +36,7 @@ class CreateProductsTable extends Migration
             $table->text('thumbnail')->nullable();
             $table->text('attributes')->nullable(); 
             $table->integer('sub_category_id')->nullable();
+            $table->tinyInteger('fixed_price')->nullable();
             
         });
     }

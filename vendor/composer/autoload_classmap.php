@@ -14,6 +14,7 @@ return array(
     'App\\Admin\\Controllers\\ExampleController' => $baseDir . '/app/Admin/Controllers/ExampleController.php',
     'App\\Admin\\Controllers\\HomeController' => $baseDir . '/app/Admin/Controllers/HomeController.php',
     'App\\Admin\\Controllers\\ProductController' => $baseDir . '/app/Admin/Controllers/ProductController.php',
+    'App\\Admin\\Controllers\\ProfileController' => $baseDir . '/app/Admin/Controllers/ProfileController.php',
     'App\\Admin\\Controllers\\UserController' => $baseDir . '/app/Admin/Controllers/UserController.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

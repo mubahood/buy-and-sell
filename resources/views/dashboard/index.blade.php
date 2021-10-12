@@ -19,7 +19,7 @@ $products = Product::where('user_id', $user_id)->get();
 <section class="myads-part">
     <div class="container">
 
-        @if (count($products)<0) <div class="container">
+        @if (count($products)<1) <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8 ">
                     <div class="card dash-header-card pt-0">

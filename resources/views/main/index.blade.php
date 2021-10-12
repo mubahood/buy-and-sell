@@ -569,8 +569,7 @@ $cities = City::all();
                                     <li class="breadcrumb-item"><a href="#">Luxury</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">resort</li>
                                 </ol>
-                                <h5 class="product-title"><a href="#">Lorem ipsum dolor sit amet consectetur
-                                        adipisicing odio accusamus inventore nobis consequatur ducimus.</a></h5>
+                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>{{$item->slug}}">{{$item->name}}</a></h5>
                                 <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
                                         Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
                                 <div class="product-info">

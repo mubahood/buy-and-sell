@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductReview;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,39 @@ class MainController extends Controller
         return view('main.index');
     }
 
-    public function slugSwitcher()
+    public function slugSwitcher(Request  $request)
     {
+        //echo "<pre>"; 
+        //dd($request);
+        //die();
+        if(
+            isset($_POST['reason']) &&
+            isset($_POST['product_id']) &&
+            isset($_POST['comment']
+            )){
+                $review = new ProductReview();
+                $review->rating = $_POST['rating'];
+                $review->reason = $_POST['reason'];
+                $review->comment = $_POST['comment'];
+                $review->product_id = $_POST['product_id'];
+                $review->user_id =  Auth::id();
+                
+                $url = $_SERVER['REQUEST_URI'];
+ 
+                if ($review->save()) {
+                    $errors['success'] = "Review was submitted successfully!";
+                    return redirect($url)
+                        ->withErrors($errors)
+                        ->withInput();
+                } else {
+                    $errors['password'] = "Failed to submit review, please try again.";
+                    return redirect($url)
+                        ->withErrors($errors)
+                        ->withInput();
+                }
+
+        }
+
         $seg = request()->segment(1);
         $pro = Product::where('slug', $seg)->first();
         if ($pro) {
@@ -57,6 +89,8 @@ class MainController extends Controller
                 'password' => 'required|max:100|min:6',
             ]);
 
+
+
             if ($request->input('password') !=  $request->input('password1')) {
                 $errors['password1'] = "Password don't match";
                 return redirect('register')
@@ -66,6 +100,16 @@ class MainController extends Controller
 
             $u['name'] = "";
             $u['email'] = $request->input("phone_number");
+
+            $old_user = User::where('email', $u['email'])->first(); 
+            if($old_user){
+                $errors['phone_number'] = "User with same email or phone number already exist.";
+                return redirect('register')
+                    ->withErrors($errors)
+                    ->withInput();
+                    die();
+            }
+
             $u['password'] = Hash::make($request->input("password"));
             $users = User::create($u);
 

@@ -139,10 +139,10 @@
                     @guest
 
                     <a href="/register"
-                        class="header-widget header-user border rounded pr-2 mr-3"><span>Register</span></a><button
+                        class="header-user border rounded pr-3 pl-3 mr-3 text-primary border-primary "><span>Register</span></a><button
                         type="button" class="header-widget search-btn"><i class="fas fa-search"></i></button>
 
-                    <a href="/login" class="header-widget header-user border rounded pr-2"><span>Sign
+                    <a href="/login" class="header-widget header-user border rounded pr-2 border-primary text-primary"><span>Sign
                             in</span></a><button type="button" class="header-widget search-btn"><i
                             class="fas fa-search"></i></button>
                     @endguest

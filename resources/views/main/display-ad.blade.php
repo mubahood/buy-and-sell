@@ -4,6 +4,9 @@ use App\Models\Product;
 $slug = request()->segment(1);
 $pro = Product::where('slug', $slug)->firstOrFail();
 $images = $pro->get_images();
+$attributes = json_decode($pro->attributes);
+$url = $_SERVER['REQUEST_URI'];
+
 
 @endphp
 @extends('layouts.layout')
@@ -17,26 +20,22 @@ $images = $pro->get_images();
 @section('content')
 
 
-<section class="inner-section ad-details-part pt-3 pt-md-4">
+<section class="inner-section ad-details-part pt-3 mb-0 pb-0 ">
     <div class="container">
+
         <div class="row">
             <div class="col-lg-8">
-                <div class="common-card">
-                    <ol class="breadcrumb ad-details-breadcrumb">
+                <div class="common-card pt-3">
+                    <ol class="breadcrumb ad-details-breadcrumb  mb-0">
                         <li class="breadcrumb-item"><a href="#">{{ $pro->category->name }}</a></li>
                         <li class="breadcrumb-item"><a href="#">{{ $pro->category->name }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $pro->name }}</li>
                     </ol>
-                    <h5 class="ad-details-address">{{ $pro->country->name }}, {{ $pro->city->name }}</h5>
-                    <h3 class="ad-details-title">{{ $pro->name }}</h3>
-                    <div class="ad-details-meta"><a class="view"><i
-                                class="fas fa-eye"></i><span><strong>(134)</strong>preview</span></a><a class="click"><i
-                                class="fas fa-mouse"></i><span><strong>(76)</strong>click</span></a><a href="#review"
-                            class="rating"><i class="fas fa-star"></i><span><strong>(29)</strong>review</span></a></div>
-                    <div class="ad-details-slider-group">
+                    <h1 class="ad-details-title mb-2">{{ $pro->name }}</h1>
+                    <div class="ad-details-slider-group ">
                         <div class="ad-details-slider slider-arrow">
                             @foreach ($images as $img)
-                            <div><img src="{{$img->src}}" alt="details"></div>
+                            <div><img src="{{$img->thumbnail}}" alt="details"></div>
                             @endforeach
                         </div>
                         <div class="cross-vertical-badge ad-details-badge"><i
@@ -59,8 +58,14 @@ $images = $pro->get_images();
                     </div>
                     <ul class="ad-details-specific">
                         <li>
-                            <h6>Starting price:</h6>
-                            <p>${{ $pro->price }}</p>
+                            <h6>Price:</h6>
+                            <p>${{ number_format($pro->price) }}
+                                @if ($pro->fixed_price)
+                                <small><i>Fixed price</i></small>
+                                @else
+                                <small><i>Negotiable</i></small>
+                                @endif
+                            </p>
                         </li>
                         <li>
                             <h6>published:</h6>
@@ -70,10 +75,47 @@ $images = $pro->get_images();
                             <h6>location:</h6>
                             <p>{{ $pro->country->name }}, {{ $pro->city->name }}</p>
                         </li>
+                        @foreach ($attributes as $item)
+                        @if ($item->type == "text" || $item->type == "textarea")
                         <li>
-                            <h6>category:</h6>
-                            <p>{{ $pro->category->name }}</p>
+                            <h6>{{ $item->name }}:</h6>
+                            <p>{{ $item->value }} {{$item->units}}</p>
                         </li>
+                        @elseif($item->type == "number")
+                        <li>
+                            <h6>{{ $item->name }}: </h6>
+                            <p>{{ number_format($item->value,0) }} {{$item->units}}</p>
+                        </li>
+                        @elseif($item->type == "select")
+                        <li>
+                            <h6>{{ $item->name }}: </h6>
+                            <p>{{ $item->value }}</p>
+                        </li>
+                        @elseif($item->type == "radio")
+                        <li>
+                            <h6>{{ $item->name }}: </h6>
+                            <p>{{ $item->value }} {{$item->units}}</p>
+                        </li>
+                        @elseif($item->type == "checkbox")
+                        <li>
+                            <h6 class="mr-3">{{ $item->name }}: </h6>
+                            <p> @php
+                                if($item->value){
+                                $i = 0;
+                                foreach ($item->value as $key => $value) {
+                                $i++;
+                                echo $value;
+                                if($i != count($item->value)){
+                                echo ", ";
+                                }else {
+                                echo $value.".";
+                                }
+                                }
+                                }
+                                @endphp {{$item->units}}</p>
+                        </li>
+                        @endif
+                        @endforeach
                     </ul>
                 </div>
                 <div class="common-card">
@@ -84,10 +126,14 @@ $images = $pro->get_images();
                 </div>
                 <div class="common-card" id="review">
                     <div class="card-header">
-                        <h5 class="card-title">reviews (2)</h5>
+                        <h5 class="card-title">reviews (@php
+                            echo count($pro->reviews)
+                            @endphp)</h5>
                     </div>
                     <div class="ad-details-review">
                         <ul class="review-list">
+
+                            @foreach ($pro->reviews as $item)
                             <li class="review-item">
                                 <div class="review-user">
                                     <div class="review-head">
@@ -96,94 +142,89 @@ $images = $pro->get_images();
                                                     src="<?= URL::asset('assets/') ?>/images/avatar/03.jpg"
                                                     alt="review"></a>
                                             <div class="review-meta">
-                                                <h6><a href="#">miron mahmud -</a><span>June 02, 2020</span></h6>
+                                                <h6><a href="#">{{$item->user->email}}
+                                                        -</a><span>{{$item->created_at->diffForHumans()}}</span></h6>
                                                 <ul>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li>
-                                                        <h5>- for delivery system</h5>
-                                                    </li>
+                                                    @php
+                                                    for ($i=0; $i < $item->rating; $i++) {
+                                                        echo '<li><i class="fas fa-star active"></i></li>';
+                                                        }
+                                                        for ($i=0; $i < (5-$item->rating); $i++) {
+                                                            echo '<li><i class="fas fa-star "></i></li>';
+                                                            }
+                                                            @endphp
+
+                                                            <li>
+                                                                <h5> - {{$item->reason}}</h5>
+                                                            </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="review-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit
-                                        Non quibusdam harum ipsum dolor cumque quas magni voluptatibus cupiditate minima
-                                        quis.</p>
+                                    <p class="review-desc">{{$item->comment}}.</p>
                                 </div>
                             </li>
-                            <li class="review-item">
-                                <div class="review-user">
-                                    <div class="review-head">
-                                        <div class="review-profile">
-                                            <a href="#" class="review-avatar"><img
-                                                    src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg"
-                                                    alt="review"></a>
-                                            <div class="review-meta">
-                                                <h6><a href="#">labonno khan -</a><span>June 02, 2020</span></h6>
-                                                <ul>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star active"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li>
-                                                        <h5>- for product quality</h5>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="review-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit
-                                        Non quibusdam harum ipsum dolor cumque quas magni voluptatibus cupiditate minima
-                                        quis.</p>
-                                </div>
-                                <div class="review-author">
-                                    <div class="review-head">
-                                        <div class="review-profile">
-                                            <a href="#" class="review-avatar"><img
-                                                    src="<?= URL::asset('assets/') ?>/images/avatar/04.jpg"
-                                                    alt="review"></a>
-                                            <div class="review-meta">
-                                                <h6><a href="#">Miron Mahmud</a></h6>
-                                                <h6>Author - <span>June 02, 2020</span></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="review-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit
-                                        Non quibusdam harum ipsum dolor cumque quas magni voluptatibus cupiditate
-                                        minima.</p>
-                                </div>
-                            </li>
+                            @endforeach
+
                         </ul>
-                        <form class="review-form">
-                            <div class="star-rating"><input type="radio" name="rating" id="star-1"><label
-                                    for="star-1"></label><input type="radio" name="rating" id="star-2"><label
-                                    for="star-2"></label><input type="radio" name="rating" id="star-3"><label
-                                    for="star-3"></label>
-                                <input type="radio" name="rating" id="star-4"><label for="star-4"></label><input
-                                    type="radio" name="rating" id="star-5"><label for="star-5"></label>
+                        @guest
+                        <div class="row justify-content-center">
+                            <div class="col-12 ">
+                                <div class="card dash-header-card pt-0">
+                                    <div class="card-body text-center">
+
+
+                                        <h2 class="h3 text-center mt-0">Login Required</h2>
+
+                                        <P class="text-left mb-2">You need to be loggedin in order to submit your review
+                                            about this product.</P>
+                                        <a href="register" class="btn btn-inline mt-4 mb-2 post-btn"><i
+                                                class="fas fa-plus-circle"></i><span>CREATE ACCOUNT</span></a>
+                                        <a href="login" class="btn btn-inline mt-4 mb-2 post-btn"><i
+                                                class="fas fa-plus-circle"></i><span>LOGIN</span></a>
+
+
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+
+                        @endguest
+                        @auth
+                        <form method="post" action="{{$url}}" class="review-form">
+                            @csrf
+                            <input type="number" name="product_id" hidden value="{{$pro->id}}">
+
                             <div class="review-form-grid">
                                 <div class="form-group"><input type="text" class="form-control" placeholder="Name">
                                 </div>
                                 <div class="form-group"><input type="email" class="form-control" placeholder="Email">
                                 </div>
-                                <div class="form-group"><select class="form-control custom-select">
-                                        <option selected>Qoute</option>
-                                        <option value="1">delivery system</option>
-                                        <option value="2">product quality</option>
-                                        <option value="3">payment issue</option>
+                                <div class="form-group"><select name="reason" required
+                                        class="form-control custom-select">
+                                        <option></option>
+                                        <option value="Qoute">Qoute</option>
+                                        <option value="Product quality">product quality</option>
+                                        <option value="Delivery system">delivery system</option>
+                                        <option value="Payment issue">Payment issue</option>
                                     </select></div>
                             </div>
-                            <div class="form-group"><textarea class="form-control" placeholder="Describe"></textarea>
+                            <div class="star-rating">
+                                <input value="5" type="radio" name="rating" id="star-1"><label for="star-1"></label>
+                                <input value="4" type="radio" name="rating" id="star-2"><label for="star-2"></label>
+                                <input value="3" type="radio" name="rating" id="star-3"><label for="star-3"></label>
+                                <input value="2" type="radio" name="rating" id="star-4"><label for="star-4"></label>
+                                <input value="1" type="radio" required name="rating" id="star-5"><label
+                                    for="star-5"></label>
+                            </div>
+                            <div class="form-group"><textarea required name="comment" class="form-control"
+                                    placeholder="Describe"></textarea>
                             </div><button type="submit" class="btn btn-inline review-submit"><i
                                     class="fas fa-tint"></i><span>drop your
                                     review</span></button>
                         </form>
+
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -203,7 +244,13 @@ $images = $pro->get_images();
 
             <div class="col-lg-4">
                 <div class="common-card price">
-                    <h3>${{ $pro->price }}<span>starting price</span></h3><i class="fas fa-tag"></i>
+                    <h3>${{ number_format($pro->price,0) }}<span>Price
+                            (@if ($pro->fixed_price)
+                            Fixed price
+                            @else
+                            Negotiable
+                            @endif)
+                        </span></h3><i class="fas fa-tag"></i>
                 </div>
                 <a href="{{route('messages')}}" class="common-card number">
                     <h3>Send Message<span class="text-left">Start converstion</span></h3><i class="fas fa-envelope"></i>
@@ -215,14 +262,17 @@ $images = $pro->get_images();
 
                 <div class="common-card">
                     <div class="card-header">
-                        <h5 class="card-title">author info</h5>
+                        <h5 class="card-title">About Vendor</h5>
                     </div>
                     <div class="ad-details-author">
                         <a href="#" class="author-img active"><img
                                 src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg" alt="avatar"></a>
                         <div class="author-meta">
-                            <h4><a href="#">Jackon Honson</a></h4>
-                            <h5>joined: february 02, 2021</h5>
+                            <h4><a href="#">
+                                {{$pro->user->profile->first_name}} 
+                                {{$pro->user->profile->last_name}}
+                            </a></h4>
+                            <h5>joined: {{$pro->user->created_at->diffForHumans()}}</h5>
                             <p>Corporis dolore libero temporibus minus tempora quia voluptas nesciunt.</p>
                         </div>
                         <div class="author-widget">
@@ -374,176 +424,30 @@ $images = $pro->get_images();
         </div>
     </div>
 </section>
-<section class="inner-section related-part">
+@php
+$related_products = Product::where('category_id', $pro->category_id)->get();
+@endphp
+<section class="inner-section related-part mt-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-center-heading">
                     <h2>Related This <span>Ads</span></h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit aspernatur illum vel sunt libero
-                        voluptatum repudiandae veniam maxime tenetur.</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="related-slider slider-arrow">
-                    <div class="product-card">
-                        <div class="product-media">
-                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/01.jpg"
-                                    alt="product"></div>
-                            <div class="product-type"><span class="flat-badge sale">sale</span></div>
-                            <ul class="product-action">
-                                <li class="view"><i class="fas fa-eye"></i><span>264</span></li>
-                                <li class="click"><i class="fas fa-mouse"></i><span>134</span></li>
-                                <li class="rating"><i class="fas fa-star"></i><span>4.5/7</span></li>
-                            </ul>
-                        </div>
-                        <div class="product-content">
-                            <ol class="breadcrumb product-category">
-                                <li><i class="fas fa-tags"></i></li>
-                                <li class="breadcrumb-item"><a href="#">Luxury</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Duplex House</li>
-                            </ol>
-                            <h5 class="product-title"><a href="#">Lorem ipsum dolor sit amet consect adipisicing
-                                    elit</a></h5>
-                            <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
-                                    Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
-                            <div class="product-info">
-                                <h5 class="product-price">$1500<span>/negotiable</span></h5>
-                                <div class="product-btn">
-                                    <a href="compare.html" title="Compare" class="fas fa-compress"></a><button
-                                        type="button" title="Wishlist" class="far fa-heart"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-media">
-                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/03.jpg"
-                                    alt="product"></div>
-                            <div class="product-type"><span class="flat-badge sale">sale</span></div>
-                            <ul class="product-action">
-                                <li class="view"><i class="fas fa-eye"></i><span>264</span></li>
-                                <li class="click"><i class="fas fa-mouse"></i><span>134</span></li>
-                                <li class="rating"><i class="fas fa-star"></i><span>4.5/7</span></li>
-                            </ul>
-                        </div>
-                        <div class="product-content">
-                            <ol class="breadcrumb product-category">
-                                <li><i class="fas fa-tags"></i></li>
-                                <li class="breadcrumb-item"><a href="#">stationary</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">books</li>
-                            </ol>
-                            <h5 class="product-title"><a href="#">Lorem ipsum dolor sit amet consect adipisicing
-                                    elit</a></h5>
-                            <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
-                                    Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
-                            <div class="product-info">
-                                <h5 class="product-price">$470<span>/fixed</span></h5>
-                                <div class="product-btn">
-                                    <a href="compare.html" title="Compare" class="fas fa-compress"></a><button
-                                        type="button" title="Wishlist" class="far fa-heart"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-media">
-                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/10.jpg"
-                                    alt="product"></div>
-                            <div class="product-type"><span class="flat-badge sale">sale</span></div>
-                            <ul class="product-action">
-                                <li class="view"><i class="fas fa-eye"></i><span>264</span></li>
-                                <li class="click"><i class="fas fa-mouse"></i><span>134</span></li>
-                                <li class="rating"><i class="fas fa-star"></i><span>4.5/7</span></li>
-                            </ul>
-                        </div>
-                        <div class="product-content">
-                            <ol class="breadcrumb product-category">
-                                <li><i class="fas fa-tags"></i></li>
-                                <li class="breadcrumb-item"><a href="#">automobile</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">private car</li>
-                            </ol>
-                            <h5 class="product-title"><a href="#">Lorem ipsum dolor sit amet consect adipisicing
-                                    elit</a></h5>
-                            <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
-                                    Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
-                            <div class="product-info">
-                                <h5 class="product-price">$3300<span>/fixed</span></h5>
-                                <div class="product-btn">
-                                    <a href="compare.html" title="Compare" class="fas fa-compress"></a><button
-                                        type="button" title="Wishlist" class="far fa-heart"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-media">
-                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/09.jpg"
-                                    alt="product"></div>
-                            <div class="product-type"><span class="flat-badge sale">sale</span></div>
-                            <ul class="product-action">
-                                <li class="view"><i class="fas fa-eye"></i><span>264</span></li>
-                                <li class="click"><i class="fas fa-mouse"></i><span>134</span></li>
-                                <li class="rating"><i class="fas fa-star"></i><span>4.5/7</span></li>
-                            </ul>
-                        </div>
-                        <div class="product-content">
-                            <ol class="breadcrumb product-category">
-                                <li><i class="fas fa-tags"></i></li>
-                                <li class="breadcrumb-item"><a href="#">animals</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">cat</li>
-                            </ol>
-                            <h5 class="product-title"><a href="#">Lorem ipsum dolor sit amet consect adipisicing
-                                    elit</a></h5>
-                            <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
-                                    Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
-                            <div class="product-info">
-                                <h5 class="product-price">$900<span>/Negotiable</span></h5>
-                                <div class="product-btn">
-                                    <a href="compare.html" title="Compare" class="fas fa-compress"></a><button
-                                        type="button" title="Wishlist" class="far fa-heart"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-media">
-                            <div class="product-img"><img src="<?= URL::asset('assets/') ?>/images/product/02.jpg"
-                                    alt="product"></div>
-                            <div class="product-type"><span class="flat-badge sale">sale</span></div>
-                            <ul class="product-action">
-                                <li class="view"><i class="fas fa-eye"></i><span>264</span></li>
-                                <li class="click"><i class="fas fa-mouse"></i><span>134</span></li>
-                                <li class="rating"><i class="fas fa-star"></i><span>4.5/7</span></li>
-                            </ul>
-                        </div>
-                        <div class="product-content">
-                            <ol class="breadcrumb product-category">
-                                <li><i class="fas fa-tags"></i></li>
-                                <li class="breadcrumb-item"><a href="#">fashion</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">shoes</li>
-                            </ol>
-                            <h5 class="product-title"><a href="#">Lorem ipsum dolor sit amet consect adipisicing
-                                    elit</a></h5>
-                            <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
-                                    Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
-                            <div class="product-info">
-                                <h5 class="product-price">$384<span>/fixed</span></h5>
-                                <div class="product-btn">
-                                    <a href="compare.html" title="Compare" class="fas fa-compress"></a><button
-                                        type="button" title="Wishlist" class="far fa-heart"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @foreach ($related_products as $item)
+                    <x-product1  :item="$item" />
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="center-50"><a href="ad-list-column3.html" class="btn btn-inline"><i
+                <div class="center-50"><a href="/" class="btn btn-inline"><i
                             class="fas fa-eye"></i><span>view all related</span></a></div>
             </div>
         </div>
