@@ -101,22 +101,22 @@ class Dashboard extends Controller
     public function postAdCategpryPick(Request $request)
     {
         if ($request->has("price")) {
- 
+
             $attr_nodes = [];
             $pro['attributes'] = "[]";
             foreach ($_POST as $key => $v) {
-                if(substr($key,0,2) != "__"){
+                if (substr($key, 0, 2) != "__") {
                     continue;
                 }
-                $attr_id = (int)(str_replace("__","",$key));
-                if($attr_id<1){
+                $attr_id = (int)(str_replace("__", "", $key));
+                if ($attr_id < 1) {
                     continue;
                 }
                 $attr =  Attribute::where('id', $attr_id)->first();
-                if(!$attr){
+                if (!$attr) {
                     continue;
                 }
- 
+
 
                 $attr_node['id'] = $attr->id;
                 $attr_node['name'] = $attr->name;
@@ -126,7 +126,6 @@ class Dashboard extends Controller
                 $attr_node['units'] = $attr->units;
                 $attr_node['value'] = $v;
                 $attr_nodes[] = $attr_node;
-
             }
 
 
@@ -143,7 +142,7 @@ class Dashboard extends Controller
                 $pro['images'] = json_encode($images);
                 $pro['thumbnail'] = json_encode($images[0]);
             }
-         
+
             $pro['name'] = $request->input("name");
             $pro['city_id'] = $request->input("city_id");
             $pro['country_id'] = $request->input("country_id");
@@ -159,9 +158,9 @@ class Dashboard extends Controller
 
             $pro['slug'] = Str::slug($pro['name'], '-');
             $product = new Product($pro);
-            $product->name = str_replace("i will", "", strtolower($product->name));
-            $product->name = str_replace("will", "", strtolower($product->name));
-            $product->name = "I will " . $product->name;
+            $product->name = $product->name;
+            // $product->name = str_replace("will", "", strtolower($product->name));
+            // $product->name = "I will " . $product->name;
 
             if ($product->save()) {
                 $errors['success'] = "Product was uploaded successfully!";

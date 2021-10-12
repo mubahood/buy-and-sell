@@ -28,28 +28,33 @@ class ProfileController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-        $grid->column('user_id', __('User id'));
+
+        $grid->created_at()->display(function ($category_id) {
+            return $category_id;
+        });
+
+        #$grid->column('updated_at', __('Updated at'));
+        #$grid->column('user_id', __('User id'));
         $grid->column('first_name', __('First name'));
         $grid->column('last_name', __('Last name'));
         $grid->column('company_name', __('Company name'));
-        $grid->column('email', __('Email'));
-        $grid->column('phone_number', __('Phone number'));
-        $grid->column('location', __('Location'));
-        $grid->column('about', __('About'));
-        $grid->column('services', __('Services'));
-        $grid->column('longitude', __('Longitude'));
-        $grid->column('latitude', __('Latitude'));
-        $grid->column('division', __('Division'));
-        $grid->column('opening_hours', __('Opening hours'));
-        $grid->column('profile_photo', __('Profile photo'));
-        $grid->column('cover_photo', __('Cover photo'));
-        $grid->column('facebook', __('Facebook'));
-        $grid->column('twitter', __('Twitter'));
-        $grid->column('whatsapp', __('Whatsapp'));
-        $grid->column('youtube', __('Youtube'));
-        $grid->column('instagram', __('Instagram'));
-        $grid->column('last_seen', __('Last seen'));
+        #$grid->column('email', __('Email'));
+        #$grid->column('phone_number', __('Phone number'));
+        #$grid->column('location', __('Location'));
+        #$grid->column('about', __('About'));
+        #$grid->column('services', __('Services'));
+        #$grid->column('longitude', __('Longitude'));
+        #$grid->column('latitude', __('Latitude'));
+        #$grid->column('division', __('Division'));
+        #$grid->column('opening_hours', __('Opening hours'));
+        #$grid->column('profile_photo', __('Profile photo'));
+        #$grid->column('cover_photo', __('Cover photo'));
+        #$grid->column('facebook', __('Facebook'));
+        #$grid->column('twitter', __('Twitter'));
+        #$grid->column('whatsapp', __('Whatsapp'));
+        #$grid->column('youtube', __('Youtube'));
+        #$grid->column('instagram', __('Instagram'));
+        #$grid->column('last_seen', __('Last seen'));
         $grid->column('status', __('Status'));
 
         return $grid;
@@ -81,7 +86,16 @@ class ProfileController extends AdminController
         $show->field('latitude', __('Latitude'));
         $show->field('division', __('Division'));
         $show->field('opening_hours', __('Opening hours'));
-        $show->field('profile_photo', __('Profile photo'));
+        
+
+        $show->profile_photo()->unescape()->as(function ($profile_photo) {
+            $pic = json_decode($profile_photo);
+            #return "<img src='{$avatar}' />";
+            return  $pic->thumbnailxc;
+       
+       });
+       
+
         $show->field('cover_photo', __('Cover photo'));
         $show->field('facebook', __('Facebook'));
         $show->field('twitter', __('Twitter'));
@@ -90,6 +104,8 @@ class ProfileController extends AdminController
         $show->field('instagram', __('Instagram'));
         $show->field('last_seen', __('Last seen'));
         $show->field('status', __('Status'));
+
+        
 
         return $show;
     }
@@ -125,6 +141,11 @@ class ProfileController extends AdminController
         $form->text('instagram', __('Instagram'));
         $form->text('last_seen', __('Last seen'));
         $form->text('status', __('Status'));
+        
+        $options["active"] = "active";
+        $options["pending"] = "pending";
+        $options["blocked"] = "blocked";
+        $form->select('status')->options($options)->rules('required');
 
         return $form;
     }
