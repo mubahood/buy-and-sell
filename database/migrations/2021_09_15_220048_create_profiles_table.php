@@ -40,6 +40,7 @@ class CreateProfilesTable extends Migration
                 $table->string('youtube')->nullable();
                 $table->string('instagram')->nullable();
                 $table->string('last_seen')->nullable();
+                $table->text('username')->nullable();
                 $table->string('status')->nullable();
             });
     }

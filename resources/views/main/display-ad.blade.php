@@ -89,7 +89,7 @@ $url = $_SERVER['REQUEST_URI'];
                         @elseif($item->type == "select")
                         <li>
                             <h6>{{ $item->name }}: </h6>
-                            <p>{{ $item->value }}</p>
+                            <p>{{ $item->value }} {{$item->units}}</p>
                         </li>
                         @elseif($item->type == "radio")
                         <li>

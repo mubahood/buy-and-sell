@@ -15,4 +15,36 @@ class Profile extends Model
     protected $fillable = [
         'user_id',
     ];
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating(function ($model) {
+        });
+
+        self::created(function ($model) {
+            $pro['user_id'] = $model->id;
+            Profile::create($pro);
+        });
+
+        self::updating(function ($model) {
+            // ... code here
+        });
+
+        self::updated(function ($model) {
+            // ... code here
+        });
+
+        self::deleting(function ($model) {
+            // ... code here
+        });
+
+        self::deleted(function ($model) {
+            // ... code here
+        });
+    }
+
 }
+ 

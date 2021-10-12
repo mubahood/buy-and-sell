@@ -7,6 +7,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Illuminate\Support\Facades\URL;
 
 class ProfileController extends AdminController
 {
@@ -86,17 +87,20 @@ class ProfileController extends AdminController
         $show->field('latitude', __('Latitude'));
         $show->field('division', __('Division'));
         $show->field('opening_hours', __('Opening hours'));
-        
+
 
         $show->profile_photo()->unescape()->as(function ($profile_photo) {
             $pic = json_decode($profile_photo);
-            #return "<img src='{$avatar}' />";
-            return  $pic->thumbnailxc;
-       
-       });
-       
 
-        $show->field('cover_photo', __('Cover photo'));
+            return '<img width="200" src=' . URL::asset('storage/' . str_replace("public/", "", $pic->thumbnail)) . ' />';
+        });
+        $show->cover_photo()->unescape()->as(function ($cover_photo) {
+            $pic = json_decode($cover_photo);
+
+            return '<img width="200" src=' . URL::asset('storage/' . str_replace("public/", "", $pic->thumbnail)) . ' />';
+        });
+
+ 
         $show->field('facebook', __('Facebook'));
         $show->field('twitter', __('Twitter'));
         $show->field('whatsapp', __('Whatsapp'));
@@ -105,7 +109,7 @@ class ProfileController extends AdminController
         $show->field('last_seen', __('Last seen'));
         $show->field('status', __('Status'));
 
-        
+
 
         return $show;
     }
@@ -141,7 +145,7 @@ class ProfileController extends AdminController
         $form->text('instagram', __('Instagram'));
         $form->text('last_seen', __('Last seen'));
         $form->text('status', __('Status'));
-        
+
         $options["active"] = "active";
         $options["pending"] = "pending";
         $options["blocked"] = "blocked";

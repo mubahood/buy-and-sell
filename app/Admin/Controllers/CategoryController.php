@@ -87,7 +87,7 @@ class CategoryController extends AdminController
 
         $items = Category::all();
         $cats = [];
-        $cats[0] = "None";
+        $cats[0] = "No parent category";
         foreach ($items as $key => $item) {
             if($item->parent>0){
                 continue;

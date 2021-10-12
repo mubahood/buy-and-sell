@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductReview;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,12 +51,19 @@ class MainController extends Controller
         }
 
         $seg = request()->segment(1);
+        $profile = Profile::where('username', $seg)->first();
+        if ($profile) {
+            dd($profile->first_name);
+            return view('main.display-ad');
+            return;
+        }
+        
         $pro = Product::where('slug', $seg)->first();
         if ($pro) {
             return view('main.display-ad');
             return;
         }
-        return dd($seg);
+        return dd($seg." not found");
     }
 
     public function login(Request  $request)
