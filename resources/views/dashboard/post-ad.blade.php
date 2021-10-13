@@ -19,7 +19,7 @@ $cities = City::all();
 <section class="adpost-part pt-0">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10">
+            <div class="colwqq-lg-10">
                 <form method="POST" action="{{ url('post-ad') }}" enctype="multipart/form-data" class="adpost-form">
                     @csrf
                     <input type="text" name="category_id" id="category_id" value="{{ $cats->id }}" hidden>
