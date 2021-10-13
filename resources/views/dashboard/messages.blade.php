@@ -3,11 +3,20 @@
 @section('title', 'Page Title')
 
 @section('head')
+<link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/nice-select.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/emojionearea.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/message.css') }}">
 @endsection
 
 @section('content')
+{{-- 
+    
 
+    <link rel="icon" href="images/favicon.png">
+
+    <link rel="stylesheet" href="css/custom/message.css">
+
+    --}}
 <section class="message-part">
     <div class="container">
         <div class="row">
@@ -149,7 +158,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="inbox-chat-form"><textarea placeholder="Type a Message"
+                    <div class="inbox-chat-form"><textarea class="" placeholder="Type a Message "
                             id="chat-emoji"></textarea><button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
@@ -159,3 +168,25 @@
 </section>
 
 @endsection
+
+@section('foot') 
+<script src="{{ URL::asset('/assets/js/vendor/nicescroll.min.js') }}"></script>
+<script src="{{ URL::asset('/assets/js/vendor/nice-select.min.js') }}"></script>
+<script src="{{ URL::asset('/assets/js/vendor/emojionearea.min.js') }}"></script>
+<script src="{{ URL::asset('/assets/js/custom/nice-select.js') }}"></script>
+<script src="{{ URL::asset('/assets/js/custom/nicescroll.js') }}"></script>
+<script src="{{ URL::asset('/assets/js/custom/emojionearea.js') }}"></script>
+@endsection
+
+{{-- 
+ 
+
+    <link rel="stylesheet" href="fonts//">
+    <link rel="stylesheet" href="css/vendor/">
+    <link rel="stylesheet" href="css/vendor/emojionearea.min.css">
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom/main.css">
+    <link rel="stylesheet" href="css/custom/">
+</head>
+    
+    --}}
