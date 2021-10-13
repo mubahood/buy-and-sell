@@ -366,6 +366,9 @@ $id = Auth::id();
 
 
 
+    @if ("messages" != request()->segment(1))
+
+
     <footer class="footer-part">
         <div class="container">
             <div class="row newsletter">
@@ -502,12 +505,14 @@ $id = Auth::id();
             </div>
         </div>
     </div>
+    @endif
     <script src="{{ URL::asset('/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/popper.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/slick.min.js') }} "></script>
     <script src="{{ URL::asset('/assets/js/custom/slick.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/custom/main.js') }} "></script>
+    @yield('foot')
 </body>
 
 </html>

@@ -38,6 +38,7 @@ class CreateProfilesTable extends Migration
                 $table->string('twitter')->nullable();
                 $table->string('whatsapp')->nullable();
                 $table->string('youtube')->nullable();
+                $table->string('linkedin')->nullable();
                 $table->string('instagram')->nullable();
                 $table->string('last_seen')->nullable();
                 $table->text('username')->nullable();

@@ -268,7 +268,7 @@ $url = $_SERVER['REQUEST_URI'];
                         <a href="#" class="author-img active"><img
                                 src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg" alt="avatar"></a>
                         <div class="author-meta">
-                            <h4><a href="#">
+                            <h4><a href="/{{$pro->user->profile->username}}">
                                 {{$pro->user->profile->first_name}} 
                                 {{$pro->user->profile->last_name}}
                             </a></h4>
@@ -276,7 +276,7 @@ $url = $_SERVER['REQUEST_URI'];
                             <p>Corporis dolore libero temporibus minus tempora quia voluptas nesciunt.</p>
                         </div>
                         <div class="author-widget">
-                            <a href="profile.html" title="Profile" class="fas fa-eye"></a>
+                            <a href="/{{$pro->user->profile->username}}" title="Profile" class="fas fa-eye"></a>
                             <a href="message.html" title="Message" class="fas fa-envelope"></a><button type="button"
                                 title="Follow" class="follow fas fa-heart"></button><button type="button" title="Number"
                                 class="fas fa-phone" data-toggle="modal" data-target="#number"></button><button
@@ -440,7 +440,7 @@ $related_products = Product::where('category_id', $pro->category_id)->get();
             <div class="col-lg-12">
                 <div class="related-slider slider-arrow">
                     @foreach ($related_products as $item)
-                    <x-product1  :item="$item" />
+                    <x-product1  :item="$item" /> 
                     @endforeach
                 </div>
             </div>

@@ -17,8 +17,26 @@
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\City;
+
+$is_searching = false;
+$key_word = "";
+$search_title = "";
+
+if(isset($_GET['search'])){
+if(strlen(isset($_GET['search']))>0){
+$key_word = trim($_GET['search']);
+$is_searching = true;
+}
+}
+
+if($is_searching){
+$products = Product::where('name', 'LIKE', "%$key_word%")->get();
+$search_title = "Found ".count($products)." search results for \"".$key_word."\"";
+}else{
 $products = Product::all();
+}
 $cities = City::all();
+
 @endphp
 
 <aside class="sidebar-part">
@@ -432,29 +450,23 @@ $cities = City::all();
                 </div>
             </div>
             <div class="col-lg-8 col-xl-9">
+
+                @if ($is_searching)
+
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="header-filter">
-                            <div class="filter-show"><label class="filter-label">Show :</label><select
-                                    class="custom-select filter-select">
-                                    <option value="1">12</option>
-                                    <option value="2">24</option>
-                                    <option value="3">36</option>
-                                </select></div>
-                            <div class="filter-short"><label class="filter-label">Short by :</label><select
-                                    class="custom-select filter-select">
-                                    <option selected>default</option>
-                                    <option value="3">trending</option>
-                                    <option value="1">featured</option>
-                                    <option value="2">recommend</option>
-                                </select></div>
-                            <div class="filter-action"><a href="ad-list-column3.html" title="Three Column"><i
-                                        class="fas fa-th"></i></a><a href="ad-list-column2.html" title="Two Column"><i
-                                        class="fas fa-th-large"></i></a><a href="ad-list-column1.html"
-                                    title="One Column" class="active"><i class="fas fa-th-list"></i></a></div>
+                            <div class="">
+                                {{$search_title}}
+                            </div>
+                            <div class="filter-action">
+                                Clear search
+                                <a href="/" title="Clear search" class="active ml-2"><i class="fa fa-times"></i></a></div>
                         </div>
                     </div>
                 </div>
+                @endif
+
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="ad-feature-slider slider-arrow">
@@ -539,51 +551,15 @@ $cities = City::all();
                 </div>
                 <div class="row ad-standard">
 
-                    @php
-                    $i = 0;
-                    @endphp
+
+
                     @foreach ($products as $item)
-                    @php
-                    $i++;
-                    if($i>50){
-                    break;
-                    }
-                    @endphp
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="product-card standard">
-                            <div class="product-media">
-                                <div class="product-img"><img src={{$item->get_thumbnail()}}
-                                        alt="product"></div>
-                                <div class="cross-vertical-badge product-badge"><i
-                                        class="fas fa-clipboard-check"></i><span>recommend</span></div>
-                                <div class="product-type"><span class="flat-badge booking">booking</span></div>
-                                <ul class="product-action">
-                                    <li class="view"><i class="fas fa-eye"></i><span>264</span></li>
-                                    <li class="click"><i class="fas fa-mouse"></i><span>134</span></li>
-                                    <li class="rating"><i class="fas fa-star"></i><span>4.5/7</span></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <ol class="breadcrumb product-category">
-                                    <li><i class="fas fa-tags"></i></li>
-                                    <li class="breadcrumb-item"><a href="#">Luxury</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">resort</li>
-                                </ol>
-                                <h5 class="product-title"><a href="<?= URL::asset('/') ?>{{$item->slug}}">{{$item->name}}</a></h5>
-                                <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>Uttara,
-                                        Dhaka</span><span><i class="fas fa-clock"></i>30 min ago</span></div>
-                                <div class="product-info">
-                                    <h5 class="product-price">$1590<span>/per week</span></h5>
-                                    <div class="product-btn"><a href="compare.html" title="Compare"
-                                            class="fas fa-compress"></a><button type="button" title="Wishlist"
-                                            class="far fa-heart"></button></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                        <x-product2 :item="$item" />
                     </div>
                     @endforeach
 
- 
+
                 </div>
                 <div class="row">
                     <div class="col-lg-12">

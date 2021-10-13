@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Profile;
 use App\Models\Utils;
 use App\Models\Attribute;
+use Hamcrest\Util;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -44,19 +45,20 @@ class Dashboard extends Controller
         if ($request->has("user_id")) {
             $user_id = $request->input("user_id");
             $profile =  Profile::where('user_id', $user_id)->first();
-            if (!$profile) {
-                $pro = new Profile();
-                $pro->user_id = $user_id;
+
+            if ($profile == null) {
+                $pro = new Profile(['user_id'=>$user_id]);
                 $pro->save();
                 $profile =  Profile::where('user_id', $user_id)->first();
             }
+
             if (!$profile) {
                 die("failed to find profile.");
             }
 
             $profile->first_name = $request->input("first_name");
             $profile->last_name = $request->input("last_name");
-            $profile->company_name = $request->input("company_name");
+            $profile->company_name = $request->input("username");
             $profile->email = $request->input("email");
             $profile->phone_number = $request->input("phone_number");
             $profile->location = $request->input("location");
@@ -71,7 +73,15 @@ class Dashboard extends Controller
             $profile->whatsapp = $request->input("whatsapp");
             $profile->youtube = $request->input("youtube");
             $profile->instagram = $request->input("instagram");
+            $profile->linkedin = $request->input("linkedin");
             $profile->last_seen = time();
+            $username_new = $request->input("username");
+
+            
+            if($username_new != $profile->username){
+                $profile->username = Utils::make_slug($request->input("username"));
+            }
+ 
 
             if ($request->hasFile("profile_photo")) {
                 $images = Utils::upload_images($_FILES['profile_photo']);
@@ -88,6 +98,7 @@ class Dashboard extends Controller
             }
 
             $profile->save();
+
             $errors['success'] = "Account was updated successfully!";
             return redirect()->intended('profile')->withErrors($errors);
         }

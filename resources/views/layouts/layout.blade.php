@@ -25,6 +25,15 @@
     @yield('head')
 </head>
 
+@php
+$key_word = "";
+if(isset($_GET['search'])){
+    if(strlen(isset($_GET['search']))>0){
+        $key_word = trim($_GET['search']);
+    }
+}
+@endphp
+
 <body>
     <header class="header-part">
         <div class="container">
@@ -34,19 +43,11 @@
                         class="header-logo"><img src="<?= URL::asset('assets/') ?>/images/logo.png" alt="logo"></a>
 
                 </div>
-                <form class="header-form">
-                    <div class="header-search"><button type="submit" title="Search Submit "><i
-                                class="fas fa-search"></i></button><input type="text"
-                            placeholder="Search, Whatever you need..."><button type="button" title="Search Option"
-                            class="option-btn"><i class="fas fa-sliders-h"></i></button></div>
-                    <div class="header-option">
-                        <div class="option-grid">
-                            <div class="option-group"><input type="text" placeholder="City"></div>
-                            <div class="option-group"><input type="text" placeholder="State"></div>
-                            <div class="option-group"><input type="text" placeholder="Min Price"></div>
-                            <div class="option-group"><input type="text" placeholder="Max Price"></div><button
-                                type="submit"><i class="fas fa-search"></i><span>Search</span></button>
-                        </div>
+                <form class="header-form" action="/">
+                    <div class="header-search pl-3">
+                        <input name="search" type="search" value="{{$key_word}}"
+                            placeholder="Search, Whatever you need...">
+                        <button type="submit" title="Search Submit "><i class="fas fa-search"></i></button>
                     </div>
                 </form>
                 <div class="header-right">
@@ -142,7 +143,8 @@
                         class="header-user border rounded pr-3 pl-3 mr-3 text-primary border-primary "><span>Register</span></a><button
                         type="button" class="header-widget search-btn"><i class="fas fa-search"></i></button>
 
-                    <a href="/login" class="header-widget header-user border rounded pr-2 border-primary text-primary"><span>Sign
+                    <a href="/login"
+                        class="header-widget header-user border rounded pr-2 border-primary text-primary"><span>Sign
                             in</span></a><button type="button" class="header-widget search-btn"><i
                             class="fas fa-search"></i></button>
                     @endguest

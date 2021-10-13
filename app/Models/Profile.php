@@ -25,8 +25,7 @@ class Profile extends Model
         });
 
         self::created(function ($model) {
-            $pro['user_id'] = $model->id;
-            Profile::create($pro);
+ 
         });
 
         self::updating(function ($model) {

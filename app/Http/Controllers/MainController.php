@@ -53,8 +53,7 @@ class MainController extends Controller
         $seg = request()->segment(1);
         $profile = Profile::where('username', $seg)->first();
         if ($profile) {
-            dd($profile->first_name);
-            return view('main.display-ad');
+            return view('main.display-profile');
             return;
         }
         
@@ -72,6 +71,8 @@ class MainController extends Controller
 
             $u['email'] = $_POST['phone_number'];
             $u['password'] = $_POST['password'];
+
+            // /dd(password_hash("269435158522",PASSWORD_DEFAULT));
 
             if (Auth::attempt($u)) {
                 $errors['success'] = "Account created successfully!";

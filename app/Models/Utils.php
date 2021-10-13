@@ -8,11 +8,33 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Zebra_Image;
 
 class Utils
 {
 
+    public static function get_file_url($link)
+    {
+        $link = str_replace("public/","",$link);
+        $link = str_replace("public","",$link);
+        $link = "storage/".$link;        
+        return $link;
+    }
+
+    public static function make_slug($str)
+    {
+        $slug =  strtolower(Str::slug($str, "-"));
+ 
+        if (
+            (!empty(Product::where("slug", $slug)->First())) ||
+            (!empty(Profile::where("username", $slug)->First()))
+        ) {
+            $slug .= rand(100, 1000);
+        }
+
+        return $slug;
+    }
     public static function upload_images($files)
     {
         if ($files == null || empty($files)) {
