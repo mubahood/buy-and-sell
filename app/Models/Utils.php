@@ -64,15 +64,13 @@ class Utils
                     $img['size'] = $files['size'][$i];
 
  
-                    $path = Storage::putFile('/', $img['tmp_name']);
-                    $path= str_replace("public","romina",$path);
-                    echo '<img src="http://127.0.0.1:8000/'.$path.'" alt="">';
-                    dd($path);
-                    dd("time to uplod");
+                    $path = Storage::putFile('/', $img['tmp_name']); 
+                    //echo '<img src="http://127.0.0.1:8000/storage/'.$path.'" alt="">';
+                    //dd("");
+                
 
-
-                    $path_not_optimized = "." . Storage::url($path);
-                    $path_optimized = str_replace("storage/", "storage/thumb_", $path_not_optimized);
+                    $path_not_optimized =  Storage::url("storage/".$path);
+                    $path_optimized = "storage/thumb_".$path_not_optimized;
                     $thumbnail = Utils::create_thumbail(
                         array(
                             "source" => $path_not_optimized,
