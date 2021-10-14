@@ -57,6 +57,9 @@ class Product extends Model
                 $thumb = json_decode($this->thumbnail);
                 if (isset($thumb->src)) {
                     $thumb->src = str_replace("public/", "", $thumb->src);
+                    $thumb->src = str_replace("storage/", "", $thumb->src);
+                    $thumb->src = str_replace("/storage", "", $thumb->src);
+                    $thumb->src = str_replace("/", "", $thumb->src);
                     $thumbnail = URL::asset('storage/'.$thumb->src);
                     
                 }

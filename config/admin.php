@@ -153,7 +153,7 @@ return [
     'upload' => [
 
         // Disk in `config/filesystem.php`.
-        'disk' => 'public',
+        'disk' => 'local',
 
         // Image and file upload path under the disk above.
         'directory' => [

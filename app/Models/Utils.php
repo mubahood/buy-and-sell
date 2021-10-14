@@ -65,12 +65,11 @@ class Utils
 
  
                     $path = Storage::putFile('/', $img['tmp_name']); 
-                    //echo '<img src="http://127.0.0.1:8000/storage/'.$path.'" alt="">';
-                    //dd("");
+                    
                 
 
-                    $path_not_optimized =  Storage::url("storage/".$path);
-                    $path_optimized = "storage/thumb_".$path_not_optimized;
+                    $path_not_optimized =  "storage/".$path;
+                    $path_optimized = "storage/thumb_".$path;
                     $thumbnail = Utils::create_thumbail(
                         array(
                             "source" => $path_not_optimized,
@@ -79,11 +78,13 @@ class Utils
                     );
 
                     if (strlen($thumbnail) > 3) {
-                        $thumbnail = str_replace("./storage/", "public/", $thumbnail);
+                        $thumbnail = str_replace("storage/", "", $thumbnail);
+                        $thumbnail = str_replace("/storage", "", $thumbnail);
+                        $thumbnail = str_replace("storage", "", $thumbnail);
+                        $thumbnail = str_replace("/", "", $thumbnail);
                     } else {
                         $thumbnail = $path;
                     }
-
 
                     $ready_image['src'] = $path;
                     $ready_image['thumbnail'] = $thumbnail;
@@ -112,11 +113,22 @@ class Utils
             return [];
         }
 
+        /*
+
+        $p = 'http://127.0.0.1:8000/storage/'.$path;
+                    echo '<h1>'.$p.'</h1>';
+                    echo '<h1>'.$path.'</h1>';
+                    echo '<img src="'.$p.'" alt="">';
+                    die();
+                    //dd("");
+        */
+ 
         $image = new Zebra_Image();
 
         $image->auto_handle_exif_orientation = false;
         $image->source_path = $params['source'];
         $image->target_path = $params['target'];
+
 
         $image->jpeg_quality = 75;
         if (isset($params['quality'])) {
@@ -137,8 +149,9 @@ class Utils
             $width = $params['heigt'];
         }
 
+
         if (!$image->resize($width, $heigt, ZEBRA_IMAGE_CROP_CENTER)) {
-            return "";
+            return $image->source_path;
         } else {
             return $image->target_path;
         }
