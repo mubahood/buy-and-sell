@@ -1,4 +1,4 @@
-@extends('layouts.layout2')
+@extends('layouts.layout')
 
 @section('title', 'Page Title')
 
@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="css/custom/message.css">
 
     --}}
-<section class="message-part">
-    <div class="container">
+<section class="message-part pt-0 pt-2">
+    <div class="container mt-0">
         <div class="row">
             <div class="col-lg-5 col-xl-4">
                 <div class="message-filter">
@@ -158,7 +158,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="inbox-chat-form"><textarea class="" placeholder="Type a Message "
+                    <div class="inbox-chat-form"><textarea  placeholder="Type a Message "
                             id="chat-emoji"></textarea><button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>

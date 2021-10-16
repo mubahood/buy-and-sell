@@ -38,122 +38,14 @@ $products = Product::all();
 $cities = City::all();
 
 @endphp
-
-<aside class="sidebar-part">
-    <div class="sidebar-body">
-        <div class="sidebar-header"><a href="index-2.html" class="sidebar-logo"><img
-                    src="<?= URL::asset('assets/') ?>/images/logo.png" alt="logo"></a><button class="sidebar-cross"><i
-                    class="fas fa-times"></i></button></div>
-        <div class="sidebar-content">
-            <div class="sidebar-profile"><a href="#" class="sidebar-avatar"><img
-                        src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg" alt="avatar"></a>
-                <h4><a href="#" class="sidebar-name">Jackon Honson</a></h4><a href="ad-post.html"
-                    class="btn btn-inline sidebar-post"><i class="fas fa-plus-circle"></i><span>post your
-                        ad</span></a>
-            </div>
-            <div class="sidebar-menu">
-                <ul class="nav nav-tabs">
-                    <li><a href="#main-menu" class="nav-link active" data-toggle="tab">Main Menu</a></li>
-                    <li><a href="#author-menu" class="nav-link" data-toggle="tab">Author Menu</a></li>
-                </ul>
-                <div class="tab-pane active" id="main-menu">
-                    <ul class="navbar-list">
-                        <li class="navbar-item"><a class="navbar-link" href="index-2.html">Home</a></li>
-                        <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                href="#"><span>Categories</span><i class="fas fa-plus"></i></a>
-                            <ul class="dropdown-list">
-                                <li><a class="dropdown-link" href="category-list.html">category list</a></li>
-                                <li><a class="dropdown-link" href="category-details.html">category details</a></li>
-                            </ul>
-                        </li>
-                        <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>Advertise
-                                    List</span><i class="fas fa-plus"></i></a>
-                            <ul class="dropdown-list">
-                                <li><a class="dropdown-link" href="ad-list-column3.html">ad list column 3</a></li>
-                                <li><a class="dropdown-link" href="ad-list-column2.html">ad list column 2</a></li>
-                                <li><a class="dropdown-link" href="ad-list-column1.html">ad list column 1</a></li>
-                            </ul>
-                        </li>
-                        <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>Advertise
-                                    details</span><i class="fas fa-plus"></i></a>
-                            <ul class="dropdown-list">
-                                <li><a class="dropdown-link" href="ad-details-grid.html">ad details grid</a></li>
-                                <li><a class="dropdown-link" href="ad-details-left.html">ad details left</a></li>
-                                <li><a class="dropdown-link" href="ad-details-right.html">ad details right</a></li>
-                            </ul>
-                        </li>
-                        <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>Pages</span><i
-                                    class="fas fa-plus"></i></a>
-                            <ul class="dropdown-list">
-                                <li><a class="dropdown-link" href="about.html">About Us</a></li>
-                                <li><a class="dropdown-link" href="compare.html">Ad Compare</a></li>
-                                <li><a class="dropdown-link" href="cities.html">Ad by Cities</a></li>
-                                <li><a class="dropdown-link" href="price.html">Pricing Plan</a></li>
-                                <li><a class="dropdown-link" href="user-form.html">User Form</a></li>
-                                <li><a class="dropdown-link" href="404.html">404</a></li>
-                            </ul>
-                        </li>
-                        <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>blogs</span><i
-                                    class="fas fa-plus"></i></a>
-                            <ul class="dropdown-list">
-                                <li><a class="dropdown-link" href="blog-list.html">Blog list</a></li>
-                                <li><a class="dropdown-link" href="blog-details.html">blog details</a></li>
-                            </ul>
-                        </li>
-                        <li class="navbar-item"><a class="navbar-link" href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="tab-pane" id="author-menu">
-                    <ul class="navbar-list">
-                        <li class="navbar-item"><a class="navbar-link" href="dashboard.html">Dashboard</a></li>
-                        <li class="navbar-item"><a class="navbar-link" href="profile.html">Profile</a></li>
-                        <li class="navbar-item"><a class="navbar-link" href="ad-post.html">Ad Post</a></li>
-                        <li class="navbar-item"><a class="navbar-link" href="my-ads.html">My Ads</a></li>
-                        <li class="navbar-item"><a class="navbar-link" href="setting.html">Settings</a></li>
-                        <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                href="bookmark.html"><span>bookmark</span><span>0</span></a></li>
-                        <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                href="message.html"><span>Message</span><span>0</span></a></li>
-                        <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                href="notification.html"><span>Notification</span><span>0</span></a></li>
-                        <li class="navbar-item"><a class="navbar-link" href="user-form.html">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="sidebar-footer">
-                <p>All Rights Reserved By <a href="#">Classicads</a></p>
-                <p>Developed By <a href="https://themeforest.net/user/mironcoder">Mironcoder</a></p>
-            </div>
-        </div>
-    </div>
-</aside>
-<nav class="mobile-nav">
-    <div class="container">
-        <div class="mobile-group"><a href="index-2.html" class="mobile-widget"><i
-                    class="fas fa-home"></i><span>home</span></a><a href="user-form.html" class="mobile-widget"><i
-                    class="fas fa-user"></i><span>join me</span></a><a href="ad-post.html"
-                class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad Post</span></a><a
-                href="notification.html" class="mobile-widget"><i
-                    class="fas fa-bell"></i><span>notify</span><sup>0</sup></a><a href="message.html"
-                class="mobile-widget"><i class="fas fa-envelope"></i><span>message</span><sup>0</sup></a></div>
-    </div>
-</nav>
+ 
 
 <section class="inner-section ad-list-part mt-4">
     <div class="container">
         <div class="row content-reverse">
             <div class="col-lg-4 col-xl-3">
                 <div class="row">
-                    <div class="col-md-6 col-lg-12">
-                        <div class="product-widget">
-                            <h6 class="product-widget-title">Filter by Price</h6>
-                            <form class="product-widget-form">
-                                <div class="product-widget-group"><input type="text" placeholder="min - 00"><input
-                                        type="text" placeholder="max - 1B"></div><button type="submit"
-                                    class="product-widget-btn"><i class="fas fa-search"></i><span>search</span></button>
-                            </form>
-                        </div>
-                    </div>
+                    
 
                     <div class="col-md-6 col-lg-12">
                         <div class="product-widget">
@@ -368,84 +260,7 @@ $cities = City::all();
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-12">
-                        <div class="product-widget">
-                            <h6 class="product-widget-title">Filter by type</h6>
-                            <form class="product-widget-form">
-                                <ul class="product-widget-list">
-                                    <li class="product-widget-item">
-                                        <div class="product-widget-checkbox"><input type="checkbox" id="chcek1">
-                                        </div><label class="product-widget-label" for="chcek1"><span
-                                                class="product-widget-type sale">sales</span><span
-                                                class="product-widget-number">(15)</span></label>
-                                    </li>
-                                    <li class="product-widget-item">
-                                        <div class="product-widget-checkbox"><input type="checkbox" id="chcek2">
-                                        </div><label class="product-widget-label" for="chcek2"><span
-                                                class="product-widget-type rent">rental</span><span
-                                                class="product-widget-number">(25)</span></label>
-                                    </li>
-                                    <li class="product-widget-item">
-                                        <div class="product-widget-checkbox"><input type="checkbox" id="chcek3">
-                                        </div><label class="product-widget-label" for="chcek3"><span
-                                                class="product-widget-type booking">booking</span><span
-                                                class="product-widget-number">(35)</span></label>
-                                    </li>
-                                </ul><button type="submit" class="product-widget-btn"><i
-                                        class="fas fa-broom"></i><span>Clear Filter</span></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-12">
-                        <div class="product-widget">
-                            <h6 class="product-widget-title">Filter by rating</h6>
-                            <form class="product-widget-form">
-                                <ul class="product-widget-list">
-                                    <li class="product-widget-item">
-                                        <div class="product-widget-checkbox"><input type="checkbox" id="chcek4">
-                                        </div><label class="product-widget-label" for="chcek4"><span
-                                                class="product-widget-star"><i class="fas fa-star"></i><i
-                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                    class="fas fa-star"></i><i class="fas fa-star"></i></span><span
-                                                class="product-widget-number">(45)</span></label>
-                                    </li>
-                                    <li class="product-widget-item">
-                                        <div class="product-widget-checkbox"><input type="checkbox" id="chcek5">
-                                        </div><label class="product-widget-label" for="chcek5"><span
-                                                class="product-widget-star"><i class="fas fa-star"></i><i
-                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                    class="fas fa-star"></i><i class="far fa-star"></i></span><span
-                                                class="product-widget-number">(55)</span></label>
-                                    </li>
-                                    <li class="product-widget-item">
-                                        <div class="product-widget-checkbox"><input type="checkbox" id="chcek6">
-                                        </div><label class="product-widget-label" for="chcek6"><span
-                                                class="product-widget-star"><i class="fas fa-star"></i><i
-                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                    class="far fa-star"></i><i class="far fa-star"></i></span><span
-                                                class="product-widget-number">(65)</span></label>
-                                    </li>
-                                    <li class="product-widget-item">
-                                        <div class="product-widget-checkbox"><input type="checkbox" id="chcek7">
-                                        </div><label class="product-widget-label" for="chcek7"><span
-                                                class="product-widget-star"><i class="fas fa-star"></i><i
-                                                    class="fas fa-star"></i><i class="far fa-star"></i><i
-                                                    class="far fa-star"></i><i class="far fa-star"></i></span><span
-                                                class="product-widget-number">(75)</span></label>
-                                    </li>
-                                    <li class="product-widget-item">
-                                        <div class="product-widget-checkbox"><input type="checkbox" id="chcek8">
-                                        </div><label class="product-widget-label" for="chcek8"><span
-                                                class="product-widget-star"><i class="fas fa-star"></i><i
-                                                    class="far fa-star"></i><i class="far fa-star"></i><i
-                                                    class="far fa-star"></i><i class="far fa-star"></i></span><span
-                                                class="product-widget-number">(85)</span></label>
-                                    </li>
-                                </ul><button type="submit" class="product-widget-btn"><i
-                                        class="fas fa-broom"></i><span>Clear Filter</span></button>
-                            </form>
-                        </div>
-                    </div>
+                   
 
                 </div>
             </div>
@@ -470,82 +285,26 @@ $cities = City::all();
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="ad-feature-slider slider-arrow">
-                            <div class="feature-card"><a href="#" class="feature-img"><img
-                                        src="<?= URL::asset('assets/') ?>/images/product/10.jpg" alt="feature"></a>
-                                <div class="cross-inline-badge feature-badge"><span>featured</span><i
-                                        class="fas fa-book-open"></i></div><button type="button" class="feature-wish"><i
-                                        class="fas fa-heart"></i></button>
-                                <div class="feature-content">
-                                    <ol class="breadcrumb feature-category">
-                                        <li><span class="flat-badge rent">rent</span></li>
-                                        <li class="breadcrumb-item"><a href="#">automobile</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">private car</li>
-                                    </ol>
-                                    <h3 class="feature-title"><a href="ad-details-left.html">Unde eveniet ducimus
-                                            nostrum maiores soluta temporibus ipsum dolor sit amet.</a></h3>
-                                    <div class="feature-meta"><span
-                                            class="feature-price">$1200<small>/Monthly</small></span><span
-                                            class="feature-time"><i class="fas fa-clock"></i>56 minute ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="feature-card"><a href="#" class="feature-img"><img
-                                        src="<?= URL::asset('assets/') ?>/images/product/01.jpg" alt="feature"></a>
-                                <div class="cross-inline-badge feature-badge"><span>featured</span><i
-                                        class="fas fa-book-open"></i></div><button type="button" class="feature-wish"><i
-                                        class="fas fa-heart"></i></button>
-                                <div class="feature-content">
-                                    <ol class="breadcrumb feature-category">
-                                        <li><span class="flat-badge booking">booking</span></li>
-                                        <li class="breadcrumb-item"><a href="#">Property</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">House</li>
-                                    </ol>
-                                    <h3 class="feature-title"><a href="ad-details-left.html">Unde eveniet ducimus
-                                            nostrum maiores soluta temporibus ipsum dolor sit amet.</a></h3>
-                                    <div class="feature-meta"><span
-                                            class="feature-price">$800<small>/perday</small></span><span
-                                            class="feature-time"><i class="fas fa-clock"></i>56 minute ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="feature-card"><a href="#" class="feature-img"><img
+                            
+                            <div class="feature-card "><a href="#" class="feature-img"><img
                                         src="<?= URL::asset('assets/') ?>/images/product/08.jpg" alt="feature"></a>
                                 <div class="cross-inline-badge feature-badge"><span>featured</span><i
                                         class="fas fa-book-open"></i></div><button type="button" class="feature-wish"><i
                                         class="fas fa-heart"></i></button>
-                                <div class="feature-content">
-                                    <ol class="breadcrumb feature-category">
+                                <div class="feature-content p-2 pl-3 pr-3">
+                                    <ol class="breadcrumb feature-category mb-0 mt-0">
                                         <li><span class="flat-badge sale">sale</span></li>
                                         <li class="breadcrumb-item"><a href="#">gadget</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">iphone</li>
+                                        <li class="breadcrumb-item active" aria-current="page">iphone.</li>
                                     </ol>
-                                    <h3 class="feature-title"><a href="ad-details-left.html">Unde eveniet ducimus
-                                            nostrum maiores soluta temporibus ipsum dolor sit amet.</a></h3>
+                                    <h3 class="feature-title h5 mb-0 mt-0"><a href="ad-details-left.html">Unde eveniet ducimus
+                                            nostrum maiores soluta temribus ipsum dolor sit amet.</a></h3>
                                     <div class="feature-meta"><span
                                             class="feature-price">$1150<small>/Negotiable</small></span><span
                                             class="feature-time"><i class="fas fa-clock"></i>56 minute ago</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="feature-card"><a href="#" class="feature-img"><img
-                                        src="<?= URL::asset('assets/') ?>/images/product/06.jpg" alt="feature"></a>
-                                <div class="cross-inline-badge feature-badge"><span>featured</span><i
-                                        class="fas fa-book-open"></i></div><button type="button" class="feature-wish"><i
-                                        class="fas fa-heart"></i></button>
-                                <div class="feature-content">
-                                    <ol class="breadcrumb feature-category">
-                                        <li><span class="flat-badge sale">sale</span></li>
-                                        <li class="breadcrumb-item"><a href="#">automobile</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">cycle</li>
-                                    </ol>
-                                    <h3 class="feature-title"><a href="ad-details-left.html">Unde eveniet ducimus
-                                            nostrum maiores soluta temporibus ipsum dolor sit amet.</a></h3>
-                                    <div class="feature-meta"><span
-                                            class="feature-price">$455<small>/fixed</small></span><span
-                                            class="feature-time"><i class="fas fa-clock"></i>56 minute ago</span>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
