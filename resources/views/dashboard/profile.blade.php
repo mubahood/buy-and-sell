@@ -15,7 +15,7 @@ die();
 }
 
 @endphp
-@extends('layouts.layout2')
+@extends('layouts.layout')
 
 @section('title', 'Page Title')
 

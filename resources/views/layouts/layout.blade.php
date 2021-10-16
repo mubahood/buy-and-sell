@@ -28,10 +28,14 @@
 @php
 $key_word = "";
 if(isset($_GET['search'])){
-    if(strlen(isset($_GET['search']))>0){
-        $key_word = trim($_GET['search']);
-    }
+if(strlen(isset($_GET['search']))>0){
+$key_word = trim($_GET['search']);
 }
+}
+
+use App\Models\category;
+$cats = category::all();
+
 @endphp
 
 <body>
@@ -161,98 +165,93 @@ if(isset($_GET['search'])){
                         src="<?= URL::asset('assets/') ?>/images/logo.png" alt="logo"></a><button
                     class="sidebar-cross"><i class="fas fa-times"></i></button></div>
             <div class="sidebar-content">
-                <div class="sidebar-profile"><a href="#" class="sidebar-avatar"><img
-                            src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg" alt="avatar"></a>
-                    <h4><a href="#" class="sidebar-name">Muhindo Mubaraka</a></h4><a href="<?= URL::asset('/') ?>"
-                        class="btn btn-inline sidebar-post"><i class="fas fa-plus-circle"></i><span>post your
-                            ad</span></a>
+                <div class="sidebar-profile">
+
+                    @auth
+                    @php
+                    if(strlen(Auth::user()->name)<1){ Auth::user()->name = null;
+                        }
+                        @endphp
+                        <a href="/" class="sidebar-avatar"><img src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg"
+                                alt="avatar"></a>
+                        <h4><a href="#" class="sidebar-name">{{ Auth::user()->name ?? Auth::user()->email }}</a></h4>
+                        @endauth
+
+
+                        <a href="<?= URL::asset('/') ?>" class="btn btn-inline sidebar-post"><i
+                                class="fas fa-plus-circle"></i><span>post your
+                                ad</span></a>
                 </div>
                 <div class="sidebar-menu">
                     <ul class="nav nav-tabs">
-                        <li><a href="#main-menu" class="nav-link active" data-toggle="tab">Main Menu</a></li>
-                        <li><a href="#author-menu" class="nav-link" data-toggle="tab">Author Menu</a></li>
+                        <li><a href="#main-menu" class="nav-link active" data-toggle="tab">Categories</a></li>
+                        <li><a href="#author-menu" class="nav-link" data-toggle="tab">My Account</a></li>
                     </ul>
                     <div class="tab-pane active" id="main-menu">
                         <ul class="navbar-list">
-                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Home</a>
-                            </li>
+                            @foreach ($cats as $item)
+                            @php
+                            if($item->parent == null){
+                            $parent = 0;
+                            }else{
+                            $parent = (int)($item->parent);
+                            }
+
+                            if($parent>=1){
+                            continue;
+                            }
+                            @endphp
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="#"><span>Categories</span><i class="fas fa-plus"></i></a>
+                                    href="#"><span>{{$item->name}}</span><i class="fas fa-plus"></i></a>
                                 <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">category list</a></li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">category details</a>
+                                    @foreach ($item->sub_categories as $sub_item)
+                                    <li class="navbar-item"><a class="navbar-link" href="/{{ $sub_item->slug }}">
+                                            <span style="color: black!important">
+                                                {{$sub_item->name}}
+                                            </span>
+                                            <span style="color: black!important">{{ count($sub_item->products) }}</span>
+                                        </a>
                                     </li>
-                                </ul>
+                                    @endforeach
                             </li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>Advertise
-                                        List</span><i class="fas fa-plus"></i></a>
-                                <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad list column 3</a>
-                                    </li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad list column 2</a>
-                                    </li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad list column 1</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>Advertise
-                                        details</span><i class="fas fa-plus"></i></a>
-                                <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad details grid</a>
-                                    </li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad details left</a>
-                                    </li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">ad details right</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>Pages</span><i
-                                        class="fas fa-plus"></i></a>
-                                <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">About Us</a></li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">Ad Compare</a></li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">Ad by Cities</a></li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">Pricing Plan</a></li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">User Form</a></li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">404</a></li>
-                                </ul>
-                            </li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link" href="#"><span>blogs</span><i
-                                        class="fas fa-plus"></i></a>
-                                <ul class="dropdown-list">
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">Blog list</a></li>
-                                    <li><a class="dropdown-link" href="<?= URL::asset('/') ?>">blog details</a></li>
-                                </ul>
-                            </li>
-                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Contact</a>
-                            </li>
+                        </ul>
+                        </li>
+                        @endforeach
+
                         </ul>
                     </div>
                     <div class="tab-pane" id="author-menu">
-                        <ul class="navbar-list">
-                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Dashboard</a>
-                            </li>
-                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Profile</a>
-                            </li>
-                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Ad
-                                    Post</a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">My
-                                    Ads</a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Settings</a>
-                            </li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="<?= URL::asset('/') ?>"><span>bookmark</span><span>0</span></a></li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="<?= URL::asset('/') ?>"><span>Message</span><span>0</span></a></li>
-                            <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="<?= URL::asset('/') ?>"><span>Notification</span><span>0</span></a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="<?= URL::asset('/') ?>">Logout</a></li>
+                        @guest
+                        <ul class="navbar-list text-center">
+
+                            <a href="<?= URL::asset('/login') ?>" class="btn btn-inline sidebar-post mt-4"><i
+                                    class="fas fa-sign-in-alt"></i><span>LOGIN</span></a>
                         </ul>
+                        @endguest
+                        @auth
+                        @php
+                        $id = Auth::id();
+                        @endphp
+                        <ul class="navbar-list">
+                            <li class="navbar-item"><a class="navbar-link" href="/dashboard">My Ads</a></li>
+                            <li class="navbar-item navbar-dropdown"><a class="navbar-link"
+                                    href="/messages"><span>Messages</span><span>0</span></a></li>
+                            <li class="navbar-item"><a class="navbar-link" href="/favourites">Favourites</a>
+                            </li>
+                            <li class="navbar-item"><a class="navbar-link" href="{{ url('profile-edit') }}/{{ $id }}">My
+                                    profile</a>
+                            </li>
+                            <li class="navbar-item"><a class="navbar-link" href="javascript:;">My Membership</a>
+                            </li>
+                            <li class="navbar-item"><a class="navbar-link" href="/logout">Logout</a></li>
+
+                        </ul>
+                        @endauth
                     </div>
                 </div>
                 <div class="sidebar-footer">
-                    <p>All Rights Reserved By <a href="#">Classicads</a></p>
-                    <p>Developed By <a href="https://themeforest.net/user/mironcoder">Mironcoder</a></p>
+                    <p>All Rights Reserved By <a href="javascript:;">JO-Trace</a></p>
+                    <p>Developed By <a href="javascript:;">##########</a></p>
                 </div>
             </div>
         </div>
@@ -272,6 +271,8 @@ if(isset($_GET['search'])){
 
     @yield('content')
 
+
+    @if ("messages" != request()->segment(1))
     <footer class="footer-part">
         <div class="container">
             <div class="row newsletter">
@@ -409,12 +410,16 @@ if(isset($_GET['search'])){
             </div>
         </div>
     </div>
+    @endif
     <script src="{{ URL::asset('/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/popper.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/slick.min.js') }} "></script>
     <script src="{{ URL::asset('/assets/js/custom/slick.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/custom/main.js') }} "></script>
+
+
+    @yield('foot')
 </body>
 
 </html>

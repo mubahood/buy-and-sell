@@ -11,7 +11,7 @@ use App\Models\category;
 $cats = category::where("parent",0)->get();
 @endphp
 
-@extends('layouts.layout2')
+@extends('layouts.layout')
 
 @section('title', 'Page Title')
 

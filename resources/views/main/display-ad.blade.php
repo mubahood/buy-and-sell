@@ -7,6 +7,23 @@ $images = $pro->get_images();
 $attributes = json_decode($pro->attributes);
 $url = $_SERVER['REQUEST_URI'];
 
+$is_logged_in =   false;
+
+$user = Auth::user();
+$message_link = "/login";
+$message_text = "Start converstion";
+if($user!=null){
+    if(isset($user->id)){
+        $is_logged_in = true;
+        if($pro->user_id == $user->id){
+            $message_link = "javascript:;";
+            $message_text = "This is your product.";
+        }
+    }else{
+        $pro->user_id;
+        dd($user);
+    }
+}
 
 @endphp
 @extends('layouts.layout')
@@ -252,8 +269,8 @@ $url = $_SERVER['REQUEST_URI'];
                             @endif)
                         </span></h3><i class="fas fa-tag"></i>
                 </div>
-                <a href="{{route('messages')}}" class="common-card number">
-                    <h3>Send Message<span class="text-left">Start converstion</span></h3><i class="fas fa-envelope"></i>
+                <a href="{{ $message_link }}" class="common-card number">
+                    <h3>Send Message<span class="text-left">{{$message_text}}</span></h3><i class="fas fa-envelope"></i>
                 </a>
 
                 <button type="button" class="common-card number" data-toggle="modal" data-target="#number">

@@ -3,12 +3,6 @@
         <div class="product-img"><img src={{$item->get_thumbnail()}} alt="product"></div>
         <div class="cross-vertical-badge product-badge"><i class="fas fa-clipboard-check"></i><span>recommend</span>
         </div>
-        <div class="product-type"><span class="flat-badge booking">booking</span></div>
-        <ul class="product-action">
-            <li class="view"><i class="fas fa-eye"></i><span>264</span></li>
-            <li class="click"><i class="fas fa-mouse"></i><span>134</span></li>
-            <li class="rating"><i class="fas fa-star"></i><span>4.5/7</span></li>
-        </ul>
     </div>
     <div class="product-content">
         <ol class="breadcrumb product-category">

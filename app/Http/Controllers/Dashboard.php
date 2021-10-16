@@ -20,6 +20,12 @@ class Dashboard extends Controller
         return view('dashboard.index');
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
     public function profile()
     {
         return view('dashboard.profile');
@@ -35,6 +41,11 @@ class Dashboard extends Controller
         return view('dashboard.messages');
     }
 
+    public function favourites()
+    {
+        return view('dashboard.favourites');
+    }
+
     public function complete_profile_request()
     {
         return view('dashboard.complete-profile-request');
@@ -47,7 +58,7 @@ class Dashboard extends Controller
             $profile =  Profile::where('user_id', $user_id)->first();
 
             if ($profile == null) {
-                $pro = new Profile(['user_id'=>$user_id]);
+                $pro = new Profile(['user_id' => $user_id]);
                 $pro->save();
                 $profile =  Profile::where('user_id', $user_id)->first();
             }
@@ -77,11 +88,11 @@ class Dashboard extends Controller
             $profile->last_seen = time();
             $username_new = $request->input("username");
 
-            
-            if($username_new != $profile->username){
+
+            if ($username_new != $profile->username) {
                 $profile->username = Utils::make_slug($request->input("username"));
             }
- 
+
 
             if ($request->hasFile("profile_photo")) {
                 $images = Utils::upload_images($_FILES['profile_photo']);

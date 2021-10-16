@@ -1,4 +1,4 @@
-@extends('layouts.layout1')
+@extends('layouts.layout')
 @section('head')
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/user-form.css') }}">
 @endsection

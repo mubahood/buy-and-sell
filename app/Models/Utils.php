@@ -14,6 +14,16 @@ use Zebra_Image;
 class Utils
 {
 
+    public static function get_chat_thread($sender,$receiver,$product)
+    {
+        if($sender == $receiver){
+            return null;
+        }
+        $thread = $sender."-".$receiver."-".$product;
+
+        return $thread;
+    }
+
     public static function get_file_url($link)
     {
         $link = str_replace("public/","",$link);

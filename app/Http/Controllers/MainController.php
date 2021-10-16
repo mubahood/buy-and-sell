@@ -62,7 +62,7 @@ class MainController extends Controller
             return view('main.display-ad');
             return;
         }
-        return dd($seg." not found");
+        return view('main.index');
     }
 
     public function login(Request  $request)
