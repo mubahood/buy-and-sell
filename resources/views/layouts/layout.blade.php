@@ -6,12 +6,8 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/vendor/bootstrap.min.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Mironcoder">
-    <meta name="email" content="mironcoder@gmail.com">
-    <meta name="profile" content="https://themeforest.net/user/mironcoder">
-    <meta name="name" content="Classicads">
-    <meta name="type" content="Classified Advertising">
-    <meta name="title" content="Classicads - Classified Ads HTML Template">
+    <meta name="author" content="Muhindo Mubaraka">
+    <meta name="title" content="JO-Trace">
     <meta name="keywords"
         content="classicads, classified, ads, classified ads, listing, business, directory, jobs, marketing, portal, advertising, local, posting, ad listing, ad posting,">
     <title>@yield('title')</title>

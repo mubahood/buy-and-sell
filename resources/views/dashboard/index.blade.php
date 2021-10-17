@@ -64,14 +64,14 @@ $products = Product::where('user_id', $user_id)->get();
                         <li class="breadcrumb-item"><a href="#">Luxury</a></li>
                         <li class="breadcrumb-item active" aria-current="page">resort</li>
                     </ol>
-                    <h5 class="product-title"><a href="ad-details-left.html">{{ $item->name }}</a></h5>
+                    <h5 class="product-title"><a href="{{ url($item->slug) }}">{{ $item->name }}</a></h5>
                     <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>{{ $item->category->name }},
                             {{ $item->category->name }}</span><span><i
                                 class="fas fa-clock"></i>{{ $item->updated_at }}</span></div>
                     <div class="product-info">
                         <h5 class="product-price">${{ $item->price }}<span>/starting price</span></h5>
                         <div class="product-btn">
-                            <a href="#" title="Delete" class="fas fa-trash text-danger"></a><button type="button"
+                            <a href="{{ url($item->slug) }}" title="Delete" class="fas fa-trash text-danger"></a><button type="button"
                                 title="Edit" class="far fa-edit"></button>
                         </div>
                     </div>

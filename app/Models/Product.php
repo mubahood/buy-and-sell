@@ -55,13 +55,13 @@ class Product extends Model
         if ($this->thumbnail != null) {
             if (strlen($this->thumbnail) > 3) {
                 $thumb = json_decode($this->thumbnail);
-                if (isset($thumb->src)) {
-                    $thumb->src = str_replace("public/", "", $thumb->src);
-                    $thumb->src = str_replace("storage/", "", $thumb->src);
-                    $thumb->src = str_replace("/storage", "", $thumb->src);
-                    $thumb->src = str_replace("/", "", $thumb->src);
-                    $thumbnail = URL::asset('storage/'.$thumb->src);
-                    
+                if (isset($thumb->thumbnail)) {
+
+                    $thumb->thumbnail = str_replace("public/", "", $thumb->thumbnail);
+                    $thumb->thumbnail = str_replace("storage/", "", $thumb->thumbnail);
+                    $thumb->thumbnail = str_replace("/storage", "", $thumb->thumbnail);
+                    $thumb->thumbnail = str_replace("/", "", $thumb->thumbnail);
+                    $thumbnail = URL::asset('storage/'.$thumb->thumbnail);                    
                 }
             }
         } 

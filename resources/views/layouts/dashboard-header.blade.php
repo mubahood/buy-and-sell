@@ -21,7 +21,7 @@ $user = Auth::user();
                                     ad</a></li>
 
                             <li><a @if ($seg=='messages' ) class="active" @endif
-                                    href="{{ route('messages') }}">Messages</a></li>
+                                    href="{{ url('messages') }}">Messages</a></li>
 
                             <li><a @if ($seg=='membership' ) class="active" @endif
                                     href="{{ route('membership') }}">Membership</a></li>

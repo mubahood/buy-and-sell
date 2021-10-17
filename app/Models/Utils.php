@@ -196,6 +196,7 @@ class Utils
         $image->auto_handle_exif_orientation = false;
         $image->source_path = $params['source'];
         $image->target_path = $params['target'];
+        
 
 
         $image->jpeg_quality = 75;
