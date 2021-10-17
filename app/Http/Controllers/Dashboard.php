@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Profile;
 use App\Models\Utils;
 use App\Models\Attribute;
+use App\Models\Chat;
 use Hamcrest\Util;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -38,6 +39,32 @@ class Dashboard extends Controller
 
     public function messages()
     {
+        if(
+            isset($_POST['thread']) &&
+            isset($_POST['sender']) &&
+            isset($_POST['receiver']) &&
+            isset($_POST['product_id']) &&
+            isset($_POST['body']) 
+            ){
+                $_POST['seen'] = false;
+                $_POST['received'] = false;
+                $chat = new Chat($_POST);
+                $chat->save();
+                $is_ajax = false;
+
+                if(isset($_POST['ajax'])){
+                    if($_POST['ajax'] == 1){
+                        $is_ajax = true;
+                        $chat_msg = $chat->getRawOriginal();
+                        $chat_msg['created_at'] = $chat->created_at->diffForHumans();
+                        Utils::show_response(1,1,json_encode( $chat_msg ));
+                        die();
+                    }
+                }
+                $url = url("messages")."/".$_POST['thread'];
+                header("Location: ".$url);
+                die();
+            }
         return view('dashboard.messages');
     }
 

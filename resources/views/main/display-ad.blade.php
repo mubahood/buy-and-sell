@@ -1,5 +1,6 @@
 @php
 use App\Models\Product;
+use App\Models\Utils;
 
 $slug = request()->segment(1);
 $pro = Product::where('slug', $slug)->firstOrFail();
@@ -18,10 +19,10 @@ if($user!=null){
         if($pro->user_id == $user->id){
             $message_link = "javascript:;";
             $message_text = "This is your product.";
+        }else{
+            $chat_thred = Utils::get_chat_thread($user->id,$pro->user_id,$pro->id);
+            $message_link = "/messages/".$chat_thred;
         }
-    }else{
-        $pro->user_id;
-        dd($user);
     }
 }
 

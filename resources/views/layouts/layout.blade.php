@@ -58,9 +58,9 @@ $cats = category::all();
                     @auth
                     <ul class="header-list">
 
-                        <li class="header-item"><button type="button" class="header-widget"><i
-                                    class="fas fa-envelope"></i><sup>0</sup></button>
-                            <div class="dropdown-card">
+                        <li class="header-item"><a type="button" href="{{url("messages")}}" class="header-widget"><i
+                                    class="fas fa-envelope"></i><sup>0</sup></a>
+                            {{-- <div class="dropdown-card">
                                 <div class="dropdown-header">
                                     <h5>message (2)</h5><a href="<?= URL::asset('/') ?>">view all</a>
                                 </div>
@@ -132,7 +132,7 @@ $cats = category::all();
                                             </div>
                                         </a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </li>
                     </ul>
 
@@ -256,6 +256,14 @@ $cats = category::all();
             </div>
         </div>
     </aside>
+    
+
+
+    @yield('content')
+
+
+    @if ("messages" != request()->segment(1))
+
     <nav class="mobile-nav">
         <div class="container">
             <div class="mobile-group"><a href="<?= URL::asset('/') ?>" class="mobile-widget"><i
@@ -269,10 +277,6 @@ $cats = category::all();
     </nav>
 
 
-    @yield('content')
-
-
-    @if ("messages" != request()->segment(1))
     <footer class="footer-part">
         <div class="container">
             <div class="row newsletter">

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Zebra_Image;
@@ -14,28 +15,85 @@ use Zebra_Image;
 class Utils
 {
 
-    public static function get_chat_thread($sender,$receiver,$product)
+    public static function show_response($status = 0, $code = 0, $body = "")
     {
-        if($sender == $receiver){
+        $d['status'] = $status;
+        $d['code'] = $code;
+        $d['body'] = $body;
+        print_r(json_encode($d));
+        die();
+    }
+    public static function get_chat_threads($user_id)
+    {
+
+        $threads = Chat::where(
+            "sender",$user_id
+        )
+        ->orWhere('receiver', $user_id)
+        ->orderByDesc('id')
+        ->get(); 
+       
+        $done_ids = array();
+        $ready_threads = array();
+        foreach ($threads as $key => $value) {
+            if(in_array($value->thread,$done_ids)){
+                continue;
+            }
+            $done_ids[] = $value->thread;
+            $ready_threads[] = $value;
+        } 
+        return $ready_threads;
+    }
+
+
+    public static function get_chat_thread($sender, $receiver, $product)
+    {
+        if ($sender == $receiver) {
             return null;
         }
-        $thread = $sender."-".$receiver."-".$product;
+        $thread = $sender . "-" . $receiver . "-" . $product;
+
+        $results = DB::select(
+            'select * from chats where 
+                (sender = :sender AND
+                receiver = :receiver AND
+                product_id = :product)
+                OR 
+                (sender = :_receiver AND
+                receiver = :_sender AND
+                product_id = :_product) 
+                ',
+            [
+                'sender' => $sender,
+                'receiver' => $receiver,
+                'product' => $product,
+                '_sender' => $sender,
+                '_receiver' => $receiver,
+                '_product' => $product
+            ]
+        );
+        if (
+            $results != null &&
+            !empty($results)
+        ) {
+            $thread = $results[0]->thread;
+        }
 
         return $thread;
     }
 
     public static function get_file_url($link)
     {
-        $link = str_replace("public/","",$link);
-        $link = str_replace("public","",$link);
-        $link = "storage/".$link;        
+        $link = str_replace("public/", "", $link);
+        $link = str_replace("public", "", $link);
+        $link = "storage/" . $link;
         return $link;
     }
 
     public static function make_slug($str)
     {
         $slug =  strtolower(Str::slug($str, "-"));
- 
+
         if (
             (!empty(Product::where("slug", $slug)->First())) ||
             (!empty(Profile::where("username", $slug)->First()))
@@ -73,13 +131,13 @@ class Utils
                     $img['error'] = $files['error'][$i];
                     $img['size'] = $files['size'][$i];
 
- 
-                    $path = Storage::putFile('/', $img['tmp_name']); 
-                    
-                
 
-                    $path_not_optimized =  "storage/".$path;
-                    $path_optimized = "storage/thumb_".$path;
+                    $path = Storage::putFile('/', $img['tmp_name']);
+
+
+
+                    $path_not_optimized =  "storage/" . $path;
+                    $path_optimized = "storage/thumb_" . $path;
                     $thumbnail = Utils::create_thumbail(
                         array(
                             "source" => $path_not_optimized,
@@ -132,7 +190,7 @@ class Utils
                     die();
                     //dd("");
         */
- 
+
         $image = new Zebra_Image();
 
         $image->auto_handle_exif_orientation = false;
