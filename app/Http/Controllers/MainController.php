@@ -92,14 +92,12 @@ class MainController extends Controller
 
     public function register(Request  $request)
     {
-        if (isset($_POST['phone_number'])) {
+        if (isset($_POST['first_name'])) {
             $validated = $request->validate([
                 'phone_number' => 'required|max:14|min:5',
                 'password' => 'required|max:100|min:6',
             ]);
-
-
-
+ 
             if ($request->input('password') !=  $request->input('password1')) {
                 $errors['password1'] = "Password don't match";
                 return redirect('register')

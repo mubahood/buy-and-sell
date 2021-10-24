@@ -7,7 +7,7 @@
     <div class="product-content">
         <ol class="breadcrumb product-category">
             <li><i class="fas fa-tags"></i></li>
-            <li class="breadcrumb-item"><a href="#">{{$item->category->name}}</a></li>
+            <li class="breadcrumb-item"><a href="{{url($item->category->slug)}}">{{$item->category->name}}</a></li>
         </ol>
         <h5 class="product-title"><a href="<?= URL::asset('/') ?>{{$item->slug}}">{{$item->name}}</a></h5>
         <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>{{$item->country->name}},
@@ -19,7 +19,7 @@
                     @else
                     Negotiable
                     @endif</span></h5>
-            <div class="product-btn"><a href="javascript:;" title="Compare" class="fas fa-compress"></a><button
+            <div class="product-btn"><a href="{{url($item->slug)}}" title="Compare" class="fas fa-compress"></a><button
                     type="button" title="Wishlist" class="far fa-heart"></button></div>
         </div>
     </div>

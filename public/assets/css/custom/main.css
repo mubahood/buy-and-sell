@@ -1194,11 +1194,11 @@ textarea.form-control {
 }
 
 .product-card {
-    border-radius: 8px;
-    margin-bottom: 30px;
+    border-radius: 0px;
+    margin-bottom: 0px;
     background: var(--chalk);
     overflow: hidden;
-    border: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     transition: all linear .3s;
     -webkit-transition: all linear .3s;
     -moz-transition: all linear .3s;
@@ -1387,8 +1387,9 @@ textarea.form-control {
 }
 
 .product-price {
+    color: var(--primary);
     font-weight: 700;
-    font-family: sans-serif
+    font-family: sans-serif,
 }
 
 .product-price span {
@@ -3509,11 +3510,10 @@ textarea.form-control {
 }
 
 .product-widget {
-    padding: 20px 15px 15px;
-    border-radius: 6px;
+    border-radius: 0px;
     margin-bottom: 30px;
-    background: var(--chalk);
-    border: 1px solid var(--border)
+    padding-right: 10px;
+    border-right: 1px solid var(--border)
 }
 
 .product-widget-title {
@@ -4652,4 +4652,26 @@ textarea.form-control {
     .dash-avatar a img {
         width: 120px
     }
+}
+
+.active_tab {
+    font-family: Arial, sans-serif;
+    font-size: larger;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--primary);
+    border-bottom: solid 2px var(--primary);
+}
+
+._tab {
+    font-family: Arial, sans-serif;
+    font-size: larger;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--gray);
+    border-bottom: white 2px var(--primary);
+}
+
+._tab:hover {
+    color: var(--gray);
 }

@@ -22,10 +22,16 @@
 </head>
 
 @php
+$this_url = url("/");
+if(isset($_SERVER['PATH_INFO'])){
+$this_url = url($_SERVER['PATH_INFO']);
+}
+
 $key_word = "";
 if(isset($_GET['search'])){
 if(strlen(isset($_GET['search']))>0){
 $key_word = trim($_GET['search']);
+
 }
 }
 
@@ -35,6 +41,10 @@ $cats = category::all();
 @endphp
 
 <body>
+
+
+    @if ("login" != request()->segment(1))
+    @if ("register" != request()->segment(1))
     <header class="header-part">
         <div class="container">
             <div class="header-content">
@@ -43,7 +53,7 @@ $cats = category::all();
                         class="header-logo"><img src="<?= URL::asset('assets/') ?>/images/logo.png" alt="logo"></a>
 
                 </div>
-                <form class="header-form" action="/">
+                <form action="{{$this_url}}" class="header-form" action="/">
                     <div class="header-search pl-3">
                         <input name="search" type="search" value="{{$key_word}}"
                             placeholder="Search, Whatever you need...">
@@ -252,13 +262,23 @@ $cats = category::all();
             </div>
         </div>
     </aside>
-    
+    @endif
+    @endif
 
 
     @yield('content')
 
 
     @if ("messages" != request()->segment(1))
+
+
+    @if (
+    "login" != request()->segment(1)
+    )
+
+    @if (
+    "register" != request()->segment(1)
+    )
 
     <nav class="mobile-nav">
         <div class="container">
@@ -410,6 +430,10 @@ $cats = category::all();
             </div>
         </div>
     </div>
+
+    @endif
+    @endif
+
     @endif
     <script src="{{ URL::asset('/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/popper.min.js') }}"></script>

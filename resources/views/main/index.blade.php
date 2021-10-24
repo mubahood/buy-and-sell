@@ -20,9 +20,22 @@ use App\Models\City;
 use App\Models\category;
 $cats = category::all();
 
+$this_url = url("/");
+if(isset($_SERVER['PATH_INFO'])){
+    $this_url = url($_SERVER['PATH_INFO']);
+}
+
 $is_searching = false;
 $key_word = "";
 $search_title = "";
+$product_tab = " _tab ";
+$supplier_tab = " _tab ";
+
+if(("products" == request()->segment(1))){
+$product_tab = " active_tab ";
+}else{
+$supplier_tab = " active_tab ";
+}
 
 if(isset($_GET['search'])){
 if(strlen(isset($_GET['search']))>0){
@@ -52,8 +65,7 @@ $cities = City::all();
                     <div class="col-md-6 col-lg-12">
                         <div class="product-widget">
                             <h6 class="product-widget-title">filter by category</h6>
-                            <form class="product-widget-form">
-                                <div class="product-widget-search"><input type="text" placeholder="search"></div>
+                            <form action="{{$this_url}}" class="product-widget-form">
                                 <ul class="product-widget-list product-widget-scroll">
                                     @foreach ($cats as $item)
                                     @php
@@ -80,8 +92,6 @@ $cities = City::all();
                                     </li>
                                     @endforeach
 
-                                </ul><button type="submit" class="product-widget-btn"><i
-                                        class="fas fa-broom"></i><span>Clear Filter</span></button>
                             </form>
                         </div>
                     </div>
@@ -89,7 +99,6 @@ $cities = City::all();
                         <div class="product-widget">
                             <h6 class="product-widget-title">Filter by cities</h6>
                             <form class="product-widget-form">
-                                <div class="product-widget-search"><input type="text" placeholder="Search"></div>
                                 <ul class="product-widget-list product-widget-scroll">
                                     <li class="product-widget-item">
                                         <div class="product-widget-checkbox"><input type="checkbox" id="chcek9">
@@ -145,8 +154,7 @@ $cities = City::all();
                                                 class="product-widget-text">Chicago</span><span
                                                 class="product-widget-number">(19)</span></label>
                                     </li>
-                                </ul><button type="submit" class="product-widget-btn"><i
-                                        class="fas fa-broom"></i><span>Clear Filter</span></button>
+                                </ul>
                             </form>
                         </div>
                     </div>
@@ -156,24 +164,27 @@ $cities = City::all();
             </div>
             <div class="col-lg-8 col-xl-9">
 
-                @if ($is_searching)
+
 
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="header-filter">
-                            <div class="">
-                                {{$search_title}}
-                            </div>
                             <div class="filter-action">
-                                Clear search
-                                <a href="/" title="Clear search" class="active ml-2"><i class="fa fa-times"></i></a>
+                                <a href="{{ url("products") }}" title="Clear search" class="{{$product_tab}}">Product
+                                    List</a>
+                                <a href="{{ url("suppliers") }}" class="{{$supplier_tab}} ml-2">Supplier List</a>
+
+                            </div>
+                            <div class="header-filter" style="margin-bottom: -7px">
+                                    {{$search_title}}
                             </div>
                         </div>
                     </div>
                 </div>
-                @endif
 
-                <div class="row">
+
+
+                {{-- <div class="row">
                     <div class="col-lg-12">
                         <div class="ad-feature-slider slider-arrow">
                             @foreach ($products as $item)
@@ -181,7 +192,7 @@ $cities = City::all();
                             @endforeach
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row ad-standard">
 
 
