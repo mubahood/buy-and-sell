@@ -34,7 +34,7 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => $_SERVER['DOCUMENT_ROOT'].'/storage',
-            'url' => env('APP_URL') . '',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 

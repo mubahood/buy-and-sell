@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -27,13 +28,14 @@ class UserController extends AdminController
         $grid = new Grid(new User());
 
         $grid->column('id', __('Id'));
+        $grid->column('created_at', __('Created'))->display(function ($item) {
+            return Carbon::parse($item)->diffForHumans();
+        })->sortable();
         $grid->column('name', __('Name'));
         $grid->column('email', __('Email'));
         $grid->column('email_verified_at', __('Verified'));
         $grid->column('password', __('Password'));
         $grid->column('remember_token', __('Remember token'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }

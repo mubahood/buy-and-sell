@@ -101,7 +101,7 @@ class Dashboard extends Controller
             $profile->phone_number = $request->input("phone_number");
             $profile->location = $request->input("location");
             $profile->about = $request->input("about");
-            $profile->services = $request->input("services");
+            $profile->category_id = $request->input("category_id");
             $profile->longitude = $request->input("longitude");
             $profile->latitude = $request->input("latitude");
             $profile->opening_hours = $request->input("opening_hours");

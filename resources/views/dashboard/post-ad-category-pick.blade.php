@@ -1,8 +1,8 @@
 @php
 $id = Auth::id();
 $user = Auth::user();
-$status = $user->account_status();
-if($status != "active"){
+
+if(!$user->active()){
 header("Location: ".route('complete_profile_request'));
 die();
 }
@@ -21,15 +21,15 @@ $cats = category::where("parent",0)->get();
 
 @section('content')
 @include('layouts.dashboard-header');
-<section class="adpost-part">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 ">
+<section class="adpost-part pt-0 pb-0">
+    <div class="container ">
+        <div class="row justify-content-center ">
+            <div class="col-lg-8  ">
                 <form class="adpost-form">
                     <div class="adpost-card pb-5">
                         <div class="adpost-title">
                             <h3 class="text-secondary text-center mb-3">STEP 1/2</h3>
-                            <h3>Select Ad category</h3>
+                            <h3 >Select Ad category</h3>
                         </div>
                         <ul class="adpost-plan-list">
 
@@ -58,7 +58,7 @@ $cats = category::where("parent",0)->get();
                                                 <a href="{{ url("post-ad/".$sub_cat->slug) }}"
                                                     ><h6>{{ $sub_cat->name }} </h6>
                                                 </a>
-                                            </div> 
+                                            </div>
                                             @endforeach
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@ $cats = category::where("parent",0)->get();
 
                             </div>
 
- 
+
                         </ul>
                     </div>
 

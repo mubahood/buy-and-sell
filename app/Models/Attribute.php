@@ -13,12 +13,22 @@ class Attribute extends Model
         return $this->belongsTo(category::class);
     }
 
+    protected $fillable = [
+        'name',
+        'type',
+        'options',
+        'units',
+        'is_required',
+        'description',
+        'slug',
+        'image',
+    ];
+
     public static function boot()
     {
         parent::boot();
 
         self::creating(function ($model) {
-             
         });
 
         self::created(function ($model) {
@@ -27,7 +37,7 @@ class Attribute extends Model
 
         self::updating(function ($model) {
             // ... code here
-            
+
         });
 
         self::updated(function ($model) {

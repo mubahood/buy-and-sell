@@ -14,6 +14,21 @@ use Zebra_Image;
 
 class Utils
 {
+    public static function tell_status($status)
+    {
+        if (!$status)
+            return '<span class="badge badge-info">Pending</span>';
+        if ($status == 0)
+            return '<span class="badge badge-info">Pending</span>';
+        if ($status == 1)
+            return '<span class="badge badge-primary">Accepted</span>';
+        if ($status == 2)
+            return '<span class="badge badge-warning">Halted</span>';
+        if ($status == 3)
+            return '<span class="badge badge-danger">Rejected</span>';
+        else
+            return '<span class="badge badge-danger">Rejected</span>';
+    }
 
     public static function show_response($status = 0, $code = 0, $body = "")
     {
@@ -27,21 +42,22 @@ class Utils
     {
 
         $threads = Chat::where(
-            "sender",$user_id
+            "sender",
+            $user_id
         )
-        ->orWhere('receiver', $user_id)
-        ->orderByDesc('id')
-        ->get(); 
-       
+            ->orWhere('receiver', $user_id)
+            ->orderByDesc('id')
+            ->get();
+
         $done_ids = array();
         $ready_threads = array();
         foreach ($threads as $key => $value) {
-            if(in_array($value->thread,$done_ids)){
+            if (in_array($value->thread, $done_ids)) {
                 continue;
             }
             $done_ids[] = $value->thread;
             $ready_threads[] = $value;
-        } 
+        }
         return $ready_threads;
     }
 
@@ -196,7 +212,7 @@ class Utils
         $image->auto_handle_exif_orientation = false;
         $image->source_path = $params['source'];
         $image->target_path = $params['target'];
-        
+
 
 
         $image->jpeg_quality = 75;

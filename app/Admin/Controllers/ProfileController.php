@@ -3,6 +3,8 @@
 namespace App\Admin\Controllers;
 
 use App\models\Profile;
+use App\models\Utils;
+use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -16,7 +18,7 @@ class ProfileController extends AdminController
      *
      * @var string
      */
-    protected $title = 'Profile';
+    protected $title = 'Profiles';
 
     /**
      * Make a grid builder.
@@ -26,37 +28,19 @@ class ProfileController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Profile());
-
+        $grid->disableCreateButton();
+        
         $grid->column('id', __('Id'));
-        $grid->column('created_at', __('Created at'));
-
-        $grid->created_at()->display(function ($category_id) {
-            return $category_id;
-        });
-
-        #$grid->column('updated_at', __('Updated at'));
-        #$grid->column('user_id', __('User id'));
-        $grid->column('first_name', __('First name'));
-        $grid->column('last_name', __('Last name'));
-        $grid->column('company_name', __('Company name'));
-        #$grid->column('email', __('Email'));
-        #$grid->column('phone_number', __('Phone number'));
-        #$grid->column('location', __('Location'));
-        #$grid->column('about', __('About'));
-        #$grid->column('services', __('Services'));
-        #$grid->column('longitude', __('Longitude'));
-        #$grid->column('latitude', __('Latitude'));
-        #$grid->column('division', __('Division'));
-        #$grid->column('opening_hours', __('Opening hours'));
-        #$grid->column('profile_photo', __('Profile photo'));
-        #$grid->column('cover_photo', __('Cover photo'));
-        #$grid->column('facebook', __('Facebook'));
-        #$grid->column('twitter', __('Twitter'));
-        #$grid->column('whatsapp', __('Whatsapp'));
-        #$grid->column('youtube', __('Youtube'));
-        #$grid->column('instagram', __('Instagram'));
-        #$grid->column('last_seen', __('Last seen'));
-        $grid->column('status', __('Status'));
+        $grid->column('created_at', __('Created'))->display(function ($item) {
+            return Carbon::parse($item)->diffForHumans();
+        })->sortable();
+        $grid->column('first_name', __('Name'))->display(function ($first_name) {
+            return $this->first_name . " " . $this->last_name;
+        })->sortable();
+        $grid->column('company_name', __('Company'))->sortable();
+        $grid->column('status', __('Status'))->display(function ($status) {
+            return  Utils::tell_status($status);
+        })->sortable();
 
         return $grid;
     }
@@ -100,7 +84,7 @@ class ProfileController extends AdminController
             return '<img width="200" src=' . URL::asset('storage/' . str_replace("public/", "", $pic->thumbnail)) . ' />';
         });
 
- 
+
         $show->field('facebook', __('Facebook'));
         $show->field('twitter', __('Twitter'));
         $show->field('whatsapp', __('Whatsapp'));
@@ -123,34 +107,37 @@ class ProfileController extends AdminController
     {
         $form = new Form(new Profile());
 
-        $form->number('user_id', __('User id'));
-        $form->text('first_name', __('First name'));
-        $form->text('last_name', __('Last name'));
-        $form->text('company_name', __('Company name'));
-        $form->email('email', __('Email'));
-        $form->text('phone_number', __('Phone number'));
-        $form->text('location', __('Location'));
-        $form->textarea('about', __('About'));
-        $form->text('services', __('Services'));
-        $form->text('longitude', __('Longitude'));
-        $form->text('latitude', __('Latitude'));
-        $form->text('division', __('Division'));
-        $form->text('opening_hours', __('Opening hours'));
-        $form->text('profile_photo', __('Profile photo'));
-        $form->text('cover_photo', __('Cover photo'));
-        $form->text('facebook', __('Facebook'));
-        $form->text('twitter', __('Twitter'));
-        $form->text('whatsapp', __('Whatsapp'));
-        $form->text('youtube', __('Youtube'));
-        $form->text('instagram', __('Instagram'));
-        $form->text('last_seen', __('Last seen'));
-        $form->text('status', __('Status'));
+        $form->display('user_id', __('User id'));
+        $form->display('first_name', __('First name'));
+        $form->display('last_name', __('Last name'));
+        $form->display('company_name', __('Company name'));
+        $form->display('email', __('Email'));
+        $form->display('phone_number', __('Phone number'));
+        $form->display('location', __('Location'));
 
-        $options["active"] = "active";
-        $options["pending"] = "pending";
-        $options["blocked"] = "blocked";
-        $form->select('status')->options($options)->rules('required');
-
+        $form->radio('status', __('Status'))
+            ->options([
+                '1' => 'Accepted',
+                '2' => 'Halted',
+                '3' => 'Rejected',
+            ])
+            ->required()
+            ->when('in', [2, 3], function (Form $form) {
+                $form->textarea('status_comment', 'Enter status comment (Remarks)')
+                    ->help("Please specify with a comment");
+            });
+        $form->disableCreatingCheck();
+        $form->tools(function (Form\Tools $tools) {
+            $tools->disableDelete();
+            $tools->disableView();
+        });
+        $form->disableCreatingCheck();
+        $form->disableEditingCheck();
+        $form->disableViewCheck();
+        $form->tools(function (Form\Tools $tools) {
+            $tools->disableDelete();
+            $tools->disableView();
+        });
         return $form;
     }
 }

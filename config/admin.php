@@ -157,7 +157,7 @@ return [
 
         // Image and file upload path under the disk above.
         'directory' => [
-            'image' => '/',
+            'image' => '/storage',
             'file'  => 'files',
         ],
     ],
@@ -289,7 +289,7 @@ return [
     | "sidebar-mini".
     |
     */
-    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+    'layout' => ['fixed'],
 
     /*
     |--------------------------------------------------------------------------

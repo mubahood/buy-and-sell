@@ -12,6 +12,23 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function active()
+    {
+        if (!isset($this->profile)) {
+            return false;
+        }
+        if ($this->profile == null) {
+            return false;
+        }
+        if (!isset($this->profile->status)) {
+            return false;
+        }
+        if ($this->profile->status == 1) {
+            return true;
+        }
+        return false;
+    }
+
     public function account_status()
     {
         if (!$this->profile) {
@@ -68,6 +85,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone_number',
     ];
 
     /**

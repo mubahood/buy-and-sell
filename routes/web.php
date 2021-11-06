@@ -21,6 +21,11 @@ Route::get('/profile', [Dashboard::class, 'profile'])->middleware(Authenticate::
 Route::get('/logout', [Dashboard::class, 'logout'])->middleware(Authenticate::class);
 Route::match(['get', 'post'],'/messages/', [Dashboard::class, 'messages'])->name("messages")->middleware(Authenticate::class);
 Route::match(['get', 'post'],'/messages/{thread}', [Dashboard::class, 'messages'])->name("messages")->middleware(Authenticate::class);
+Route::match(['get', 'post'],'test/{id}', [MainController::class, 'test']);
+Route::match(['get', 'post'],'test', [
+    'before' => 'csrf',
+
+    MainController::class, 'test']);
 Route::match(['get', 'post'],'/{id}', [MainController::class, 'slugSwitcher']);
 
 /*Route::get('/', function () {

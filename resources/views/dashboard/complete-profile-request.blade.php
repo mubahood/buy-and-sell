@@ -1,3 +1,9 @@
+@php
+    $user = Auth::user();
+    if($user->active()){
+        header("Location: /");
+    }
+@endphp
 @extends('layouts.layout')
 
 @section('title', 'Page Title')
@@ -21,11 +27,11 @@ if($status == "active"){
 }
 $is_pending = false;
 if($user->profile){
-if($user->profile->cover_photo){
-if(strlen($user->profile->cover_photo)>5){
-$is_pending = true;
-}
-}
+    if(isset($user->profile->status)){
+    if($user->profile->status == 0){
+        $is_pending = true;
+    }
+    }
 }
 
 
@@ -52,7 +58,7 @@ $is_pending = true;
                             <a href="contact" class="btn btn-inline mt-4 mb-2 post-btn"><i
                                     class="fas fa-phone"></i><span>CONTACT US</span></a>
                             @else
-                            <h2 class="h3 text-center mt-0">Complete Your Profile.</h2>
+                            <h2 class="h3 text-center mt-0">Create Agent Profile.</h2>
                             <p class="text-left mb-2">Dear <b>{{$user->email}}</b>, we are very keen about everything
                                 that
                                 is posted on this site.
@@ -62,10 +68,10 @@ $is_pending = true;
                             <p class="text-left mb-2">There, you are requested to accomplish you profile, submit it for
                                 review, once we very
                                 it, then you will ba able to prost.</p>
-                            <P class="text-left mb-2">Pleas click on the the "complete profile" button below to
+                            <P class="text-left mb-2">Pleas click on the the "Create Agent Profile" button below to
                                 accomplish your profile.</P>
                             <a href="{{ url('profile-edit') }}/{{ $id }}" class="btn btn-inline mt-4 mb-2 post-btn"><i
-                                    class="fas fa-plus-circle"></i><span>COMPLETE PROFILE</span></a>
+                                    class="fas fa-plus-circle"></i><span>Create Agent Profile</span></a>
                             @endif
 
                         </div>
@@ -73,6 +79,7 @@ $is_pending = true;
                 </div>
             </div>
         </div>
+
 
 
 

@@ -23,7 +23,7 @@ $cities = City::all();
                 <form method="POST" action="{{ url('post-ad') }}" enctype="multipart/form-data" class="adpost-form">
                     @csrf
                     <input type="text" name="category_id" id="category_id" value="{{ $cats->id }}" hidden>
-                    <div class="adpost-card">
+                    <div class="adpost-card mt-4">
                         <div class="row border-bottom pb-3 mb-3">
                             <div class="col-md-6">
                                 <div class="">
@@ -32,7 +32,7 @@ $cities = City::all();
                             </div>
                             <div class="col-md-6">
                                 <div class=" text-right text-dark">
-                                    <img width="20" src="{{URL::asset('storage')."/".$cats->image}}"> {{ $cats->name }}
+                                    <img width="20" src="{{URL::asset('storage')." /".$cats->image}}"> {{ $cats->name }}
                                 </div>
                             </div>
                         </div>
@@ -49,8 +49,9 @@ $cities = City::all();
                                         <div class="form-group"><label class="form-label" for="{{ $item->name }}">
                                                 @if ($item->is_required)
                                                 <span class="text-danger">*</span>
-                                                @endif </label>
-                                            {{$item->name}}
+                                                @endif
+                                                {{$item->name}}
+                                            </label>
                                             @php
                                             $_options = (explode(",",$item->options));
                                             @endphp
@@ -58,8 +59,8 @@ $cities = City::all();
                                                 @for ($i = 0; $i < count($_options); $i++) <div class="col-md-4">
                                                     <small class="d-block">
                                                         <input type="checkbox" value="{{ $_options[$i]  }}"
-                                                            id="{{ $_options[$i] }}" name="{{ "__".$item->id."[]" }}" 
-                                                            @if ($item->is_required)
+                                                            id="{{ $_options[$i] }}" name="{{ " __".$item->id."[]" }}"
+                                                        @if ($item->is_required)
                                                         required
                                                         @endif >
                                                         <label for="{{ $_options[$i] }}">{{ $_options[$i] }}</label>
@@ -74,18 +75,21 @@ $cities = City::all();
                                     @endif
 
                                     @if ($item->type == "radio")
-                                    <div class="form-group"><label class="form-label" for="{{ $item->name }}">
+                                    <div class="form-group">
+                                        <label class="form-label" for="{{ $item->name }}">
                                             @if ($item->is_required)
                                             <span class="text-danger">*</span>
-                                            @endif </label>
-                                        {{$item->name}}
+                                            @endif
+                                            {{$item->name}}
+                                        </label>
+
                                         @php
                                         $_options = (explode(",",$item->options));
                                         @endphp
                                         @for ($i = 0; $i < count($_options); $i++) <small class="d-block">
-                                            <input type="radio" value="{{ $_options[$i] }}"
-                                                id="{{ $_options[$i] }}" name="{{ "__".$item->id }}" 
-                                                @if ($item->is_required)
+                                            <input type="radio" value="{{ $_options[$i] }}" id="{{ $_options[$i] }}"
+                                                name="{{ " __".$item->id }}"
+                                            @if ($item->is_required)
                                             required
                                             @endif >
                                             <label for="{{ $_options[$i] }}">{{ $_options[$i] }}</label>
@@ -102,10 +106,11 @@ $cities = City::all();
                                     <div class="form-group"><label class="form-label" for="{{ $item->name }}">
                                             @if ($item->is_required)
                                             <span class="text-danger">*</span>
-                                            @endif </label>
-                                        {{$item->name}}
+                                            @endif
+                                            {{$item->name}}
+                                        </label>
 
-                                        <select value="{{ old("__".$item->id ) }}" id="{{ $item->name }}"
+                                        <select value="{{ old(" __".$item->id ) }}" id="{{ $item->name }}"
                                             name="{{ "__".$item->id }}" @if ($item->is_required)
                                             required
                                             @php
@@ -127,11 +132,12 @@ $cities = City::all();
                                     <div class="form-group"><label class="form-label" for="{{ $item->name }}">
                                             @if ($item->is_required)
                                             <span class="text-danger">*</span>
-                                            @endif </label>
-                                        {{$item->name}}
+                                            @endif
+                                            {{$item->name}}
+                                        </label>
 
-                                        <input type="text" value="{{ old("__".$item->id ) }}" id="{{ $item->name }}"
-                                            name="{{ "__".$item->id }}" @if ($item->is_required)
+                                        <input type="text" value="{{ old(" __".$item->id ) }}" id="{{ $item->name }}"
+                                        name="{{ "__".$item->id }}" @if ($item->is_required)
                                         required
                                         @endif class="form-control">
                                         @error('name')
@@ -151,8 +157,8 @@ $cities = City::all();
                                             <small>({{$item->units}})</small>
                                             @endif
                                         </label>
-                                        <input type="number" value="{{ old("__".$item->id ) }}" id="{{ $item->name }}"
-                                            name="{{ "__".$item->id }}" @if ($item->is_required)
+                                        <input type="number" value="{{ old(" __".$item->id ) }}" id="{{ $item->name }}"
+                                        name="{{ "__".$item->id }}" @if ($item->is_required)
                                         required
                                         @endif class="form-control">
                                         @error('name')
@@ -173,7 +179,7 @@ $cities = City::all();
                                             <small>({{$item->units}})</small>
                                             @endif
                                         </label>
-                                        <textarea name="{{ "__".$item->id }}" id="{{ $item->name }}" @if ($item->is_required)
+                                        <textarea name="{{ " __".$item->id }}" id="{{ $item->name }}" @if ($item->is_required)
                                                 required
                                                 @endif class="form-control">{{ old("__".$item->id ) }}</textarea>
                                         @error('name')
@@ -186,12 +192,12 @@ $cities = City::all();
                             </div>
                             @endforeach
 
-                            
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group"><label class="form-label" for="name">Product title
-                                        </label><input type="text" class="form-control" id="name" required
-                                            name="name" placeholder="Enter your pricing amount">
+                                        </label><input type="text" class="form-control" id="name" required name="name"
+                                            placeholder="Enter your pricing amount">
                                         @error('name')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -234,7 +240,7 @@ $cities = City::all();
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-12">
                                     <div class="form-group"><label class="form-label" for="price">Starting
                                             Price</label><input type="number" class="form-control" id="price" required
