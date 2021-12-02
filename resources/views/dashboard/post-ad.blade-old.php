@@ -5,8 +5,6 @@
 @section('head')
 
 <link rel="stylesheet" href="{{ url('vendor/laravel-admin/bootstrap-fileinput/css/fileinput.min.css?v=4.5.2') }}">
-<link rel="stylesheet" href="{{ url('vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{ url('vendor/laravel-admin/sweetalert2/dist/sweetalert2.css')}}">
 {{--
 <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/ad-post.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/bootstrap-icons.min.css') }} " />
@@ -28,11 +26,12 @@ $cats = category::where('slug', $seg)->firstOrFail();
 $countries = Country::all();
 $cities = City::all();
 @endphp
+
+@if (false)
+
+
 <section class="adpost-part pt-0">
     <div class="container">
-
-
-
         <div class="row">
             <div class="col-lg-10">
                 <form method="POST" action="{{ url('post-ad') }}" enctype="multipart/form-data" class="adpost-form">
@@ -224,10 +223,10 @@ $cities = City::all();
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="form-group"><label class="form-label">Product photos</label>
-                                        <input type="file" id="input-b6a" name="images[]" required
-                                            accept=".jpeg,.jpg,.png,.gif" required
-                                            data-allowed-file-extensions='["jpeg", "jpg","png","gif"]' multiple>
+                                    <div class="form-group"><label class="form-label">product image</label>
+                                        <input type="file" id="kv-explorer" name="images[]" required
+                                            value="{{ old('images') }}" accept=".jpeg,.jpg,.png,.gif"
+                                            class="form-control" multiple>
                                         @error('images')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -281,85 +280,84 @@ $cities = City::all();
                                         @enderror
                                     </div>
                                 </div>
-
                             </div>
 
-                            <div class="row mb-5">
-                                <div class="col-12">
-                                    <button class="btn btn-primary btn-lg float-right"><i
-                                            class="fas fa-check-circle"></i><span>Upload
-                                            Product</span></button>
-                                </div>
 
-                            </div>
+                            <br>
+                            <br>
+                            <br>
+
                         </div>
-
-
-
                         <div class="col-md-2"></div>
                     </div>
 
             </div>
 
 
-
+            <div class="adpost-card pb-2">
+                <div class="adpost-agree">
+                    <div class="form-group"><input type="checkbox" class="form-check"></div>
+                    <p>Send me Trade Email/SMS Alerts for people looking to buy mobile handsets in www By
+                        clicking "Post", you agree to our <a href="#">Terms of Use</a>and <a href="#">Privacy
+                            Policy</a>and acknowledge that you are the rightful owner of
+                        this item and using Trade to find a genuine buyer.</p>
+                </div>
+                <div class="form-group text-right"><button class="btn btn-inline"><i
+                            class="fas fa-check-circle"></i><span>publish service</span></button></div>
+            </div>
             </form>
         </div>
     </div>
     </div>
 </section>
 
+@endif
+
+
+<div class="row container m-5 p-5">
+    <div class="col-md-12">
+        <div class="form-group border rounded p-5">
+            <label for="pic">Profile pic</label>
+            <input type="file" id="input-100" name="input-100[]" accept="image/*" multiple>
+
+        </div>
+    </div>
+</div>
+
 @endsection
 <script>
     window.addEventListener('DOMContentLoaded', (event) => {
 
-        Swal.fire({
-                title: 'Are you sure you want to delete this product?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: 'Delete product',
-                denyButtonText: `Don't delete product`,
-            }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                Swal.fire('Saved!', '', 'success')
-            } else if (result.isDenied) {
-                Swal.fire('Changes are not saved', '', 'info')
-            }
+        $("#input-100").fileinput({   
+        uploadExtraData: {
+            'uploadToken': 'SOME-TOKEN', // for access control / security 
+        },
+        maxFileCount: 5,
+        allowedFileTypes: ['image'],    // allow only images
+        showCancel: true,
+        initialPreviewAsData: false,
+        overwriteInitial: false,
+        // initialPreview: [],          // if you have previously uploaded preview files
+        // initialPreviewConfig: [],    // if you have previously uploaded preview files
+        theme: 'fas', 
+    }).on('fileuploaded', function(event, previewId, index, fileId) {
+        console.log('File Uploaded', 'ID: ' + fileId + ', Thumb ID: ' + previewId);
+    }).on('fileuploaderror', function(event, data, msg) {
+        console.log('File Upload Error', 'ID: ' + data.fileId + ', Thumb ID: ' + data.previewId);
+    }).on('filebatchuploadcomplete', function(event, preview, config, tags, extraData) {
+        console.log('File Batch Uploaded', preview, config, tags, extraData);
+    });
+
+        $("#pic").fileinput({
+
+            append: true 
         });
 
+        
+        // $("#kv-explorer").fileinput({
+        //     theme: 'fas',
 
-
-        $("#input-b6a").fileinput({
-            dropZoneEnabled: false,
-             maxFileCount: 10,
-            uploadUrl: "http://localhost/file-upload.php",
-            enableResumableUpload: true,
-            resumableUploadOptions: {
-               // uncomment below if you wish to test the file for previous partial uploaded chunks
-               // to the server and resume uploads from that point afterwards
-               // testUrl: "http://localhost/test-upload.php"
-            },
-            uploadExtraData: {
-                'uploadToken': 'SOME-TOKEN', // for access control / security 
-            },
-            maxFileCount: 5,
-            allowedFileTypes: ['image'],    // allow only images
-            showCancel: true,
-            initialPreviewAsData: true,
-            overwriteInitial: false,
-            // initialPreview: [],          // if you have previously uploaded preview files
-            // initialPreviewConfig: [],    // if you have previously uploaded preview files
-            theme: 'fas',
-
-        }).on('fileuploaded', function(event, previewId, index, fileId) {
-            console.log('File Uploaded', 'ID: ' + fileId + ', Thumb ID: ' + previewId);
-        }).on('fileuploaderror', function(event, data, msg) {
-            console.log('File Upload Error', 'ID: ' + data.fileId + ', Thumb ID: ' + data.previewId);
-        }).on('filebatchuploadcomplete', function(event, preview, config, tags, extraData) {
-            console.log('File Batch Uploaded', preview, config, tags, extraData);
-        });
- 
+        // });
 
         const countries = $("#countries");
         const cities = JSON.parse('<?php echo json_encode($cities); ?>');
@@ -385,7 +383,6 @@ $cities = City::all();
 <script src="{{ url('vendor/laravel-admin/bootstrap-fileinput/js/fileinput.min.js?v=4.5.2') }} " type="text/javascript">
 </script>
 <script src="{{ url('vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js') }} " type="text/javascript"></script>
-<script src="{{ url('vendor/laravel-admin/sweetalert2/dist/sweetalert2.min.js') }} " type="text/javascript"></script>
 {{-- <script src="{{ URL::asset('/assets/js/vendor/fileinput.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('/assets/js/vendor/sortable.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('/assets/js/vendor/fileinput.js') }}" type="text/javascript"></script>

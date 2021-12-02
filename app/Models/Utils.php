@@ -215,7 +215,7 @@ class Utils
 
 
 
-        $image->jpeg_quality = 75;
+        $image->jpeg_quality = 90;
         if (isset($params['quality'])) {
             $image->jpeg_quality = $params['quality'];
         }

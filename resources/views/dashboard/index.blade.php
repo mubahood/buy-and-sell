@@ -1,15 +1,30 @@
+@php
+use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
+if(isset($_GET['delete'])){
+$delete = (int)($_GET['delete']);
+if($delete>0){
+
+$model = Product::find($delete);
+if($model!=null){
+$model->delete();
+}
+header('Location: '.url('dashboard'));
+die();
+}
+}
+@endphp
 @extends('layouts.layout')
 
 @section('title', 'Page Title')
 
 @section('head')
 <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/my-ads.css') }}">
+<link rel="stylesheet" href="{{ url('vendor/laravel-admin/sweetalert2/dist/sweetalert2.css')}}">
 @endsection
 
 @section('content')
 @php
-use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
 $user_id = Auth::id();
 $products = Product::where('user_id', $user_id)->get();
 @endphp
@@ -49,14 +64,7 @@ $products = Product::where('user_id', $user_id)->get();
                 <div class="product-media">
                     <div class="product-img"><img src="{{$item->get_thumbnail()}}" alt="{{$item->get_thumbnail()}}">
                     </div>
-                    <div class="cross-vertical-badge product-badge"><i class="fas fa-fire"></i><span>top
-                            niche</span></div>
-                    <div class="product-type"><span class="flat-badge booking">new</span></div>
-                    <ul class="product-action">
-                        <li class="view"><i class="fas fa-eye"></i><span>264</span></li>
-                        <li class="click"><i class="fas fa-mouse"></i><span>134</span></li>
-                        <li class="rating"><i class="fas fa-star"></i><span>4.5/7</span></li>
-                    </ul>
+                     
                 </div>
                 <div class="product-content">
                     <ol class="breadcrumb product-category">
@@ -66,13 +74,14 @@ $products = Product::where('user_id', $user_id)->get();
                     </ol>
                     <h5 class="product-title"><a href="{{ url($item->slug) }}">{{ $item->name }}</a></h5>
                     <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>{{ $item->category->name }},
-                            {{ $item->category->name }}</span><span><i
-                                class="fas fa-clock"></i>{{ $item->updated_at }}</span></div>
+                            {{ $item->category->name }}</span><span><i class="fas fa-clock"></i>{{ $item->updated_at
+                            }}</span></div>
                     <div class="product-info">
                         <h5 class="product-price">${{ $item->price }}<span>/starting price</span></h5>
                         <div class="product-btn">
-                            <a href="{{ url($item->slug) }}" title="Delete" class="fas fa-trash text-danger"></a><button type="button"
-                                title="Edit" class="far fa-edit"></button>
+                            <a href="javascript:;" data-id="{{$item->id}}" title="Delete"
+                                class="fas fa-trash text-danger delete"></a><button type="button" title="Edit"
+                                class="far fa-edit"></button>
                         </div>
                     </div>
                 </div>
@@ -83,4 +92,36 @@ $products = Product::where('user_id', $user_id)->get();
     @endif
     </div>
 </section>
+@endsection
+
+@section('foot')
+<script src="{{ url('vendor/laravel-admin/sweetalert2/dist/sweetalert2.min.js') }} " type="text/javascript"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+
+        $url = '<?= url('dashboard') ?>?delete=';
+        $('.delete').unbind('click').click(function() {
+
+            var id = $(this).data('id');
+            Swal.fire({
+                title: 'Are you sure you want to delete this product?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Delete product',
+                denyButtonText: `Don't delete product`,
+            }).then((result) => { 
+                if(result.value){
+                    window.location.href = $url+id; 
+                }
+                
+            });
+
+            
+
+
+        });
+
+    });
+
+</script>
 @endsection

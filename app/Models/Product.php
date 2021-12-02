@@ -4,12 +4,40 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Psy\CodeCleaner\ValidConstructorPass;
 
+use function PHPUnit\Framework\fileExists;
+
 class Product extends Model
 {
-    use HasFactory; 
+    use HasFactory;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($model) {
+
+            $thumbs = json_decode($model->images);
+            if ($thumbs != null) {
+                foreach ($thumbs as $key => $value) {
+                    if (isset($value->thumbnail)) {
+                        if (Storage::delete($value->thumbnail)) {
+                            //echo "GOOD thumbnail <hr>";
+                        }
+                    }
+
+                    if (isset($value->src)) {
+                        if (Storage::delete($value->src)) {
+                            // echo "GOOD  src <hr>";
+                        }
+                    }
+                }
+            }
+        });
+    }
 
     public function user()
     {
@@ -43,9 +71,10 @@ class Product extends Model
         return $this->belongsTo(category::class, "sub_category_id");
     }
 
-    public function get_name_short($min_length = 50){
-        if(strlen($this->name)>$min_length){
-            return substr($this->name,0,$min_length)."...";
+    public function get_name_short($min_length = 50)
+    {
+        if (strlen($this->name) > $min_length) {
+            return substr($this->name, 0, $min_length) . "...";
         }
         return $this->name;
     }
@@ -61,10 +90,10 @@ class Product extends Model
                     $thumb->thumbnail = str_replace("storage/", "", $thumb->thumbnail);
                     $thumb->thumbnail = str_replace("/storage", "", $thumb->thumbnail);
                     $thumb->thumbnail = str_replace("/", "", $thumb->thumbnail);
-                    $thumbnail = URL::asset('storage/'.$thumb->thumbnail);                    
+                    $thumbnail = URL::asset('storage/' . $thumb->thumbnail);
                 }
             }
-        } 
+        }
         return $thumbnail;
     }
 
@@ -75,12 +104,12 @@ class Product extends Model
             if (strlen($this->images) > 3) {
                 $images_json = json_decode($this->images);
                 foreach ($images_json as $key => $img) {
-                    $img->src = URL::asset('storage/'.str_replace("public/", "", $img->src));
-                    $img->thumbnail = URL::asset('storage/'.str_replace("public/", "", $img->thumbnail));
+                    $img->src = URL::asset('storage/' . str_replace("public/", "", $img->src));
+                    $img->thumbnail = URL::asset('storage/' . str_replace("public/", "", $img->thumbnail));
                     $images[] = $img;
                 }
             }
-        }  
+        }
         return $images;
     }
 

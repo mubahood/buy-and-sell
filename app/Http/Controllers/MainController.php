@@ -60,7 +60,7 @@ class MainController extends Controller
         $pro = Product::where('slug', $seg)->first();
         if ($pro) {
             return view('main.display-ad');
-            return;
+
         }
         return view('main.index');
     }

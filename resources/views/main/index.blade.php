@@ -26,6 +26,7 @@ if (isset($_SERVER['PATH_INFO'])) {
 $this_url = url($_SERVER['PATH_INFO']);
 }
 
+$seg = "";
 $is_searching = false;
 $show_products = false;
 $key_word = '';
@@ -54,14 +55,31 @@ $profiles = [];
 if (str_contains($product_tab, 'active_tab')) {
 $show_products = true;
 if ($is_searching) {
-$products = Product::where('name', 'LIKE', "%$key_word%")->get();
+$products = Product::where('name', 'LIKE', "%$key_word%")->paginate(2)->withQueryString();;
 $search_title = 'Found ' . count($products) . " search results for \"" . $key_word . "\"";
 } else {
-$products = Product::all();
+
+$conds['status'] = 0;
+$seg   = strtolower(request()->segment(1));
+if($seg!=null){
+    $cat = Category::where('slug',$seg)->first();
+    if($cat != null){
+        $conds['category_id'] = $cat->id;
+    }
+    
+    $city = City::where('name',$seg)->first();
+    if($city != null){
+        $conds['city_id'] = $city->id;
+    }
+ 
+}
+ 
+$products = Product::where($conds)->paginate(2)->withQueryString();
+ 
 }
 } else {
 $show_products = false;
-$profiles = Profile::where('status', 1)->get();
+$profiles = Profile::where('status', 1)->paginate(2)->withQueryString();
 }
 
 $cities = City::all();
@@ -93,8 +111,7 @@ $cities = City::all();
         <div class="row content-reverse">
             <div class="col-lg-4 col-xl-3">
                 <div class="row">
-
-
+ 
                     <div class="col-md-6 col-lg-12 ">
                         <div class="product-widget pr-4">
                             <h6 class="product-widget-title">Categories</h6>
@@ -121,7 +138,7 @@ $cities = City::all();
                                         <ul class="product-widget-dropdown" style="display: block;">
                                             @foreach ($item->sub_categories as $sub_item)
                                             <li>
-                                                <a href="{{ url($sub_item->slug) }}">{{ $sub_item->name }}
+                                                <a class="  {{ (strtolower($sub_item->slug) == $seg) ? ' text-primary ' : ' text-secondary ' }} " href="{{ url($sub_item->slug) }}">{{ $sub_item->name }}
                                                     <span class="text-dark">({{count($sub_item->products)}})</span></a>
                                             </li>
                                             @endforeach
@@ -139,10 +156,15 @@ $cities = City::all();
                                 <ul class="product-widget-list ">
 
                                     @foreach (City::all() as $item)
-                                    <li class="product-widget-item">
-                                        <div class="product-widget-checkbox"><input type="checkbox" id="chcek9">
-                                        </div><a href="{{ url($item->name) }}" class="product-widget-label text-secondary"
-                                            for="chcek9"><span class="product-widget-text">{{$item->name.",
+                                 
+                                    <li class="product-widget-item ">
+                                        <div class="product-widget-checkbox"><input
+                                            readonly
+                                            {{ (strtolower($item->name) == $seg) ? ' checked ' : '  ' }}
+                                            type="checkbox" id="chcek9">
+                                        </div><a href="{{ url($item->name) }}"
+                                            class="product-widget-label {{ (strtolower($item->name) == $seg) ? ' text-primary ' : ' text-secondary ' }} " for="chcek9"><span
+                                                class="product-widget-text">{{$item->name.",
                                                 ".$item->country->name}}</span><span
                                                 class="product-widget-number">({{count($item->products)}})</span></a>
                                     </li>
@@ -211,8 +233,27 @@ $cities = City::all();
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer-pagection">
-                            <p class="page-info">Showing 12 of 60 Results</p>
-                            <ul class="pagination">
+
+
+
+                            @if ($products!=null)
+
+                            <p class="page-info">Showing {{$products->count()}} of {{$products->total()}} Results</p>
+                            {{
+                            $products->onEachSide(2)->links('main.pagination')
+                            }}
+                            @endif
+
+                            @if ($profiles!=null)
+
+                            <p class="page-info">Showing {{$profiles->count()}} of {{$profiles->total()}} Results</p>
+                            {{
+                            $profiles->onEachSide(2)->links('main.pagination')
+                            }}
+                            @endif
+
+
+                            {{-- <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="#"><i
                                             class="fas fa-long-arrow-alt-left"></i></a></li>
                                 <li class="page-item"><a class="page-link active" href="#">1</a></li>
@@ -222,7 +263,7 @@ $cities = City::all();
                                 <li class="page-item"><a class="page-link" href="#">67</a></li>
                                 <li class="page-item"><a class="page-link" href="#"><i
                                             class="fas fa-long-arrow-alt-right"></i></a></li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>

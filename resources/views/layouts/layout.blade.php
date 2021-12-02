@@ -3,7 +3,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 <head>
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/vendor/bootstrap.min.css') }}">
+ 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Muhindo Mubaraka">
@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/index.css') }}">
+ 
+ 
+
+     
+
     @yield('head')
 </head>
 
@@ -438,11 +443,11 @@ $cats = category::all();
     <script src="{{ URL::asset('/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/popper.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/bootstrap.min.js') }}"></script>
-    <script src="{{ URL::asset('/assets/js/vendor/slick.min.js') }} "></script>
+    
     <script src="{{ URL::asset('/assets/js/custom/slick.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/custom/main.js') }} "></script>
 
-
+ 
     @yield('foot')
 </body>
 

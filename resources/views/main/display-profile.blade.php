@@ -34,8 +34,8 @@ $profile_pic = Utils::get_file_url($imgs->src);
         <div class="row">
             <div class="col-lg-8 pt-0 ">
 
-                <div class="row ad-standard pt-0 mt-0">
-                    <div class="card-body p-0" style="height: 300px; overflow-y: hidden;">
+                <div class="row ad-standard pt-0 mt-0 ">
+                    <div class="card-body p-0 mb-3" style="height: 300px; overflow-y: hidden;">
                         <img width="100%" src="{{$profile_pic}}" alt="avatar">
                     </div>
 
