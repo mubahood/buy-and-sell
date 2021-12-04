@@ -131,6 +131,7 @@ class MainController extends Controller
             $u['name'] = "";
             $u['email'] = trim(str_replace("+", "", $request->input("phone_number")));
             $u['phone_number'] = $u['email'];
+ 
 
             $old_user = User::where('email', $u['email'])->first();
             if ($old_user) {
@@ -150,10 +151,11 @@ class MainController extends Controller
                 die();
             }
 
-
             $u['password'] = Hash::make($request->input("password"));
             $users = User::create($u);
-
+            $pro = new Profile();
+            $pro->status = 0;
+            $pro->user_id = $users->id; 
             $credentials['email'] = $u['email'];
             $credentials['password'] = $request->input("password");
 

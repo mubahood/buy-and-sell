@@ -7,7 +7,7 @@
     <body>
         <section class="user-form-part">
             <div class="user-form-banner">
-                <div class="user-form-content"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo.png"
+                <div class="user-form-content"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo-1.png"
                             alt="logo"></a>
                     <h1>Sell your services, Buy whatever you need<span>...</span></h1>
                     <p>Anywhere accross the globe!</p>

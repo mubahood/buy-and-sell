@@ -37,6 +37,8 @@ if ($user_id < 0) { die('User not found.'); } $prof=Profile::where("user_id",$us
     <section class="adpost-part">
         <div class="container">
             <div class="row">
+                <div class="col-lg-2">
+                </div>
                 <div class="col-lg-8">
                     {{ Form::open(array('url' => 'profile-edit/'.$user_id,'files' => true) ) }}
 
@@ -51,7 +53,7 @@ if ($user_id < 0) { die('User not found.'); } $prof=Profile::where("user_id",$us
                         <input type="text" name="user_id" id="user_id" value="{{ $user_id }}" hidden>
                         <div class="adpost-card">
                             <div class="adpost-title">
-                                <h3>Create Agent Account</h3>
+                                <h3>Create agent account - profile</h3>
                             </div>
 
                             <div class="row">
@@ -93,7 +95,7 @@ if ($user_id < 0) { die('User not found.'); } $prof=Profile::where("user_id",$us
                                 <div class="col-md-6">
                                     <div class="form-group">
 
-                                        {{ Form::label('username', 'Company username',['class' => "form-label"]) }}
+                                        {{ Form::label('username', 'username',['class' => "form-label"]) }}
                                         {{ Form::text('username', null,['class' => "form-control", 'required' =>
                                         'required']) }}
 
@@ -121,8 +123,7 @@ if ($user_id < 0) { die('User not found.'); } $prof=Profile::where("user_id",$us
                                 <div class="col-md-6">
                                     <div class="form-group">
 
-                                        {{ Form::label('phone_number', 'Phone number',['class' => "form-label",
-                                        'required' => 'required']) }}
+                                        {{ Form::label('phone_number', 'Phone number',['class' => "form-label"]) }}
                                         {{ Form::text('phone_number', null,['class' => "form-control"]) }}
 
                                         @error('phone_number')
@@ -281,9 +282,9 @@ if ($user_id < 0) { die('User not found.'); } $prof=Profile::where("user_id",$us
                                 </div>
                             </div>
 
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group"><label for="division" class="form-label">District</label>,
+                                    <div class="form-group"><label for="division" class="form-label">District</label>
                                         <input type="text" value="{{ old('division',$prof->division) }}" name="division"
                                             id="division" class="form-control">
                                         @error('division')
@@ -291,12 +292,12 @@ if ($user_id < 0) { die('User not found.'); } $prof=Profile::where("user_id",$us
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group"><label for="whatsapp" class="form-label">whatsapp</label>
-                                        <input type="url" value="{{ old('whatsapp',$prof->whatsapp) }}" name="whatsapp"
+                                        <input type="text" value="{{ old('whatsapp',$prof->whatsapp) }}" name="whatsapp"
                                             id="whatsapp" class="form-control">
                                         @error('whatsapp')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -335,16 +336,15 @@ if ($user_id < 0) { die('User not found.'); } $prof=Profile::where("user_id",$us
                                 </div>
                             </div>
 
-
-
                         </div>
 
 
                         <div class="adpost-card pb-2">
                             <div class="adpost-agree">
                                 <div class="form-group"><input type="checkbox" class="form-check"></div>
-                                <p>By clicking "Create Your Account", you agree to our <a href="#">TERMS & CONDITIONS </a> and <a
-                                        href="#">PRIVACY POLICY</a> and acknowledge that you are the rightful owner of
+                                <p>By clicking "Create Your Account", you agree to our <a href="#">TERMS & CONDITIONS
+                                    </a> and <a href="#">PRIVACY POLICY</a> and acknowledge that you are the rightful
+                                    owner of
                                     this item and using Trade to find a genuine agent.</p>
                             </div>
                             <div class="form-group text-right"><button class="btn btn-inline"><i
@@ -355,25 +355,7 @@ if ($user_id < 0) { die('User not found.'); } $prof=Profile::where("user_id",$us
                     {{ Form::close() }}
 
                 </div>
-                <div class="col-lg-4">
-                    <div class="account-card alert fade show">
-                        <div class="account-title">
-                            <h3>Agent Information</h3><button data-dismiss="alert">close</button>
-                        </div>
-                        <ul class="account-card-text">
-                            <li>
-                                <p>This information pertains to your company.</p>
-                            </li>
-                        </ul>
-                        <div class="account-title">
-                            <h3>Company Representative</h3>
-                        </div>
-                        <ul class="account-card-text">
-                            <li>
-                                <p>This is information pertaining to you as a representative of the company.</p>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-lg-2">
                 </div>
             </div>
         </div>

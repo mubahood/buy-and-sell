@@ -2862,11 +2862,11 @@ textarea.form-control {
 }
 
 .header-part {
-    background: var(--dark)
+    background: var(--light)
 }
 
 .header-part .container {
-    padding: 18px 25px
+    padding: 10px 25px
 }
 
 .header-fixed {
@@ -4685,4 +4685,13 @@ textarea.form-control {
 
 .my-btn{
     size: 10px!important;
+}
+.login-btn{
+    font-weight: 800!important;
+    color: var(--primary)!important;
+}
+.login-btn:hover{
+    font-weight: 800!important;
+    color: var(--white)!important;
+    background-color: var(--primary)!important;
 }

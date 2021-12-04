@@ -7,10 +7,10 @@
 <body>
     <section class="user-form-part">
         <div class="user-form-banner">
-            <div class="user-form-content"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo.png"
+            <div class="user-form-content"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo-1.png"
                         alt="logo"></a>
                 <h1>Advertise your assets <span>Buy what are you needs.</span></h1>
-                <p>Biggest Online Advertising Marketplace in the World.</p>
+                <p>Anywhere accross the globe.</p>
             </div>
         </div>
         <div class="user-form-category">

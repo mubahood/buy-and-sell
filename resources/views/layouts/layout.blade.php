@@ -3,7 +3,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 <head>
- 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Muhindo Mubaraka">
@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/index.css') }}">
- 
- 
 
-     
+
+
+
 
     @yield('head')
 </head>
@@ -55,7 +55,7 @@ $cats = category::all();
             <div class="header-content">
                 <div class="header-left"><button type="button" class="header-widget sidebar-btn"><i
                             class="fas fa-align-left"></i></button><a href="<?= URL::asset('/') ?>"
-                        class="header-logo"><img src="<?= URL::asset('assets/') ?>/images/logo.png" alt="logo"></a>
+                        class="header-logo"><img src="<?= URL::asset('assets/') ?>/images/logo-1.png" alt="logo"></a>
 
                 </div>
                 <form action="{{$this_url}}" class="header-form" action="/">
@@ -155,13 +155,14 @@ $cats = category::all();
                     @guest
 
                     <a href="/register"
-                        class="header-user border rounded pr-3 pl-3 mr-3 text-primary border-primary "><span>Register</span></a><button
-                        type="button" class="header-widget search-btn"><i class="fas fa-search"></i></button>
+                        class="header-user border rounded  text-primary border-primary mr-3  login-btn">
+                                <span class="login-btn pr-3 pl-3 pt-2 pb-2 d-block">Register</span>
+                    </a>
 
                     <a href="/login"
-                        class="header-widget header-user border rounded pr-2 border-primary text-primary"><span>Sign
-                            in</span></a><button type="button" class="header-widget search-btn"><i
-                            class="fas fa-search"></i></button>
+                        class="header-widget header-user border rounded text-primary border-primary login-btn login-btn"><span
+                        class="login-btn pr-2 pt-2 pb-2  "
+                        >Sign in</span></a>
                     @endguest
 
                     <a href="<?= URL::asset('/post-ad') ?>" class="btn btn-inline post-btn"><i
@@ -443,11 +444,11 @@ $cats = category::all();
     <script src="{{ URL::asset('/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/popper.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/bootstrap.min.js') }}"></script>
-    
+
     <script src="{{ URL::asset('/assets/js/custom/slick.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/custom/main.js') }} "></script>
 
- 
+
     @yield('foot')
 </body>
 
