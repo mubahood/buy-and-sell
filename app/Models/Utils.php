@@ -17,15 +17,17 @@ class Utils
     public static function tell_status($status)
     {
         if (!$status)
-            return '<span class="badge badge-info">Pending</span>';
+            return '<span class="badge badge-info">Not complete</span>';
         if ($status == 0)
-            return '<span class="badge badge-info">Pending</span>';
+            return '<span class="badge badge-info">Not complete</span>';
         if ($status == 1)
             return '<span class="badge badge-primary">Accepted</span>';
         if ($status == 2)
             return '<span class="badge badge-warning">Halted</span>';
         if ($status == 3)
             return '<span class="badge badge-danger">Rejected</span>';
+        if ($status == 4)
+            return '<span class="badge badge-danger">Pending for verification</span>';
         else
             return '<span class="badge badge-danger">Rejected</span>';
     }
@@ -215,7 +217,7 @@ class Utils
 
 
 
-        $image->jpeg_quality = 90;
+        $image->jpeg_quality = 100;
         if (isset($params['quality'])) {
             $image->jpeg_quality = $params['quality'];
         }

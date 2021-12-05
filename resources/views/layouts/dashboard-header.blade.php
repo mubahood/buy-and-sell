@@ -30,8 +30,7 @@ $user = Auth::user();
                                     href="{{ route('membership') }}">Membership</a></li>
                             <li><a @if ($seg=='profile-edit' ) class="active" @endif
                                     href="{{ url('profile-edit') }}/{{ $id }}">My Profile</a></li>
-                            <li><a @if ($seg=='post-ad' ) class="active" @endif
-                                    href="{{ url('profile-edit') }}/{{ $id }}">Settings</a></li>
+                           
                         </ul>
                     </div>
                 </div>

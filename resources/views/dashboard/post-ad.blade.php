@@ -263,8 +263,8 @@ $cities = City::all();
                                 </div>
 
                                 <div class="col-md-12">
-                                    <div class="form-group"><label class="form-label" for="price">Starting
-                                            Price</label><input type="number" class="form-control" id="price" required
+                                    <div class="form-group"><label class="form-label" for="price">
+                                            Price (in USD)</label><input type="number" class="form-control" id="price" required
                                             name="price" placeholder="Enter your pricing amount">
                                         @error('price')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -313,21 +313,7 @@ $cities = City::all();
 <script>
     window.addEventListener('DOMContentLoaded', (event) => {
 
-        Swal.fire({
-                title: 'Are you sure you want to delete this product?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: 'Delete product',
-                denyButtonText: `Don't delete product`,
-            }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                Swal.fire('Saved!', '', 'success')
-            } else if (result.isDenied) {
-                Swal.fire('Changes are not saved', '', 'info')
-            }
-        });
-
+   
 
 
         $("#input-b6a").fileinput({
@@ -362,20 +348,21 @@ $cities = City::all();
  
 
         const countries = $("#countries");
-        const cities = JSON.parse('<?php echo json_encode($cities); ?>');
-        countries.change(function(event) {
-            console.clear()
-            alert(cities.length);
-            const country_id = event.currentTarget.options.selectedIndex;
-            cities.forEach(element => {
-                console.log(element);
-                if (country_id == element.country_id) {
-                    countries.selectedIndex
-                }
-            });
-            console.log(event.currentTarget.options.selectedIndex);
-
-        }); 
+            const cities = JSON.parse('<?php echo json_encode($cities); ?>');
+            countries.change(function(event) {
+                console.clear()
+                const country_id = event.currentTarget.options.selectedIndex;
+                $("#city_id").empty();
+                var option = $('<option></option>').text('');
+                $("#city_id").append(option); 
+                cities.forEach(element => {
+                    if (country_id == element.country_id) {
+                        var option = $('<option></option>').attr("value", element.id).text(element.name);
+                        $("#city_id").append(option); 
+                    }
+                });
+ 
+            }); 
     });
 </script>
 @section('foot')

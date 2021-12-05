@@ -80,8 +80,7 @@ $products = Product::where('user_id', $user_id)->get();
                         <h5 class="product-price">${{ $item->price }}<span>/starting price</span></h5>
                         <div class="product-btn">
                             <a href="javascript:;" data-id="{{$item->id}}" title="Delete"
-                                class="fas fa-trash text-danger delete"></a><button type="button" title="Edit"
-                                class="far fa-edit"></button>
+                                class="fas fa-trash text-danger delete"></a>
                         </div>
                     </div>
                 </div>

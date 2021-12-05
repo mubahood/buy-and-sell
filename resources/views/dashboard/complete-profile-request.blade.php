@@ -26,9 +26,9 @@ if($status == "active"){
     die();
 }
 $is_pending = false;
-if($user->profile){
+if($user->profile){ 
     if(isset($user->profile->status)){
-    if($user->profile->status == 0){
+    if($user->profile->status == 4){
         $is_pending = true;
     }
     }
