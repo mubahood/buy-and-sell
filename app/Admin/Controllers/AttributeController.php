@@ -3,7 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Attribute;
-use App\Models\category;
+use App\Models\Category;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;

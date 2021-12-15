@@ -40,8 +40,8 @@ $key_word = trim($_GET['search']);
 }
 }
 
-use App\Models\category;
-$cats = category::all();
+use App\Models\Category;
+$cats = Category::all();
 
 @endphp
 

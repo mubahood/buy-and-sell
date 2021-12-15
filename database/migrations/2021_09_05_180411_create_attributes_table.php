@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\category;
+use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +21,7 @@ class CreateAttributesTable extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignIdFor(category::class);
+            $table->foreignIdFor(Category::class);
             $table->text('name');
             $table->text('type');
             $table->text('options')->nullable();

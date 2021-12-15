@@ -7,8 +7,8 @@ header("Location: ".route('complete_profile_request'));
 die();
 }
 
-use App\Models\category;
-$cats = category::where("parent",0)->get();
+use App\Models\Category;
+$cats = Category::where("parent",0)->get();
 @endphp
 
 @extends('layouts.layout')

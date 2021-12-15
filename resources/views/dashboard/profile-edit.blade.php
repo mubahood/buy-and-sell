@@ -9,12 +9,12 @@
 @section('content')
 @php
 use App\Models\Country;
-use App\Models\category;
+use App\Models\Category;
 use App\Models\Profile;
 use App\Models\City;
 $cities = City::all();
 $categories = [];
-foreach (category::all() as $key => $value) {
+foreach (Category::all() as $key => $value) {
 if($value->parent){
 $categories[] = $value;
 }

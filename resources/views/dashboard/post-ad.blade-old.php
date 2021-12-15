@@ -18,11 +18,11 @@
 
 @section('content')
 @php
-use App\Models\category;
+use App\Models\Category;
 use App\Models\Country;
 use App\Models\City;
 $seg = request()->segment(2);
-$cats = category::where('slug', $seg)->firstOrFail();
+$cats = Category::where('slug', $seg)->firstOrFail();
 $countries = Country::all();
 $cities = City::all();
 @endphp

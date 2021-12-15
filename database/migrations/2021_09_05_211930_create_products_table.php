@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\category;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\User;
@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->foreignIdFor(category::class);
+            $table->foreignIdFor(Category::class);
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Country::class);
             $table->foreignIdFor(City::class);

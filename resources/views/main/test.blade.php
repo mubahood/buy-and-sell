@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Profile;
 use App\Models\City;
-use App\Models\category;
+use App\Models\Category;
 use App\Models\Country;
-$cats = category::all();
+$cats = Category::all();
 
 @endphp
 <style>
