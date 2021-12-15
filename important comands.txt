@@ -1,1 +1,1 @@
-git rm .env.example --cached
+git rm /config/app.php --cached
