@@ -154,23 +154,28 @@ class Utils
 
 
 
-                    $path_not_optimized =  "storage/" . $path;
-                    $path_optimized = "storage/thumb_" . $path;
+                    $path_not_optimized =  "public/storage/" . $path;
+                    $path_optimized = "public/storage/thumb_" . $path;
                     $thumbnail = Utils::create_thumbail(
                         array(
                             "source" => $path_not_optimized,
                             "target" => $path_optimized,
                         )
                     );
+                    
+ 
 
                     if (strlen($thumbnail) > 3) {
+                        $thumbnail = str_replace("public/storage/", "", $thumbnail);
                         $thumbnail = str_replace("storage/", "", $thumbnail);
                         $thumbnail = str_replace("/storage", "", $thumbnail);
                         $thumbnail = str_replace("storage", "", $thumbnail);
+                        $thumbnail = str_replace("public/", "", $thumbnail);
+                        $thumbnail = str_replace("public", "", $thumbnail);
                         $thumbnail = str_replace("/", "", $thumbnail);
                     } else {
                         $thumbnail = $path;
-                    }
+                    } 
 
                     $ready_image['src'] = $path;
                     $ready_image['thumbnail'] = $thumbnail;
