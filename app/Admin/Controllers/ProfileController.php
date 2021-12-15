@@ -2,8 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\models\Profile;
-use App\models\Utils;
+use App\Models\Profile;
+use App\Models\Utils;
 use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;

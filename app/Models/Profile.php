@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\URL;
 
 class Profile extends Model
 {
-    use HasFactory;
+    use HasFactory; 
     public function get_thumbnail()
     {
         $profile_photo = "";
