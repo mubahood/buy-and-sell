@@ -1,6 +1,8 @@
 @php
 use App\Models\Product;
 use App\Models\Utils;
+use Illuminate\Support\Str;
+
 
 $slug = request()->segment(1);
 $pro = Product::where('slug', $slug)->firstOrFail();
@@ -265,7 +267,7 @@ $message_link = "/messages/".$chat_thred;
                             <h4>Contact this Number</h4><button class="fas fa-times" data-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <h3 class="modal-number">(+880) 183 - 8288 - 389</h3>
+                            <h3 class="modal-number">{{$pro->user->profile->phone_number}} </h3>
                         </div>
                     </div>
                 </div>
@@ -286,7 +288,7 @@ $message_link = "/messages/".$chat_thred;
                 </a>
 
                 <button type="button" class="common-card number" data-toggle="modal" data-target="#number">
-                    <h3>(+880)<span>Click to show</span></h3><i class="fas fa-phone"></i>
+                    <h3>({{ Str::substr($pro->user->profile->phone_number,0,4) }})<span>Click to show</span></h3><i class="fas fa-phone"></i>
                 </button>
 
                 <div class="common-card">
@@ -345,7 +347,7 @@ $related_products = Product::where('category_id', $pro->category_id)->get();
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-center-heading">
-                    <h2>Related This <span>Ads</span></h2>
+                    <h2>Similar <span>Ads</span></h2>
                 </div>
             </div>
         </div>

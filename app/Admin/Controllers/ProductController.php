@@ -27,19 +27,11 @@ class ProductController extends AdminController
         $grid = new Grid(new Product());
 
         $grid->column('id', __('Id'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-        $grid->column('name', __('Name'));
-        $grid->column('category_id', __('Category id'));
+        $grid->column('created_at', __('Created at')); 
+        $grid->column('name', __('Name')); 
         $grid->column('user_id', __('User id'));
-        $grid->column('price', __('Price'));
-        $grid->column('slug', __('Slug'));
-        $grid->column('status', __('Status'));
-        $grid->column('description', __('Description'));
-        $grid->column('quantity', __('Quantity'));
-        $grid->column('images', __('Images'));
-        $grid->column('attributes', __('Attributes'));
-
+        $grid->column('price', __('Price')); 
+        $grid->column('status', __('Status'));    
         return $grid;
     }
 
