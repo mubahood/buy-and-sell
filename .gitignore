@@ -1,5 +1,6 @@
 /.env
 /.env.example
 ./config/admin.php
+/config/admin.php
 
 
