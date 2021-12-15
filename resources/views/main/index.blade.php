@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Profile;
 use App\Models\City;
-use App\Models\category;
-$cats = category::all();
+use App\Models\Category;
+$cats = Category::all();
 
 $this_url = url('/');
 if (isset($_SERVER['PATH_INFO'])) {
