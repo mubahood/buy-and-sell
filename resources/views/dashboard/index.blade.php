@@ -67,11 +67,7 @@ $products = Product::where('user_id', $user_id)->get();
                      
                 </div>
                 <div class="product-content">
-                    <ol class="breadcrumb product-category">
-                        <li><i class="fas fa-tags"></i></li>
-                        <li class="breadcrumb-item"><a href="#">Luxury</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">resort</li>
-                    </ol>
+                    
                     <h5 class="product-title"><a href="{{ url($item->slug) }}">{{ $item->name }}</a></h5>
                     <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>{{ $item->category->name }},
                             {{ $item->category->name }}</span><span><i class="fas fa-clock"></i>{{ $item->updated_at

@@ -39,32 +39,32 @@ class Dashboard extends Controller
 
     public function messages()
     {
-        if(
+        if (
             isset($_POST['thread']) &&
             isset($_POST['sender']) &&
             isset($_POST['receiver']) &&
             isset($_POST['product_id']) &&
-            isset($_POST['body']) 
-            ){
-                $_POST['seen'] = false;
-                $_POST['received'] = false;
-                $chat = new Chat($_POST);
-                $chat->save();
-                $is_ajax = false;
+            isset($_POST['body'])
+        ) {
+            $_POST['seen'] = false;
+            $_POST['received'] = false;
+            $chat = new Chat($_POST);
+            $chat->save();
+            $is_ajax = false;
 
-                if(isset($_POST['ajax'])){
-                    if($_POST['ajax'] == 1){
-                        $is_ajax = true;
-                        $chat_msg = $chat->getRawOriginal();
-                        $chat_msg['created_at'] = $chat->created_at->diffForHumans();
-                        Utils::show_response(1,1,json_encode( $chat_msg ));
-                        die();
-                    }
+            if (isset($_POST['ajax'])) {
+                if ($_POST['ajax'] == 1) {
+                    $is_ajax = true;
+                    $chat_msg = $chat->getRawOriginal();
+                    $chat_msg['created_at'] = $chat->created_at->diffForHumans();
+                    Utils::show_response(1, 1, json_encode($chat_msg));
+                    die();
                 }
-                $url = url("messages")."/".$_POST['thread'];
-                header("Location: ".$url);
-                die();
             }
+            $url = url("messages") . "/" . $_POST['thread'];
+            header("Location: " . $url);
+            die();
+        }
         return view('dashboard.messages');
     }
 
@@ -81,6 +81,7 @@ class Dashboard extends Controller
     public function profileEdit(Request $request)
     {
         if ($request->has("user_id")) {
+
             $user_id = $request->input("user_id");
             $profile =  Profile::where('user_id', $user_id)->first();
 
@@ -94,12 +95,7 @@ class Dashboard extends Controller
                 die("failed to find profile.");
             }
 
-
-            $status = $profile->status;
-            if($profile->first_name == null || (strlen($profile->first_name)<2)){
-                $status = 4;
-            }
-         
+ 
 
             $profile->first_name = $request->input("first_name");
             $profile->last_name = $request->input("last_name");
@@ -108,7 +104,13 @@ class Dashboard extends Controller
             $profile->phone_number = $request->input("phone_number");
             $profile->location = $request->input("location");
             $profile->about = $request->input("about");
-            $profile->category_id = $request->input("category_id");
+
+            if ($request->has("category_id")) {
+                $cat = (int)($request->input("category_id"));
+                if($cat>0){
+                    $profile->category_id = $request->input("category_id");
+                }
+            }
             $profile->longitude = $request->input("longitude");
             $profile->latitude = $request->input("latitude");
             $profile->opening_hours = $request->input("opening_hours");
@@ -119,7 +121,7 @@ class Dashboard extends Controller
             $profile->youtube = $request->input("youtube");
             $profile->instagram = $request->input("instagram");
             $profile->linkedin = $request->input("linkedin");
-            $profile->last_seen = time();
+            // $profile->last_seen = time();
             $username_new = $request->input("username");
 
 
@@ -135,14 +137,14 @@ class Dashboard extends Controller
                 }
             }
 
+
             if ($request->hasFile("cover_photo")) {
                 $images = Utils::upload_images($_FILES['cover_photo']);
                 if (isset($images[0])) {
                     $profile->cover_photo = json_encode($images[0]);
                 }
             }
-
-            $profile->status = $status;
+ 
             $profile->save();
             $errors['success'] = "Account was updated successfully!";
             return redirect()->intended('profile')->withErrors($errors);
