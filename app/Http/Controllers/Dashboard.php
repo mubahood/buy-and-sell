@@ -94,8 +94,9 @@ class Dashboard extends Controller
             if (!$profile) {
                 die("failed to find profile.");
             }
-
- 
+            if($profile->status == 0){
+                $profile->status  = 4;
+            } 
 
             $profile->first_name = $request->input("first_name");
             $profile->last_name = $request->input("last_name");
@@ -145,7 +146,7 @@ class Dashboard extends Controller
                 }
             }
  
-            $profile->save();
+            $profile->save(); 
             $errors['success'] = "Account was updated successfully!";
             return redirect()->intended('profile')->withErrors($errors);
         }
