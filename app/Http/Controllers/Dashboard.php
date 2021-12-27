@@ -195,6 +195,8 @@ class Dashboard extends Controller
 
             $pro['attributes'] = json_encode($attr_nodes);
             $images = Utils::upload_images($_FILES['images']);
+            
+
             $pro['images'] = "[]";
             $pro['thumbnail'] = "";
             if (!empty($images)) {

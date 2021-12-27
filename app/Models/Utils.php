@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use PhpParser\Node\Stmt\Else_;
 use Zebra_Image;
+
+use function PHPUnit\Framework\fileExists;
 
 class Utils
 {
@@ -123,6 +126,7 @@ class Utils
     }
     public static function upload_images($files)
     {
+
         if ($files == null || empty($files)) {
             return [];
         }
@@ -151,7 +155,8 @@ class Utils
 
 
                     $path = Storage::putFile('/', $img['tmp_name']);
-
+ 
+ 
 
 
                     $path_not_optimized =  "public/storage/" . $path;
@@ -163,7 +168,7 @@ class Utils
                         )
                     );
                     
- 
+
 
                     if (strlen($thumbnail) > 3) {
                         $thumbnail = str_replace("public/storage/", "", $thumbnail);
@@ -173,10 +178,10 @@ class Utils
                         $thumbnail = str_replace("public/", "", $thumbnail);
                         $thumbnail = str_replace("public", "", $thumbnail);
                         $thumbnail = str_replace("/", "", $thumbnail);
+                        $thumbnail = str_replace("..", "", $thumbnail);
                     } else {
                         $thumbnail = $path;
                     } 
-
                     $ready_image['src'] = $path;
                     $ready_image['thumbnail'] = $thumbnail;
 
@@ -203,25 +208,14 @@ class Utils
         ) {
             return [];
         }
-
-        /*
-
-        $p = 'http://127.0.0.1:8000/storage/'.$path;
-                    echo '<h1>'.$p.'</h1>';
-                    echo '<h1>'.$path.'</h1>';
-                    echo '<img src="'.$p.'" alt="">';
-                    die();
-                    //dd("");
-        */
-
+ 
         $image = new Zebra_Image();
 
         $image->auto_handle_exif_orientation = false;
-        $image->source_path = $params['source'];
-        $image->target_path = $params['target'];
+        $image->source_path = "../".$params['source'];
+        $image->target_path = "../".$params['target'];
 
-
-
+ 
         $image->jpeg_quality = 100;
         if (isset($params['quality'])) {
             $image->jpeg_quality = $params['quality'];
@@ -244,7 +238,7 @@ class Utils
 
         if (!$image->resize($width, $heigt, ZEBRA_IMAGE_CROP_CENTER)) {
             return $image->source_path;
-        } else {
+        } else { 
             return $image->target_path;
         }
     }

@@ -2399,8 +2399,8 @@ textarea.form-control {
 
 .common-card {
     width: 100%;
-    padding: 30px 30px;
-    margin-bottom: 30px;
+    padding: 20px 20px;
+    margin-bottom: 20px;
     border-radius: 8px;
     background: var(--white)
 }
@@ -4694,4 +4694,28 @@ textarea.form-control {
     font-weight: 800!important;
     color: var(--white)!important;
     background-color: var(--primary)!important;
+}
+
+
+
+/* -============mycss=======- */
+.title-1,.subtitle-1 {
+    margin: 0px;
+    font-family: 'Maison Neue' 'Courier New', 'Courier', "monospace","Maison Neue", "Helvetica Neue", 'Helvetica-Neue', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500; 
+    color: #272727;
+}
+
+.title-1 {
+    font-size: 16px;
+}
+
+.subtitle-1 {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.border-primary-dashed{
+    border: 1px dashed var(--primary);
 }

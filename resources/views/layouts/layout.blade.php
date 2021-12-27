@@ -1,9 +1,14 @@
+<?php
+use App\Models\Category;
+
+
+if(!Request::ajax()){
+?>
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Muhindo Mubaraka">
@@ -14,19 +19,17 @@
     <link rel="icon" href="images/favicon.png">
     <link rel="stylesheet" href="{{ URL::asset('/assets/fonts/flaticon/flaticon.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/fonts/font-awesome/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/slick.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/slick.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/index.css') }}">
-
-
-
-
-
+    <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/ad-details.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/simple-lightbox.css') }}">
     @yield('head')
 </head>
 
-@php
+
+<?php 
 $this_url = url("/");
 if(isset($_SERVER['PATH_INFO'])){
 $this_url = url($_SERVER['PATH_INFO']);
@@ -38,12 +41,16 @@ if(strlen(isset($_GET['search']))>0){
 $key_word = trim($_GET['search']);
 
 }
-}
+} 
+ 
+} ?>
 
-use App\Models\Category;
-$cats = Category::all();
 
-@endphp
+
+
+<?php
+if(!Request::ajax()){
+?>
 
 <body>
 
@@ -71,79 +78,6 @@ $cats = Category::all();
 
                         <li class="header-item"><a type="button" href="{{url("messages")}}" class="header-widget"><i
                                     class="fas fa-envelope"></i><sup>0</sup></a>
-                            {{-- <div class="dropdown-card">
-                                <div class="dropdown-header">
-                                    <h5>message (2)</h5><a href="<?= URL::asset('/') ?>">view all</a>
-                                </div>
-                                <ul class="message-list">
-                                    <li class="message-item unread"><a href="<?= URL::asset('/') ?>"
-                                            class="message-link">
-                                            <div class="message-img active"><img
-                                                    src="<?= URL::asset('assets/') ?>/images/avatar/01.jpg"
-                                                    alt="avatar"></div>
-                                            <div class="message-text">
-                                                <h6>miron mahmud <span>now</span></h6>
-                                                <p>How are you my best frien...</p>
-                                            </div><span class="message-count">4</span>
-                                        </a></li>
-                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
-                                            <div class="message-img active"><img
-                                                    src="<?= URL::asset('assets/') ?>/images/avatar/03.jpg"
-                                                    alt="avatar"></div>
-                                            <div class="message-text">
-                                                <h6>shipu ahmed <span>3m</span></h6>
-                                                <p><span>me:</span>How are you my best frien...</p>
-                                            </div>
-                                        </a></li>
-                                    <li class="message-item unread"><a href="<?= URL::asset('/') ?>"
-                                            class="message-link">
-                                            <div class="message-img"><img
-                                                    src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="message-text">
-                                                <h6>tahmina bonny <span>2h</span></h6>
-                                                <p>How are you my best frien...</p>
-                                            </div><span class="message-count">12</span>
-                                        </a></li>
-                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
-                                            <div class="message-img active"><img
-                                                    src="<?= URL::asset('assets/') ?>/images/avatar/04.jpg"
-                                                    alt="avatar"></div>
-                                            <div class="message-text">
-                                                <h6>nasrullah <span>5d</span></h6>
-                                                <p>How are you my best frien...</p>
-                                            </div>
-                                        </a></li>
-                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
-                                            <div class="message-img"><img
-                                                    src="<?= URL::asset('assets/') ?>/images/user.png" alt="avatar">
-                                            </div>
-                                            <div class="message-text">
-                                                <h6>saikul azam <span>7w</span></h6>
-                                                <p><span>me:</span>How are you my best frien...</p>
-                                            </div>
-                                        </a></li>
-                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
-                                            <div class="message-img active"><img
-                                                    src="<?= URL::asset('assets/') ?>/images/avatar/02.jpg"
-                                                    alt="avatar"></div>
-                                            <div class="message-text">
-                                                <h6>munni akter <span>9m</span></h6>
-                                                <p>How are you my best frien...</p>
-                                            </div>
-                                        </a></li>
-                                    <li class="message-item"><a href="<?= URL::asset('/') ?>" class="message-link">
-                                            <div class="message-img active"><img
-                                                    src="<?= URL::asset('assets/') ?>/images/avatar/03.jpg"
-                                                    alt="avatar"></div>
-                                            <div class="message-text">
-                                                <h6>shahin alam <span>1y</span></h6>
-                                                <p>How are you my best frien...</p>
-                                            </div>
-                                        </a></li>
-                                </ul>
-                            </div> --}}
                         </li>
                     </ul>
 
@@ -154,15 +88,13 @@ $cats = Category::all();
                     @endauth
                     @guest
 
-                    <a href="/register"
-                        class="header-user border rounded  text-primary border-primary mr-3  login-btn">
-                                <span class="login-btn pr-3 pl-3 pt-2 pb-2 d-block">Register</span>
+                    <a href="/register" class="header-user border rounded  text-primary border-primary mr-3  login-btn">
+                        <span class="login-btn pr-3 pl-3 pt-2 pb-2 d-block">Register</span>
                     </a>
 
                     <a href="/login"
                         class="header-widget header-user border rounded text-primary border-primary login-btn login-btn"><span
-                        class="login-btn pr-2 pt-2 pb-2  "
-                        >Sign in</span></a>
+                            class="login-btn pr-2 pt-2 pb-2  ">Sign in</span></a>
                     @endguest
 
                     <a href="<?= URL::asset('/post-ad') ?>" class="btn btn-inline post-btn"><i
@@ -171,6 +103,11 @@ $cats = Category::all();
             </div>
         </div>
     </header>
+    <div class="progress loading" style="height: 5px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-animated" role="progressbar"
+            style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
     <aside class="sidebar-part">
         <div class="sidebar-body">
             <div class="sidebar-header"><a href="<?= URL::asset('/') ?>" class="sidebar-logo"><img
@@ -201,6 +138,9 @@ $cats = Category::all();
                     </ul>
                     <div class="tab-pane active" id="main-menu">
                         <ul class="navbar-list">
+                            @php
+                            $cats = Category::all();
+                            @endphp
                             @foreach ($cats as $item)
                             @php
                             if($item->parent == null){
@@ -271,10 +211,18 @@ $cats = Category::all();
     @endif
     @endif
 
+    <?php
+}
+    ?>
+    <div id="pjax-container">
+        @yield('content')
+    </div>
 
-    @yield('content')
 
 
+    <?php
+if(!Request::ajax()){
+?>
     @if ("messages" != request()->segment(1))
 
 
@@ -297,6 +245,7 @@ $cats = Category::all();
                     class="mobile-widget"><i class="fas fa-envelope"></i><span>message</span><sup>0</sup></a></div>
         </div>
     </nav>
+
 
 
     <footer class="footer-part">
@@ -441,15 +390,54 @@ $cats = Category::all();
     @endif
 
     @endif
+
+    <?php
+    if(!Request::ajax()){
+?>
+
     <script src="{{ URL::asset('/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/popper.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/vendor/bootstrap.min.js') }}"></script>
-
-    <script src="{{ URL::asset('/assets/js/custom/slick.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/custom/main.js') }} "></script>
+    <script src="{{ URL::asset('vendor/laravel-admin/jquery-pjax/jquery.pjax.js') }} "></script>
+    {{-- <script src="{{ URL::asset('/assets/js/vendor/slick.min.js') }} "></script> --}}
 
 
-    @yield('foot')
+
+
+    <script>
+        $(document).ready(function () {
+            $('.loading').hide();
+
+            $(document).on('pjax:send', function() {
+                $('.loading').show()
+                $('#pjax-container,.footer-part').hide()
+            })
+
+            $(document).on('pjax:complete', function() {
+              $('.loading').hide()
+              $('#pjax-container,.footer-part').show() 
+            })
+
+            $.pjax.defaults.timeout = 5000;
+            $.pjax.defaults.maxCacheLength = 0;
+            $(document).pjax('a:not(a[target="_blank"])', {
+                container: '#pjax-container'
+            }); 
+        });
+    </script>
+
+    <?php
+    }
+    ?>
+
+
 </body>
 
 </html>
+
+<?php
+}
+    ?>
+
+@yield('foot')

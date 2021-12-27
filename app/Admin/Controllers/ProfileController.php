@@ -30,7 +30,7 @@ class ProfileController extends AdminController
         $grid = new Grid(new Profile());
         $grid->disableCreateButton();
         
-        $grid->column('id', __('Id'));
+        $grid->column('id', __('Id'))->sortable() ;
         $grid->column('created_at', __('Created'))->display(function ($item) {
             return Carbon::parse($item)->diffForHumans();
         })->sortable();

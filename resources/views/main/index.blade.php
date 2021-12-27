@@ -60,22 +60,22 @@ $search_title = 'Found ' . count($products) . " search results for \"" . $key_wo
 } else {
 
 $conds['status'] = 0;
-$seg   = strtolower(request()->segment(1));
+$seg = strtolower(request()->segment(1));
 if($seg!=null){
-    $cat = Category::where('slug',$seg)->first();
-    if($cat != null){
-        $conds['category_id'] = $cat->id;
-    }
-    
-    $city = City::where('name',$seg)->first();
-    if($city != null){
-        $conds['city_id'] = $city->id;
-    }
- 
+$cat = Category::where('slug',$seg)->first();
+if($cat != null){
+$conds['category_id'] = $cat->id;
 }
- 
+
+$city = City::where('name',$seg)->first();
+if($city != null){
+$conds['city_id'] = $city->id;
+}
+
+}
+
 $products = Product::where($conds)->paginate(2)->withQueryString();
- 
+
 }
 } else {
 $show_products = false;
@@ -111,7 +111,7 @@ $cities = City::all();
         <div class="row content-reverse">
             <div class="col-lg-4 col-xl-3">
                 <div class="row">
- 
+
                     <div class="col-md-6 col-lg-12 ">
                         <div class="product-widget pr-4">
                             <h6 class="product-widget-title">Categories</h6>
@@ -138,7 +138,8 @@ $cities = City::all();
                                         <ul class="product-widget-dropdown" style="display: block;">
                                             @foreach ($item->sub_categories as $sub_item)
                                             <li>
-                                                <a class="  {{ (strtolower($sub_item->slug) == $seg) ? ' text-primary ' : ' text-secondary ' }} " href="{{ url($sub_item->slug) }}">{{ $sub_item->name }}
+                                                <a class="  {{ (strtolower($sub_item->slug) == $seg) ? ' text-primary ' : ' text-secondary ' }} "
+                                                    href="{{ url($sub_item->slug) }}">{{ $sub_item->name }}
                                                     <span class="text-dark">({{count($sub_item->products)}})</span></a>
                                             </li>
                                             @endforeach
@@ -156,15 +157,14 @@ $cities = City::all();
                                 <ul class="product-widget-list ">
 
                                     @foreach (City::all() as $item)
-                                 
+
                                     <li class="product-widget-item ">
-                                        <div class="product-widget-checkbox"><input
-                                            readonly
-                                            {{ (strtolower($item->name) == $seg) ? ' checked ' : '  ' }}
+                                        <div class="product-widget-checkbox"><input readonly {{ (strtolower($item->name)
+                                            == $seg) ? ' checked ' : ' ' }}
                                             type="checkbox" id="chcek9">
                                         </div><a href="{{ url($item->name) }}"
-                                            class="product-widget-label {{ (strtolower($item->name) == $seg) ? ' text-primary ' : ' text-secondary ' }} " for="chcek9"><span
-                                                class="product-widget-text">{{$item->name.",
+                                            class="product-widget-label {{ (strtolower($item->name) == $seg) ? ' text-primary ' : ' text-secondary ' }} "
+                                            for="chcek9"><span class="product-widget-text">{{$item->name.",
                                                 ".$item->country->name}}</span><span
                                                 class="product-widget-number">({{count($item->products)}})</span></a>
                                     </li>
@@ -198,16 +198,10 @@ $cities = City::all();
 
 
 
-                {{-- <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ad-feature-slider slider-arrow">
-                            @foreach ($products as $item)
-                            <x-product-featured :item="$item" />
-                            @endforeach
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="row ad-standard">
+
+
+                    
 
 
                     @if ($show_products)
@@ -234,6 +228,8 @@ $cities = City::all();
                     <div class="col-lg-12">
                         <div class="footer-pagection">
 
+
+                            
 
 
                             @if ($products!=null)

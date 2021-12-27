@@ -36,20 +36,98 @@ $message_link = "/messages/".$chat_thred;
 @endphp
 @extends('layouts.layout')
 
-@section('title', $pro->name)
 
-@section('head')
-<link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/ad-details.css') }}">
-<link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/simple-lightbox.css') }}">
-@endsection
+
 
 @section('content')
-
+@section('title', $pro->name)
+<link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/ad-details.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/simple-lightbox.css') }}">
 
 <section class="inner-section ad-details-part pt-3 mb-0 pb-0 ">
     <div class="container">
 
- 
+        <!-- Large modal -->
+        <div class="modal image-modal" style="background-color: #424E4E;" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+
+
+
+                    {{-- <button type="button" class=" close text-right p-3" style="background-color: #424E4E;"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> --}}
+
+                    <div class="ad-details-slider-group ">
+
+                        <div id="carouselExampleIndicators1" class="carousel slide " data-ride="carousel">
+
+
+                            <ol class="carousel-indicators">
+
+
+                                <?php
+                        $first_seen = false;
+                        $active = "";
+                        $counter_1 = -1; 
+                    ?>
+                                @foreach ($images as $img)
+                                @php
+                                $active = "";
+                                $counter_1++;
+                                if(!$first_seen){
+                                $active = " active ";
+                                $first_seen = true;
+                                }
+                                @endphp
+                                <li data-target="#carouselExampleIndicators1  <?= $active ?> "
+                                    data-slide-to="<?= $counter_1 ?>" class="active"></li>
+                                @endforeach
+
+                            </ol>
+
+                            <?php $first_seen = false; ?>
+                            <div class="carousel-inner slider-arrow">
+                                @foreach ($images as $img)
+                                @php
+                                $active = "";
+                                if(!$first_seen){
+                                $active = " active ";
+                                $first_seen = true;
+                                }
+                                @endphp
+
+
+                                <div class="carousel-item  <?= $active ?>  ">
+                                    <img class="d-block w-100" src="{{$img->thumbnail}}" alt="details"
+                                        alt="First slide">
+                                </div>
+
+                                @endforeach
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
         <div class="row">
             <div class="col-lg-8">
                 <div class="common-card pt-3">
@@ -60,29 +138,70 @@ $message_link = "/messages/".$chat_thred;
                     </ol>
                     <h1 class="ad-details-title mb-2">{{ $pro->name }}</h1>
                     <div class="ad-details-slider-group ">
-                        <div class="ad-details-slider slider-arrow ">
-                            @foreach ($images as $img)
- 
-                                <a rel="rel3" href="{{ str_replace("thumb_","",$img->thumbnail) }}">
-                                <img src="{{$img->thumbnail}}" alt="details">
-                                </a>
-                              @endforeach
+
+                        <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
+
+
+                            <ol class="carousel-indicators">
+
+
+                                <?php
+                                    $first_seen = false;
+                                    $active = "";
+                                    $counter_1 = -1; 
+                                ?>
+                                @foreach ($images as $img)
+                                @php
+                                $active = "";
+                                $counter_1++;
+                                if(!$first_seen){
+                                $active = " active ";
+                                $first_seen = true;
+                                }
+                                @endphp
+                                <li data-target="#carouselExampleIndicators  <?= $active ?> "
+                                    data-slide-to="<?= $counter_1 ?>" class="active"></li>
+                                @endforeach
+
+                            </ol>
+
+                            <?php $first_seen = false; ?>
+                            <div class="carousel-inner slider-arrow">
+                                @foreach ($images as $img)
+                                @php
+                                $active = "";
+                                if(!$first_seen){
+                                $active = " active ";
+                                $first_seen = true;
+                                }
+                                @endphp
+
+
+                                <div class="carousel-item  <?= $active ?>  ">
+                                    <a class="d-block w-100" href="#" href="#" data-toggle="modal"
+                                        data-target=".image-modal">
+                                        <img class="d-block w-100" src="{{$img->thumbnail}}" alt="details"
+                                            alt="First slide">
+                                    </a>
+                                </div>
+
+                                @endforeach
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                         <div class="cross-vertical-badge ad-details-badge"><i
-                                class="fas fa-clipboard-check"></i><span>recommend</span></div>
+                                class="fas fa-clipboard-check"></i><span>ZOOM</span></div>
                     </div>
-                    <div class="ad-thumb-slider">
-                        @foreach ($images as $img)
-                        <div><img src="{{$img->thumbnail}}" alt="details"></div>
-                        @endforeach
-                    </div>
-                </div> 
-                    {{-- <div class="ad-details-action"><button type="button" class="wish"><i
-                                class="fas fa-heart"></i>bookmark</button><button type="button"><i
-                                class="fas fa-exclamation-triangle"></i>report</button><button type="button"
-                            data-toggle="modal" data-target="#ad-share"><i class="fas fa-share-alt"></i>share </button>
-                    </div>  
-                </div> --}}
+                </div>
                 <div class="common-card">
                     <div class="card-header">
                         <h5 class="card-title">Specification</h5>
@@ -260,7 +379,7 @@ $message_link = "/messages/".$chat_thred;
                 </div> --}}
             </div>
 
-            <div class="modal fade" id="number">
+            <div class="modal" id="number">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -274,60 +393,77 @@ $message_link = "/messages/".$chat_thred;
             </div>
 
             <div class="col-lg-4">
-                <div class="common-card price">
-                    <h3>${{ number_format($pro->price,0) }}<span>Price
-                            (@if ($pro->fixed_price)
-                            Fixed price
-                            @else
-                            Negotiable
-                            @endif)
-                        </span></h3><i class="fas fa-tag"></i>
-                </div>
-                <a href="{{ $message_link }}" class="common-card number">
-                    <h3>Send Message<span class="text-left">{{$message_text}}</span></h3><i class="fas fa-envelope"></i>
-                </a>
 
-                <button type="button" class="common-card number" data-toggle="modal" data-target="#number">
-                    <h3>({{ Str::substr($pro->user->profile->phone_number,0,4) }})<span>Click to show</span></h3><i class="fas fa-phone"></i>
-                </button>
-
-                <div class="common-card">
-                    <div class="card-header">
-                        <h5 class="card-title">About Vendor</h5>
+                <div class="common-card p-0">
+                    <div class="border-bottom pl-3 pr-3 pt-3 pb-2">
+                        <h5 class="card-title ">@php
+                            echo config('app.currency')
+                            @endphp 120</h5>
                     </div>
-                    <div class="ad-details-author">
+
+                    <div class="row pl-3 pt-2">
                         @php
-                            $profile_pic = "assets/images/avatar/03.jpg";
-                            if($pro->user!= null){
-                                if($pro->user->profile != null){
-                                    if($pro->user->profile->profile_photo != null){
-                                        $imgs = json_decode($pro->user->profile->profile_photo);
-                                        if($imgs->src){
-                                        $profile_pic = Utils::get_file_url($imgs->src);
-                                    }
-                                }
-                            }
-                            }
+                        $profile_pic = "assets/images/avatar/03.jpg";
+                        if($pro->user!= null){
+                        if($pro->user->profile != null){
+                        if($pro->user->profile->profile_photo != null){
+                        $imgs = json_decode($pro->user->profile->profile_photo);
+                        if($imgs->src){
+                        $profile_pic = Utils::get_file_url($imgs->src);
+                        }
+                        }
+                        }
+                        }
 
                         @endphp
-                        <a href="/{{$pro->user->profile->username}}" class="author-img active"><img
-                            width="100" height="100"    
-                            src="{{ $profile_pic }}" alt="avatar"></a>
-                        <div class="author-meta">
-                            <h4><a href="/{{$pro->user->profile->username}}">
-                                    {{$pro->user->profile->first_name}}
-                                    {{$pro->user->profile->last_name}}
-                                </a></h4>
-                            <h5>joined: {{$pro->user->created_at->diffForHumans()}}</h5> 
+                        <div class="col-2">
+                            <a href="/{{$pro->user->profile->username}}" class="author-img active">
+                                <img 
+                                    height="50" width="50" class="rounded-circle" src="{{ $profile_pic }}" alt="avatar"></a>
+                        </div>
+                        <div class="col">
+                            <div class="author-meta">
+                                <h4 class="p-0 m-0"><a class="title-1" href="/{{$pro->user->profile->username}}">
+                                        {{$pro->user->profile->first_name}}
+                                        {{$pro->user->profile->last_name}}
+                                    </a></h4>
+                                <h5 class="subtitle-1 p-0 m-0">joined: {{$pro->user->created_at->diffForHumans()}}</h5>
+                            </div> 
                         </div> 
                     </div>
-                </div> 
-                <div class="common-card">
-                    <div class="card-header">
-                        <h5 class="card-title">safety tips</h5>
+                    <div class="row pl-3 pr-3 pt-2">
+                        <div class="col-12 "> 
+                            <a href="{{ $message_link }}" class="common-card number p-2 pl-4 pr-4 bg-primary">
+                                <h4 class="text-white">Send Message</h4><i class="fas text-white fa-envelope"></i>
+                            </a>
+                        </div>
+                        <div class="col-12 "> 
+                            <button data-toggle="modal" data-target="#number" class="common-card number p-2 pl-4 pr-4 bg-white border border-primary text-primary">
+                                <h4 class="text-primary">
+                                    ({{ Str::substr($pro->user->profile->phone_number,0,4) }}) Call Now
+                                </h4><i class="fas text-primary fa-phone"></i>
+                            </button>
+                        </div>
+                        <div class="col-12 "> 
+                            <a href="/{{$pro->user->profile->username}}"   class="common-card number p-2 pl-4 pr-4 bg-white  border-primary-dashed text-primary">
+                                <h4 class="text-primary">
+                                    Visit Shop
+                                </h4><i class="fas text-primary fa-eye"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="ad-details-safety">
-                        <p>Check the item before you buy</p>
+
+                </div>
+ 
+ 
+
+
+                <div class="common-card p-0">
+                    <div class="border-bottom pl-3 pr-3 pt-3 pb-2">
+                        <h5 class="card-title ">safety tips</h5>
+                    </div>
+                    <div class="ad-details-safety pl-3 pl-3 pt-3 pb-3">
+                        <p class="pt-0 pb-0">Check the item before you buy</p>
                         <p>Pay only after collecting item</p>
                         <p>Beware of unrealistic offers</p>
                         <p>Meet seller at a safe location</p>
@@ -352,13 +488,11 @@ $related_products = Product::where('category_id', $pro->category_id)->get();
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="related-slider slider-arrow">
-                    @foreach ($related_products as $item)
-                    <x-product1 :item="$item" />
-                    @endforeach
-                </div>
+            @foreach ($related_products as $item)
+            <div class="col-lg-3">
+                <x-product1 :item="$item" />
             </div>
+            @endforeach
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -370,18 +504,14 @@ $related_products = Product::where('category_id', $pro->category_id)->get();
 
 </section>
 
+
+
+
+@endsection
+
+
 <script>
     window.addEventListener('DOMContentLoaded', (event) => {
     let $gallery = new SimpleLightbox('.slider-arrow a', {});
 });
 </script>
-
-
-@endsection
-
-@section('foot')
-<script src="{{ URL::asset('/assets/js/vendor/slick.min.js') }} "></script>
-<script src="{{ URL::asset('/assets/js/custom/slick.js') }} "></script>
-<script src="{{ URL::asset('/assets/js/vendor/simple-lightbox.js') }} "></script>
-
-@endsection
