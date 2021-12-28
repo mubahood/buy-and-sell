@@ -14,7 +14,6 @@ class MainController extends Controller
 {
     public function index()
     {
-        
         return view('main.index');
     }
 
@@ -173,6 +172,11 @@ class MainController extends Controller
     public function about()
     {
         dd("about us!");
+    }
+    
+    public function sell_fast()
+    {
+        return view('about.sell_fast'); 
     }
 
     public function test()
