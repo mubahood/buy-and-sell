@@ -9,7 +9,7 @@ $user = Auth::user();
 
 @if (!str_contains($seg, 'post-ad')))
 
-<section class="dash-header-part mt-4">
+<section class="dash-header-part mt-1 d-none d-md-block">
     <div class="container">
         <div class="dash-header-card pt-0 ">
             <div class="row ">
@@ -25,9 +25,7 @@ $user = Auth::user();
 
                             <li><a @if ($seg=='messages' ) class="active" @endif
                                     href="{{ url('messages') }}">Messages</a></li>
-
-                            <li><a @if ($seg=='membership' ) class="active" @endif
-                                    href="{{ route('membership') }}">Membership</a></li>
+ 
                             <li><a @if ($seg=='profile-edit' ) class="active" @endif
                                     href="{{ url('profile-edit') }}/{{ $id }}">My Profile</a></li>
                            

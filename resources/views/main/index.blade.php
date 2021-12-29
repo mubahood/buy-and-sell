@@ -177,90 +177,97 @@ $cities = City::all();
 
                 </div>
             </div>
-            <div class="col-lg-8 col-xl-9">
-
-
-
+            <div class="col-lg-10 col-xl-9">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header-filter">
-                            <div class="filter-action">
-                                <a href="{{ url('products') }}" title="Clear search" class="{{ $product_tab }}">Product
-                                    List</a>
-                                <a href="{{ url('suppliers') }}" class="{{ $supplier_tab }} ml-2">Supplier List</a>
-                            </div>
-                            <div class="header-filter" style="margin-bottom: -7px">
-                                {{ $search_title }}
+                    <div class="col-12 col-md-9">
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="header-filter">
+                                    <div class="filter-action">
+                                        <a href="{{ url('products') }}" title="Clear search" class="{{ $product_tab }}">Product
+                                            List</a>
+                                        <a href="{{ url('suppliers') }}" class="{{ $supplier_tab }} ml-2">Supplier List</a>
+                                    </div>
+                                    <div class="header-filter" style="margin-bottom: -7px">
+                                        {{ $search_title }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-
-
-                <div class="row ad-standard">
-
- 
-                    @if ($show_products)
-                    @foreach ($products as $item)
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                        <x-product2 :item="$item" />
-                    </div>
-                    @endforeach
-                    @endif
-
-                    @if (!$show_products)
-                    @foreach ($profiles as $item)
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                        <x-supplier :item="$item" />
-                    </div>
-                    @endforeach
-                    @endif
-
-
-
-
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer-pagection">
-
-
+        
+        
+        
+                        <div class="row ad-standard ">
                             
-
-
-                            @if ($products!=null)
-
-                            <p class="page-info">Showing {{$products->count()}} of {{$products->total()}} Results</p>
-                            {{
-                            $products->onEachSide(2)->links('main.pagination')
-                            }}
+        
+        
+                            @if ($show_products)
+                            @foreach ($products as $item)
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-0">
+                                <x-product2 :item="$item" />
+                            </div>
+                            @endforeach
                             @endif
-
-                            @if ($profiles!=null)
-
-                            <p class="page-info">Showing {{$profiles->count()}} of {{$profiles->total()}} Results</p>
-                            {{
-                            $profiles->onEachSide(2)->links('main.pagination')
-                            }}
+        
+                            @if (!$show_products)
+                            @foreach ($profiles as $item)
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                                <x-supplier :item="$item" />
+                            </div>
+                            @endforeach
                             @endif
-
-
-                            {{-- <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#"><i
-                                            class="fas fa-long-arrow-alt-left"></i></a></li>
-                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">...</li>
-                                <li class="page-item"><a class="page-link" href="#">67</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i
-                                            class="fas fa-long-arrow-alt-right"></i></a></li>
-                            </ul> --}}
+        
+        
+        
+        
                         </div>
+                        <div class="row ">
+                            <div class="col-lg-12">
+                                <div class="footer-pagection border-0">
+         
+        
+                                    @if ($products!=null)
+        
+                                    <p class="page-info">Showing {{$products->count()}} of {{$products->total()}} Results</p>
+                                    {{
+                                    $products->onEachSide(2)->links('main.pagination')
+                                    }}
+                                    @endif
+        
+                                    @if ($profiles!=null)
+        
+                                    <p class="page-info">Showing {{$profiles->count()}} of {{$profiles->total()}} Results</p>
+                                    {{
+                                    $profiles->onEachSide(2)->links('main.pagination')
+                                    }}
+                                    @endif
+        
+        
+                                    {{-- <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#"><i
+                                                    class="fas fa-long-arrow-alt-left"></i></a></li>
+                                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">...</li>
+                                        <li class="page-item"><a class="page-link" href="#">67</a></li>
+                                        <li class="page-item"><a class="page-link" href="#"><i
+                                                    class="fas fa-long-arrow-alt-right"></i></a></li>
+                                    </ul> --}}
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
-                </div>
+                    <div class="col-3 bg-danger d-none d-md-block">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vitae optio ullam quis eos dolore, blanditiis obcaecati rem veniam ad laudantium maxime expedita voluptates nobis dignissimos laborum sequi dolores provident!
+                    </div>
+
+                </div> 
             </div>
+
+            
         </div>
     </div>
 </section>
