@@ -114,11 +114,11 @@ $message_link = "/messages/".$chat_thred;
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                    <div class="cross-vertical-badge ad-details-badge"><i
-                            class="fas fa-search-plus"></i><span>Click to zoom</span></div>
+                    <div class="cross-vertical-badge ad-details-badge"><i class="fas fa-search-plus"></i><span>Click to
+                            zoom</span></div>
                 </div>
             </div>
-            <div class="mt-2 mb-3"> 
+            <div class="mt-2 mb-3">
                 <h1 class="h3">{{ $pro->name }}</h1>
                 <ul class="ad-details-specific">
                     <li>
@@ -350,6 +350,24 @@ $message_link = "/messages/".$chat_thred;
                             <h4 class="text-white">Send Message</h4><i class="fas text-white fa-envelope"></i>
                         </a>
                     </div>
+                    @section('mobile-nav')
+                    <div class="row  p-0 m-0 pt-2 pb-2 pl-1 pr-1" style="width: 100%">
+                        <div class="col-6   p-1 m-0">
+                            <a href="{{ $message_link }}" class="common-card number p-1  pl-3 pr-3 m-0 bg-primary">
+                                <h4 class="text-white">Chat</h4><i class="fas text-white fa-envelope"></i>
+                            </a>
+                        </div>
+                        <div class="col-6 p-1 m-0" style="width: 100%">
+                            <button data-toggle="modal" data-target="#number"
+                                class="common-card number p-0 m-0 p-1  pl-3 pr-3 bg-white border border-primary text-primary">
+                                <h4 class="text-primary p-0 m-0">
+                                    Call
+                                </h4><i class="fas text-primary fa-phone"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    @endsection
                     <div class="col-12 ">
                         <button data-toggle="modal" data-target="#number"
                             class="common-card number p-2 pl-4 pr-4 bg-white border border-primary text-primary">

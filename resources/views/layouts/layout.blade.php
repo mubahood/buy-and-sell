@@ -1,8 +1,19 @@
 <?php
 use App\Models\Category;
+use App\Models\Product;
+// check if is a product page
+$is_product_page = false;
+if( request()->segment(1) != null){
+    $slug = request()->segment(1);
+    $_pro = Product::where('slug', $slug)->first();
+    if($_pro!=null && $_pro->id != null){
+        if($_pro->id>0){
+            $is_product_page = true;
+        }
+    }
+}
 
-
-if(!Request::ajax()){
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +30,8 @@ if(!Request::ajax()){
     <link rel="icon" href="images/favicon.png">
     <link rel="stylesheet" href="{{ URL::asset('/assets/fonts/flaticon/flaticon.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/fonts/font-awesome/fontawesome.css') }}">
-    {{-- <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/slick.min.css') }}"> --}}
+    {{--
+    <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/slick.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/index.css') }}">
@@ -43,12 +55,13 @@ $key_word = trim($_GET['search']);
 }
 } 
  
-} ?>
+ ?>
 
 
 
 
-<?php if(!Request::ajax()){ ?> 
+<?php if(!Request::ajax()){ ?>
+
 <body>
     @if ("login" != request()->segment(1))
     @if ("register" != request()->segment(1))
@@ -182,10 +195,10 @@ $key_word = trim($_GET['search']);
                         <ul class="navbar-list">
                             <li class="navbar-item"><a class="navbar-link" href="/dashboard">My Ads</a></li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="/messages"><span>Messages</span><span>0</span></a></li> 
+                                    href="/messages"><span>Messages</span><span>0</span></a></li>
                             <li class="navbar-item"><a class="navbar-link" href="{{ url('profile-edit') }}/{{ $id }}">My
                                     profile</a>
-                            </li> 
+                            </li>
                             <li class="navbar-item"><a class="navbar-link" href="/logout">Logout</a></li>
 
                         </ul>
@@ -205,7 +218,7 @@ $key_word = trim($_GET['search']);
     <?php
 }
     ?>
-    <div >
+    <div>
         @yield('content')
     </div>
 
@@ -223,50 +236,71 @@ if(!Request::ajax()){
     @if ( "register" != request()->segment(1)
     )
 
-@if (
-    "dashboard" != request()->segment(1) && 
-    "post-ad" != request()->segment(1) 
+    @if (
+    "dashboard" != request()->segment(1) &&
+    "post-ad" != request()->segment(1)
     )
 
     @guest
-        <nav class="mobile-nav">
-            <div class="container">
-                <div class="mobile-group">
-                    <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-home"></i><span>Home</span></a>
-                    <a href="javascript:;" class="mobile-widget sidebar-btn"><i class="fas fa-bars"></i><span>Categories</span></a>
-                    <a href="<?= URL::asset('/post-ad') ?>" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Post Ad</span></a>
-                    <a href="<?= URL::asset('/register') ?>" class="mobile-widget"><i class="fas fa-user"></i><span>Join Me</span><sup>0</sup></a> 
-                    <a href="<?= URL::asset('/about') ?>" class="mobile-widget"><i class="fas fa-info-circle"></i><span>About Us</span></a>
-                </div>
+    @if (!$is_product_page)
+    <nav class="mobile-nav">
+        <div class="container">
+            <div class="mobile-group">
+                <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="javascript:;" class="mobile-widget sidebar-btn"><i
+                        class="fas fa-bars"></i><span>Categories</span></a>
+                <a href="<?= URL::asset('/post-ad') ?>" class="mobile-widget plus-btn"><i
+                        class="fas fa-plus"></i><span>Post Ad</span></a>
+                <a href="<?= URL::asset('/register') ?>" class="mobile-widget"><i class="fas fa-user"></i><span>Join
+                        Me</span><sup>0</sup></a>
+                <a href="<?= URL::asset('/about') ?>" class="mobile-widget"><i
+                        class="fas fa-info-circle"></i><span>About Us</span></a>
             </div>
-        </nav>
-    @endguest
+        </div>
+    </nav>
+    @endif
 
+    @endguest
     @auth
-        <nav class="mobile-nav">
-            <div class="container">
-                <div class="mobile-group">
-                    <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-home"></i><span>Home</span></a>
-                    <a href="javascript:;" class="mobile-widget sidebar-btn"><i class="fas fa-bars"></i><span>Categories</span></a>
-                    <a href="<?= URL::asset('/post-ad') ?>" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Post Ad</span></a>
-                    <a href="<?= URL::asset('/register') ?>" class="mobile-widget"><i class="fas fa-comments"></i><span>Chats</span><sup>0</sup></a> 
-                    <a href="<?= URL::asset('/dashboard') ?>" class="mobile-widget"><i class="fas fa-store"></i><span>My Ads</span></a>
-                </div>
+    @if (!$is_product_page)
+    <nav class="mobile-nav">
+        <div class="container">
+            <div class="mobile-group">
+                <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="javascript:;" class="mobile-widget sidebar-btn"><i
+                        class="fas fa-bars"></i><span>Categories</span></a>
+                <a href="<?= URL::asset('/post-ad') ?>" class="mobile-widget plus-btn"><i
+                        class="fas fa-plus"></i><span>Post Ad</span></a>
+                <a href="<?= URL::asset('/register') ?>" class="mobile-widget"><i
+                        class="fas fa-comments"></i><span>Chats</span><sup>0</sup></a>
+                <a href="<?= URL::asset('/dashboard') ?>" class="mobile-widget"><i class="fas fa-store"></i><span>My
+                        Ads</span></a>
             </div>
-        </nav>
+        </div>
+    </nav>
+    @endif
     @endauth
 
+    @if (!$is_product_page)
+    @endif
+    <nav class="mobile-nav  p-0 m-0">
+        <div class="mobile-group p-0 m-0 text-center">
+            @yield('mobile-nav')
+        </div>
+    </nav>
     @endif
 
 
 
+
+
     @if (
-    "dashboard" != request()->segment(1) && 
-    "post-ad" != request()->segment(1) 
+    "dashboard" != request()->segment(1) &&
+    "post-ad" != request()->segment(1)
     )
     <footer class="footer-part pt-4">
         <div class="container">
-             
+
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="footer-content">
@@ -275,13 +309,21 @@ if(!Request::ajax()){
                             <li><i class="fas fa-map-marker-alt"></i>
                                 <p>@php
                                     echo config('app.address')
-                                @endphp</p>
-                            </li> 
+                                    @endphp</p>
+                            </li>
                             <li><i class="fas fa-envelope"></i>
-                                <p>support@<?= config('app.domain') ?><span>info@<?= config('app.domain') ?></span></p>
+                                <p>support@
+                                    <?= config('app.domain') ?><span>info@
+                                        <?= config('app.domain') ?>
+                                    </span>
+                                </p>
                             </li>
                             <li><i class="fas fa-phone-alt"></i>
-                                <p><?= config('app.phone_1') ?><span><?= config('app.phone_2') ?></span></p>
+                                <p>
+                                    <?= config('app.phone_1') ?><span>
+                                        <?= config('app.phone_2') ?>
+                                    </span>
+                                </p>
                             </li>
                         </ul>
                     </div>
@@ -311,8 +353,8 @@ if(!Request::ajax()){
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-3">
-                    <div class="footer-info"><a href="#"><img class="bg-white pr-1 " src="<?= URL::asset('assets/') ?>/images/logo-1.png"
-                                alt="logo"></a>
+                    <div class="footer-info"><a href="#"><img class="bg-white pr-1 "
+                                src="<?= URL::asset('assets/') ?>/images/logo-1.png" alt="logo"></a>
                         <ul class="footer-count">
                             <li>
                                 <h5>929,238</h5>
@@ -335,9 +377,10 @@ if(!Request::ajax()){
                                 href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/03.jpg" alt="03"></a><a
                                 href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/04.jpg" alt="04"></a>
                         </div>
-                        <div class="footer-option d-none"><button type="button" data-toggle="modal" data-target="#language"><i
-                                    class="fas fa-globe"></i>English</button><button type="button" data-toggle="modal"
-                                data-target="#currency"><i class="fas fa-dollar-sign"></i>USD</button></div>
+                        <div class="footer-option d-none"><button type="button" data-toggle="modal"
+                                data-target="#language"><i class="fas fa-globe"></i>English</button><button
+                                type="button" data-toggle="modal" data-target="#currency"><i
+                                    class="fas fa-dollar-sign"></i>USD</button></div>
                         <div class="footer-app"><a href="#"><img
                                     src="<?= URL::asset('assets/') ?>/images/play-store.png" alt="play-store"></a><a
                                 href="#"><img src="<?= URL::asset('assets/') ?>/images/app-store.png"
@@ -349,10 +392,12 @@ if(!Request::ajax()){
         <div class="footer-end">
             <div class="container">
                 <div class="footer-end-content">
-                    <p>All Copyrights Reserved &copy; 2021 - Developed by <a href="<?= config('app.developer_link') ?>"><?= config('app.developer_name') ?></a></p>
+                    <p>All Copyrights Reserved &copy; 2021 - Developed by <a href="<?= config('app.developer_link') ?>">
+                            <?= config('app.developer_name') ?>
+                        </a></p>
                     <ul class="footer-social">
                         <li><a href="<?= config('app.facebook') ?>"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="<?= config('app.twitter') ?>"><i class="fab fa-twitter"></i></a></li>  
+                        <li><a href="<?= config('app.twitter') ?>"><i class="fab fa-twitter"></i></a></li>
                         <li><a href="<?= config('app.youtube') ?>"><i class="fab fa-youtube"></i></a></li>
                         <li><a href="<?= config('app.instagram') ?>"><i class="fab fa-instagram"></i></a></li>
                     </ul>
