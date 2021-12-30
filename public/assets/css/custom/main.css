@@ -73,7 +73,6 @@ body {
 body {
     color: var(--text);
     font-size: 14px;
-    font-weight: 100;
     font-family: 'Open Sans', 'PF DinText Pro', Helvetica, sans-serif;
     line-height: 1.71428571;
 }
@@ -1202,8 +1201,7 @@ textarea.form-control {
 
 .product-card,.product-card-1 {
     border-radius: 0px;
-    margin-bottom: 0px;
-    background: var(--chalk);
+    margin-bottom: 0px; 
     overflow: hidden;
     border-bottom: 1px solid var(--border);
     transition: all linear .3s;

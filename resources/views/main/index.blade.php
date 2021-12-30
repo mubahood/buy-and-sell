@@ -106,11 +106,11 @@ $cities = City::all();
         background-color: white;
     }
 </style>
-<section class="inner-section ad-list-part mt-4">
+<section class="inner-section ad-list-part mt-2 mt-md-3  mb-0 mb-md-3">
     <div class="container">
         <div class="row content-reverse">
-            <div class="col-lg-4 col-xl-3">
-                <div class="row">
+            <div class="col-lg-4 col-xl-3 d-none d-md-block">
+                <div class="row ">
 
                     <div class="col-md-6 col-lg-12 ">
                         <div class="product-widget pr-4">
@@ -179,15 +179,17 @@ $cities = City::all();
             </div>
             <div class="col-lg-10 col-xl-9">
                 <div class="row">
-                    <div class="col-12 col-md-9">
-                        
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="header-filter">
+                    <div class="col-12 col-md-9 ">
+
+                        <div class="row ">
+                            <div class="col-lg-12  pt-0 pl-1">
+                                <div class="header-filter mt-0  m-0 mb-2 ">
                                     <div class="filter-action">
-                                        <a href="{{ url('products') }}" title="Clear search" class="{{ $product_tab }}">Product
+                                        <a href="{{ url('products') }}" title="Clear search"
+                                            class="{{ $product_tab }}">Product
                                             List</a>
-                                        <a href="{{ url('suppliers') }}" class="{{ $supplier_tab }} ml-2">Supplier List</a>
+                                        <a href="{{ url('suppliers') }}" class="{{ $supplier_tab }} ml-2">Supplier
+                                            List</a>
                                     </div>
                                     <div class="header-filter" style="margin-bottom: -7px">
                                         {{ $search_title }}
@@ -195,13 +197,13 @@ $cities = City::all();
                                 </div>
                             </div>
                         </div>
-        
-        
-        
+
+
+
                         <div class="row ad-standard ">
-                            
-        
-        
+
+
+
                             @if ($show_products)
                             @foreach ($products as $item)
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-0">
@@ -209,7 +211,7 @@ $cities = City::all();
                             </div>
                             @endforeach
                             @endif
-        
+
                             @if (!$show_products)
                             @foreach ($profiles as $item)
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
@@ -217,33 +219,35 @@ $cities = City::all();
                             </div>
                             @endforeach
                             @endif
-        
-        
-        
-        
+
+
+
+
                         </div>
                         <div class="row ">
                             <div class="col-lg-12">
                                 <div class="footer-pagection border-0">
-         
-        
+
+
                                     @if ($products!=null)
-        
-                                    <p class="page-info">Showing {{$products->count()}} of {{$products->total()}} Results</p>
+
+                                    <p class="page-info">Showing {{$products->count()}} of {{$products->total()}}
+                                        Results</p>
                                     {{
                                     $products->onEachSide(2)->links('main.pagination')
                                     }}
                                     @endif
-        
+
                                     @if ($profiles!=null)
-        
-                                    <p class="page-info">Showing {{$profiles->count()}} of {{$profiles->total()}} Results</p>
+
+                                    <p class="page-info">Showing {{$profiles->count()}} of {{$profiles->total()}}
+                                        Results</p>
                                     {{
                                     $profiles->onEachSide(2)->links('main.pagination')
                                     }}
                                     @endif
-        
-        
+
+
                                     {{-- <ul class="pagination">
                                         <li class="page-item"><a class="page-link" href="#"><i
                                                     class="fas fa-long-arrow-alt-left"></i></a></li>
@@ -258,16 +262,18 @@ $cities = City::all();
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="col-3 bg-danger d-none d-md-block">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vitae optio ullam quis eos dolore, blanditiis obcaecati rem veniam ad laudantium maxime expedita voluptates nobis dignissimos laborum sequi dolores provident!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vitae optio ullam quis eos
+                        dolore, blanditiis obcaecati rem veniam ad laudantium maxime expedita voluptates nobis
+                        dignissimos laborum sequi dolores provident!
                     </div>
 
-                </div> 
+                </div>
             </div>
 
-            
+
         </div>
     </div>
 </section>

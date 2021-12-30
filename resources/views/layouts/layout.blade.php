@@ -19,8 +19,7 @@ if(!Request::ajax()){
     <link rel="icon" href="images/favicon.png">
     <link rel="stylesheet" href="{{ URL::asset('/assets/fonts/flaticon/flaticon.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/fonts/font-awesome/fontawesome.css') }}">
-    {{--
-    <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/slick.min.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/slick.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/index.css') }}">
@@ -230,12 +229,12 @@ if(!Request::ajax()){
     "login" != request()->segment(1)
     )
 
-    @if (
-    "register" != request()->segment(1)
+    @if ( "register" != request()->segment(1)
     )
 
-    @if ( 
-    "post-ad" != request()->segment(1)
+@if (
+    "dashboard" != request()->segment(1) && 
+    "post-ad" != request()->segment(1) 
     )
     <nav class="mobile-nav">
         <div class="container">
@@ -254,12 +253,12 @@ if(!Request::ajax()){
 
 
     @if (
-    "dashboard" != request()->segment(1) &&
-    "post-ad" != request()->segment(1)
+    "dashboard" != request()->segment(1) && 
+    "post-ad" != request()->segment(1) 
     )
     <footer class="footer-part pt-4">
         <div class="container">
-
+             
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="footer-content">
@@ -268,21 +267,13 @@ if(!Request::ajax()){
                             <li><i class="fas fa-map-marker-alt"></i>
                                 <p>@php
                                     echo config('app.address')
-                                    @endphp</p>
-                            </li>
+                                @endphp</p>
+                            </li> 
                             <li><i class="fas fa-envelope"></i>
-                                <p>support@
-                                    <?= config('app.domain') ?><span>info@
-                                        <?= config('app.domain') ?>
-                                    </span>
-                                </p>
+                                <p>support@<?= config('app.domain') ?><span>info@<?= config('app.domain') ?></span></p>
                             </li>
                             <li><i class="fas fa-phone-alt"></i>
-                                <p>
-                                    <?= config('app.phone_1') ?><span>
-                                        <?= config('app.phone_2') ?>
-                                    </span>
-                                </p>
+                                <p><?= config('app.phone_1') ?><span><?= config('app.phone_2') ?></span></p>
                             </li>
                         </ul>
                     </div>
@@ -312,8 +303,8 @@ if(!Request::ajax()){
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-3">
-                    <div class="footer-info"><a href="#"><img class="bg-white pr-1 "
-                                src="<?= URL::asset('assets/') ?>/images/logo-1.png" alt="logo"></a>
+                    <div class="footer-info"><a href="#"><img class="bg-white pr-1 " src="<?= URL::asset('assets/') ?>/images/logo-1.png"
+                                alt="logo"></a>
                         <ul class="footer-count">
                             <li>
                                 <h5>929,238</h5>
@@ -336,10 +327,9 @@ if(!Request::ajax()){
                                 href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/03.jpg" alt="03"></a><a
                                 href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/04.jpg" alt="04"></a>
                         </div>
-                        <div class="footer-option d-none"><button type="button" data-toggle="modal"
-                                data-target="#language"><i class="fas fa-globe"></i>English</button><button
-                                type="button" data-toggle="modal" data-target="#currency"><i
-                                    class="fas fa-dollar-sign"></i>USD</button></div>
+                        <div class="footer-option d-none"><button type="button" data-toggle="modal" data-target="#language"><i
+                                    class="fas fa-globe"></i>English</button><button type="button" data-toggle="modal"
+                                data-target="#currency"><i class="fas fa-dollar-sign"></i>USD</button></div>
                         <div class="footer-app"><a href="#"><img
                                     src="<?= URL::asset('assets/') ?>/images/play-store.png" alt="play-store"></a><a
                                 href="#"><img src="<?= URL::asset('assets/') ?>/images/app-store.png"
@@ -351,12 +341,10 @@ if(!Request::ajax()){
         <div class="footer-end">
             <div class="container">
                 <div class="footer-end-content">
-                    <p>All Copyrights Reserved &copy; 2021 - Developed by <a href="<?= config('app.developer_link') ?>">
-                            <?= config('app.developer_name') ?>
-                        </a></p>
+                    <p>All Copyrights Reserved &copy; 2021 - Developed by <a href="<?= config('app.developer_link') ?>"><?= config('app.developer_name') ?></a></p>
                     <ul class="footer-social">
                         <li><a href="<?= config('app.facebook') ?>"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="<?= config('app.twitter') ?>"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="<?= config('app.twitter') ?>"><i class="fab fa-twitter"></i></a></li>  
                         <li><a href="<?= config('app.youtube') ?>"><i class="fab fa-youtube"></i></a></li>
                         <li><a href="<?= config('app.instagram') ?>"><i class="fab fa-instagram"></i></a></li>
                     </ul>
