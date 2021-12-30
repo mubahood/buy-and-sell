@@ -238,13 +238,13 @@ if(!Request::ajax()){
     )
     <nav class="mobile-nav">
         <div class="container">
-            <div class="mobile-group"><a href="<?= URL::asset('/') ?>" class="mobile-widget"><i
-                        class="fas fa-home"></i><span>home</span></a><a href="<?= URL::asset('/') ?>"
-                    class="mobile-widget"><i class="fas fa-user"></i><span>join me</span></a><a
-                    href="<?= URL::asset('/') ?>" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad
-                        Post</span></a><a href="<?= URL::asset('/') ?>" class="mobile-widget"><i
-                        class="fas fa-bell"></i><span>notify</span><sup>0</sup></a><a href="<?= URL::asset('/') ?>"
-                    class="mobile-widget"><i class="fas fa-envelope"></i><span>message</span><sup>0</sup></a></div>
+            <div class="mobile-group">
+                <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="javascript:;" class="mobile-widget sidebar-btn"><i class="fas fa-user"></i><span>Categories</span></a>
+                <a href="<?= URL::asset('/') ?>" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad Post</span></a>
+                <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-bell"></i><span>Join Me</span><sup>0</sup></a> 
+                <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-user"></i><span>About Us</span></a>
+            </div>
         </div>
     </nav>
 
