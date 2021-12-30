@@ -205,7 +205,7 @@ $key_word = trim($_GET['search']);
     <?php
 }
     ?>
-    <div id="pjax-container">
+    <div >
         @yield('content')
     </div>
 
