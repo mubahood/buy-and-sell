@@ -48,13 +48,8 @@ $key_word = trim($_GET['search']);
 
 
 
-<?php
-if(!Request::ajax()){
-?>
-
+<?php if(!Request::ajax()){ ?> 
 <body>
-
-
     @if ("login" != request()->segment(1))
     @if ("register" != request()->segment(1))
     <header class="header-part">
@@ -98,7 +93,7 @@ if(!Request::ajax()){
                     @endguest
 
                     <a href="<?= URL::asset('/post-ad') ?>" class="btn btn-inline post-btn"><i
-                            class="fas fa-plus-circle"></i><span>post your service</span></a>
+                            class="fas fa-plus-circle"></i><span>post ad</span></a>
                 </div>
             </div>
         </div>
@@ -187,14 +182,10 @@ if(!Request::ajax()){
                         <ul class="navbar-list">
                             <li class="navbar-item"><a class="navbar-link" href="/dashboard">My Ads</a></li>
                             <li class="navbar-item navbar-dropdown"><a class="navbar-link"
-                                    href="/messages"><span>Messages</span><span>0</span></a></li>
-                            <li class="navbar-item"><a class="navbar-link" href="/favourites">Favourites</a>
-                            </li>
+                                    href="/messages"><span>Messages</span><span>0</span></a></li> 
                             <li class="navbar-item"><a class="navbar-link" href="{{ url('profile-edit') }}/{{ $id }}">My
                                     profile</a>
-                            </li>
-                            <li class="navbar-item"><a class="navbar-link" href="javascript:;">My Membership</a>
-                            </li>
+                            </li> 
                             <li class="navbar-item"><a class="navbar-link" href="/logout">Logout</a></li>
 
                         </ul>
@@ -236,17 +227,34 @@ if(!Request::ajax()){
     "dashboard" != request()->segment(1) && 
     "post-ad" != request()->segment(1) 
     )
-    <nav class="mobile-nav">
-        <div class="container">
-            <div class="mobile-group">
-                <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-home"></i><span>Home</span></a>
-                <a href="javascript:;" class="mobile-widget sidebar-btn"><i class="fas fa-user"></i><span>Categories</span></a>
-                <a href="<?= URL::asset('/') ?>" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Ad Post</span></a>
-                <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-bell"></i><span>Join Me</span><sup>0</sup></a> 
-                <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-user"></i><span>About Us</span></a>
+
+    @guest
+        <nav class="mobile-nav">
+            <div class="container">
+                <div class="mobile-group">
+                    <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-home"></i><span>Home</span></a>
+                    <a href="javascript:;" class="mobile-widget sidebar-btn"><i class="fas fa-bars"></i><span>Categories</span></a>
+                    <a href="<?= URL::asset('/post-ad') ?>" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Post Ad</span></a>
+                    <a href="<?= URL::asset('/register') ?>" class="mobile-widget"><i class="fas fa-user"></i><span>Join Me</span><sup>0</sup></a> 
+                    <a href="<?= URL::asset('/about') ?>" class="mobile-widget"><i class="fas fa-info-circle"></i><span>About Us</span></a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    @endguest
+
+    @auth
+        <nav class="mobile-nav">
+            <div class="container">
+                <div class="mobile-group">
+                    <a href="<?= URL::asset('/') ?>" class="mobile-widget"><i class="fas fa-home"></i><span>Home</span></a>
+                    <a href="javascript:;" class="mobile-widget sidebar-btn"><i class="fas fa-bars"></i><span>Categories</span></a>
+                    <a href="<?= URL::asset('/post-ad') ?>" class="mobile-widget plus-btn"><i class="fas fa-plus"></i><span>Post Ad</span></a>
+                    <a href="<?= URL::asset('/register') ?>" class="mobile-widget"><i class="fas fa-comments"></i><span>Chats</span><sup>0</sup></a> 
+                    <a href="<?= URL::asset('/dashboard') ?>" class="mobile-widget"><i class="fas fa-store"></i><span>My Ads</span></a>
+                </div>
+            </div>
+        </nav>
+    @endauth
 
     @endif
 
