@@ -11,6 +11,10 @@ if(!$pro->user){
 dd("User not found.");
 }
 }
+$products = [];
+$conds['category_id'] = $pro->category->id;
+$products = Product::where($conds)->paginate(4);
+
 $images = $pro->get_images();
 $attributes = json_decode($pro->attributes);
 $url = $_SERVER['REQUEST_URI'];
@@ -46,21 +50,13 @@ $message_link = "/messages/".$chat_thred;
 <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/simple-lightbox.css') }}"> --}}
 
 
-<div class="container">
-
-
-
-
+<div class="container"> 
     <div class="row">
         <div class="col-lg-8">
             <div class="pt-3">
                 <div class="ad-details-slider-group ">
                     <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
-
-
-                        <ol class="carousel-indicators">
-
-
+                         <ol class="carousel-indicators"> 
                             <?php
                                     $first_seen = false;
                                     $active = "";
@@ -182,14 +178,14 @@ $message_link = "/messages/".$chat_thred;
                     @endforeach
                 </ul>
             </div>
-            <div class="common-card">
+            <div class="mb-4">
                 <div class="card-header">
-                    <h5 class="card-title">description</h5>
+                    <h5 class="card-title p-0 m-0 ">Description</h5>
                 </div>
                 <p class="ad-details-desc">{{ $pro->category->description }}</p>
             </div>
-            <div class="common-card" id="review">
-                <div class="card-header">
+            {{-- <div class="" id="review">
+                <div class="card-header p-0 m-0 pt-2">
                     <h5 class="card-title">reviews (@php
                         echo count($pro->reviews)
                         @endphp)</h5>
@@ -281,7 +277,7 @@ $message_link = "/messages/".$chat_thred;
                                 for="star-5"></label>
                         </div>
                         <div class="form-group"><textarea required name="comment" class="form-control"
-                                placeholder="Describe"></textarea>
+                                placeholder="Describe" rows="3"></textarea>
                         </div><button type="submit" class="btn btn-inline review-submit"><i
                                 class="fas fa-tint"></i><span>drop your
                                 review</span></button>
@@ -289,7 +285,7 @@ $message_link = "/messages/".$chat_thred;
 
                     @endauth
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="modal" id="number">
@@ -305,13 +301,13 @@ $message_link = "/messages/".$chat_thred;
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 mt-3">
 
             <div class="common-card p-0">
                 <div class="border-bottom pl-3 pr-3 pt-3 pb-2">
                     <h5 class="card-title ">@php
                         echo config('app.currency')
-                        @endphp 120</h5>
+                        @endphp {{number_format($pro->price)}}</h5>
                 </div>
 
                 <div class="row pl-3 pt-2">
@@ -408,6 +404,15 @@ $message_link = "/messages/".$chat_thred;
     </div>
 </div>
 
+<div class="container mb-4">
+    <h5 class="card-title p-0 m-0 ">Similar items</h5>
+    @foreach ($products as $item)
+    <div class="col-md-8 pl-0 pr-0">
+        <x-product2 :item="$item" />
+    </div>
+    @endforeach
+</div>
+
 
 <!-- Large modal -->
 <div class="modal image-modal" style="background-color: #424E4E;" tabindex="-1" role="dialog"
@@ -425,11 +430,7 @@ $message_link = "/messages/".$chat_thred;
             <div class="ad-details-slider-group ">
 
                 <div id="carouselExampleIndicators1" class="carousel slide " data-ride="carousel">
-
-
                     <ol class="carousel-indicators">
-
-
                         <?php
                         $first_seen = false;
                         $active = "";

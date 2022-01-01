@@ -2860,7 +2860,7 @@ textarea.form-control {
 }
 
 .header-part {
-    background: var(--light)
+    background: var(--dark)
 }
 
 .header-part .container {
@@ -2873,7 +2873,7 @@ textarea.form-control {
     left: 0px;
     width: 100%;
     z-index: 3;
-    background: var(--white);
+    background: var(--dark);
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.5);
     transition: all linear .3s;
     -webkit-transition: all linear .3s;
@@ -3116,7 +3116,7 @@ textarea.form-control {
 
 @media (max-width: 1199px) {
     .header-part .container {
-        padding: 15px
+        padding: 10px
     }
     .header-content {
         width: 100%;

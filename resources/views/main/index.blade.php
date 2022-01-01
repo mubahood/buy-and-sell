@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Page Title')
+@section('title', config('app.domain')  )
 
 @section('sidebar')
 @parent
@@ -74,7 +74,7 @@ $conds['city_id'] = $city->id;
 
 }
 
-$products = Product::where($conds)->paginate(2)->withQueryString();
+$products = Product::where($conds)->orderBy('id','desc')->paginate(12)->withQueryString();
 
 }
 } else {
@@ -110,8 +110,7 @@ $cities = City::all();
     <div class="container">
         <div class="row content-reverse">
             <div class="col-lg-4 col-xl-3 d-none d-md-block">
-                <div class="row ">
-
+                <div class="row">
                     <div class="col-md-6 col-lg-12 ">
                         <div class="product-widget pr-4">
                             <h6 class="product-widget-title">Categories</h6>

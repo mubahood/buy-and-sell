@@ -27,7 +27,7 @@ if( request()->segment(1) != null){
     <meta name="keywords"
         content="classicads, classified, ads, classified ads, listing, business, directory, jobs, marketing, portal, advertising, local, posting, ad listing, ad posting,">
     <title>@yield('title')</title>
-    <link rel="icon" href="images/favicon.png">
+    <link rel="icon" href="<?= URL::asset('assets/') ?>/images/favicon.png">
     <link rel="stylesheet" href="{{ URL::asset('/assets/fonts/flaticon/flaticon.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/fonts/font-awesome/fontawesome.css') }}">
     {{--
@@ -90,7 +90,7 @@ $key_word = trim($_GET['search']);
                     </ul>
 
                     <a href="<?= url('/dashboard') ?>" class="header-widget header-user"><img
-                            src="<?= URL::asset('assets/') ?>/images/user.png" alt="user"><span class="text-dark">My
+                            src="<?= URL::asset('assets/') ?>/images/user.png" alt="user"><span class="text-white">My
                             Account</span></a><button type="button" class="header-widget search-btn"><i
                             class="fas fa-search"></i></button>
                     @endauth
@@ -301,93 +301,48 @@ if(!Request::ajax()){
     <footer class="footer-part pt-4">
         <div class="container">
 
-            <div class="row">
+            <div class="row pb-2 pb-md-4">
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="footer-content">
-                        <h3>Contact Us</h3>
-                        <ul class="footer-address">
-                            <li><i class="fas fa-map-marker-alt"></i>
-                                <p>@php
-                                    echo config('app.address')
-                                    @endphp</p>
-                            </li>
-                            <li><i class="fas fa-envelope"></i>
-                                <p>support@
-                                    <?= config('app.domain') ?><span>info@
-                                        <?= config('app.domain') ?>
-                                    </span>
-                                </p>
-                            </li>
-                            <li><i class="fas fa-phone-alt"></i>
-                                <p>
-                                    <?= config('app.phone_1') ?><span>
-                                        <?= config('app.phone_2') ?>
-                                    </span>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-3">
-                    <div class="footer-content">
-                        <h3>Quick Links</h3>
                         <ul class="footer-widget">
-                            <li><a href="/sell-fast">Sell faster</a></li>
-                            <li><a href="#">Orders Tracking</a></li>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Size Guide</a></li>
-                            <li><a href="#">Faq</a></li>
+                            <li>
+                                <i class="fas fa-dollar-sign"></i>
+                                <a class="text-white" href="/sell-fast">How to sell on <?= config('app.domain') ?></a></li>
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="footer-content">
-                        <h3>Information</h3>
                         <ul class="footer-widget">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Delivery System</a></li>
-                            <li><a href="#">Secure Payment</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Sitemap</a></li>
+                            <li>
+                                <i class="fas fa-info-circle"></i>
+                                <a class="text-white" href="<?= URL::asset('/about') ?>">About us</a></li>
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col-sm-6 col-md-6 col-lg-3">
-                    <div class="footer-info"><a href="#"><img class="bg-white pr-1 "
-                                src="<?= URL::asset('assets/') ?>/images/logo-1.png" alt="logo"></a>
-                        <ul class="footer-count">
+                    <div class="footer-content">
+                        <ul class="footer-widget">
                             <li>
-                                <h5>929,238</h5>
-                                <p>Registered Users</p>
-                            </li>
-                            <li>
-                                <h5>242,789</h5>
-                                <p>Community Ads</p>
-                            </li>
+                                <i class="fas fa-address-book"></i>
+                                <a class="text-white" href="<?= URL::asset('/about') ?>">Contact us</a></li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer-card-content">
-                        <div class="footer-payment d-none"><a href="#"><img
-                                    src="<?= URL::asset('assets/') ?>/images/pay-card/01.jpg" alt="01"></a><a
-                                href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/02.jpg" alt="02"></a><a
-                                href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/03.jpg" alt="03"></a><a
-                                href="#"><img src="<?= URL::asset('assets/') ?>/images/pay-card/04.jpg" alt="04"></a>
-                        </div>
-                        <div class="footer-option d-none"><button type="button" data-toggle="modal"
-                                data-target="#language"><i class="fas fa-globe"></i>English</button><button
-                                type="button" data-toggle="modal" data-target="#currency"><i
-                                    class="fas fa-dollar-sign"></i>USD</button></div>
-                        <div class="footer-app"><a href="#"><img
-                                    src="<?= URL::asset('assets/') ?>/images/play-store.png" alt="play-store"></a><a
-                                href="#"><img src="<?= URL::asset('assets/') ?>/images/app-store.png"
-                                    alt="app-store"></a></div>
+                
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="footer-content">
+                        <ul class="footer-widget">
+                            <li>
+                                <i class="fas fa-store"></i>
+                                <a class="text-white" href="<?= URL::asset('/about') ?>">Download our App on Playstore</a></li>
+                        </ul>
                     </div>
-                </div>
-            </div>
+                </div> 
+                 
+            </div> 
         </div>
         <div class="footer-end">
             <div class="container">
