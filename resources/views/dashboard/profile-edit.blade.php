@@ -219,17 +219,14 @@ if ($user_id < 0) { die('User not found.'); } $prof=Profile::where("user_id",$us
                             </div>
 
 
-                            <div class="row">
+                            <div class="row d-none">
                                 <div class="col-md-12">
                                     <div class="form-group">
 
                                         {{ Form::label('longitude', 'National ID Number or Passport Number',['class' =>
-                                        "form-label", 'required' => 'required']) }}
-                                        {{ Form::text('longitude', null,['class' => "form-control"]) }}
-
-                                        @error('longitude')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        "form-label" ] ) }}
+                                        {{ Form::text('longitude', "romina",['class' => "form-control"]) }}
+  
                                     </div>
                                 </div>
 

@@ -263,10 +263,9 @@ $cities = City::all();
                         </div>
 
                     </div>
-                    <div class="col-3 bg-danger d-none d-md-block">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vitae optio ullam quis eos
-                        dolore, blanditiis obcaecati rem veniam ad laudantium maxime expedita voluptates nobis
-                        dignissimos laborum sequi dolores provident!
+                    <div class="col-3   d-none d-md-block">
+                        <a href="https://api.whatsapp.com/send?phone=+905538651740&text=hi, i have contact you from jotrace.com\n\n" target="_blank"><img class="img-fluid" src="{{url("assets/images/ad-1.jpeg")}}" alt="{{ $item->name
+                        }}"></a>
                     </div>
 
                 </div>

@@ -94,9 +94,11 @@ class Dashboard extends Controller
             if (!$profile) {
                 die("failed to find profile.");
             }
-            if($profile->status == 0){
-                $profile->status  = 4;
-            } 
+            // if($profile->status == 0){
+            //     $profile->status  = 4;
+            // } 
+
+            $profile->status = 1;
 
             $profile->first_name = $request->input("first_name");
             $profile->last_name = $request->input("last_name");

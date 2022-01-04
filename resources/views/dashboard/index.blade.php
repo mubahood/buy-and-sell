@@ -31,7 +31,7 @@ $products = Product::where('user_id', $user_id)->get();
 
 
 @include('layouts.dashboard-header');
-<section class="myads-part">
+<section class="myads-part pt-2">
     <div class="container">
 
         @if (count($products)<1) <div class="container">
@@ -54,33 +54,10 @@ $products = Product::where('user_id', $user_id)->get();
     </div>
     @else
 
-
-
-
-    <div class="row">
+    <div class="row ">
         @foreach ($products as $item)
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="product-card">
-                <div class="product-media">
-                    <div class="product-img"><img src="{{$item->get_thumbnail()}}" alt="{{$item->get_thumbnail()}}">
-                    </div>
-                     
-                </div>
-                <div class="product-content">
-                    
-                    <h5 class="product-title"><a href="{{ url($item->slug) }}">{{ $item->name }}</a></h5>
-                    <div class="product-meta"><span><i class="fas fa-map-marker-alt"></i>{{ $item->category->name }},
-                            {{ $item->category->name }}</span><span><i class="fas fa-clock"></i>{{ $item->updated_at
-                            }}</span></div>
-                    <div class="product-info">
-                        <h5 class="product-price">${{ $item->price }}<span>/starting price</span></h5>
-                        <div class="product-btn">
-                            <a href="javascript:;" data-id="{{$item->id}}" title="Delete"
-                                class="fas fa-trash text-danger delete"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-0">
+            <x-product2 :item="$item" />
         </div>
         @endforeach
     </div>

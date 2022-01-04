@@ -9,8 +9,8 @@
         <div class="user-form-banner">
             <div class="user-form-content"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo-1.png"
                         alt="logo"></a>
-                <h1>Advertise your assets <span>Buy what are you needs.</span></h1>
-                <p>Anywhere accross the globe.</p>
+                <h1>Advertise your products<span>and buy whatever you need</span></h1>
+                <p>across the globe.</p>
             </div>
         </div>
         <div class="user-form-category">

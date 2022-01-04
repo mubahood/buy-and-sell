@@ -20,10 +20,7 @@
                 {{$item->city->name}}</span><span><i
                     class="fas fa-clock"></i>{{$item->created_at->diffForHumans()}}</span></div>
         <div class="product-info">
-            <span>
-
-                <a href="{{url($item->username)}}" class="border p-1 bg-primary rounded text-white pl-3 pr-3">CONTACT
-                    NOW</a>
+            <span> 
                 <a href="{{url($item->username)}}" class="border p-1  rounded  pl-3 pr-3">VISIT SHOP</a>
 
             </span>

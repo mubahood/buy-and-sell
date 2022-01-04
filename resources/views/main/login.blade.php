@@ -9,12 +9,12 @@
             <div class="user-form-banner">
                 <div class="user-form-content"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo-1.png"
                             alt="logo"></a>
-                    <h1>Sell your services, Buy whatever you need<span>...</span></h1>
-                    <p>Anywhere accross the globe!</p>
+                    <h1>Advertise your products<span>and buy whatever you need</span></h1>
+                    <p>across the globe.</p>
                 </div>
             </div>
             <div class="user-form-category">
-                <div class="user-form-header"><a href="#"><img src="{{ URL::asset('/assets') }}/images/logo.png"
+                <div class="user-form-header"><a href="#"><img   src="{{ URL::asset('/assets') }}/images/logo-2.png"
                             alt="logo"></a><a href="{{ url('') }}" ><i class="fas fa-home"></i></a></div>
                 <div class="user-form-category-btn">
                     <ul class="nav nav-tabs">
@@ -25,7 +25,7 @@
                     <div class="user-form-title">
                         <h2>Login</h2>
                         <p>Provide your credintials to login.</p>
-                    </div>
+                    </div> 
 
 
                     <form method="POST" action="{{ route('login') }}">
@@ -37,7 +37,7 @@
                                         class="form-control" placeholder="Phone number" name="phone_number"><small
                                         class="form-alert">Please follow this example
                                         -
-                                        +256XXXXXXXXX</small>
+                                        +90XXXXXXXXX</small>
                                     @error('phone_number')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
