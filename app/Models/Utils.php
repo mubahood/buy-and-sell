@@ -127,6 +127,7 @@ class Utils
     public static function upload_images($files)
     {
 
+
         if ($files == null || empty($files)) {
             return [];
         }
@@ -154,13 +155,18 @@ class Utils
                     $img['size'] = $files['size'][$i];
 
 
-                    $path = Storage::putFile('/', $img['tmp_name']);
- 
- 
+                    $path = Storage::putFile('/public/storage', $img['tmp_name']); 
+  
+                    $path_not_optimized =  "./" . $path;
+                    $file_name = str_replace("public/storage/", "", $path);
+                    $file_name = str_replace("public/", "", $file_name);
+                    $file_name = str_replace("storage/", "", $file_name);
+                    $file_name = str_replace("storage/", "", $file_name);
+                    $file_name = str_replace("public", "", $file_name);
+                    $file_name = str_replace("/", "", $file_name);
 
-
-                    $path_not_optimized =  "public/storage/" . $path;
-                    $path_optimized = "public/storage/thumb_" . $path;
+                    $path_optimized = "./public/storage/thumb_" . $file_name;
+                    
                     $thumbnail = Utils::create_thumbail(
                         array(
                             "source" => $path_not_optimized,
@@ -177,26 +183,25 @@ class Utils
                         $thumbnail = str_replace("storage", "", $thumbnail);
                         $thumbnail = str_replace("public/", "", $thumbnail);
                         $thumbnail = str_replace("public", "", $thumbnail);
-                        $thumbnail = str_replace("/", "", $thumbnail);
-                        $thumbnail = str_replace("..", "", $thumbnail);
+                        $thumbnail = str_replace("./", "", $thumbnail); 
                     } else {
-                        $thumbnail = $path;
+                        $thumbnail = $file_name;
                     } 
-                    $ready_image['src'] = $path;
+                    $ready_image['src'] = $file_name;
                     $ready_image['thumbnail'] = $thumbnail;
 
                     $ready_image['user_id'] = Auth::id();
                     if (!$ready_image['user_id']) {
                         $ready_image['user_id'] = 1;
                     }
-
+                    
                     $_ready_image = new Image($ready_image);
                     $_ready_image->save();
                     $uploaded_images[] = $ready_image;
                 }
             }
-        }
-
+        } 
+          
         return $uploaded_images;
     }
 
@@ -212,9 +217,12 @@ class Utils
         $image = new Zebra_Image();
 
         $image->auto_handle_exif_orientation = false;
-        $image->source_path = "../".$params['source'];
-        $image->target_path = "../".$params['target'];
+        $image->source_path = "".$params['source'];
+        $image->target_path = "".$params['target'];
+        
 
+         
+ 
  
         $image->jpeg_quality = 100;
         if (isset($params['quality'])) {
@@ -234,11 +242,12 @@ class Utils
         if (isset($params['heigt'])) {
             $width = $params['heigt'];
         }
-
-
+ 
         if (!$image->resize($width, $heigt, ZEBRA_IMAGE_CROP_CENTER)) {
+          
             return $image->source_path;
         } else { 
+            
             return $image->target_path;
         }
     }
