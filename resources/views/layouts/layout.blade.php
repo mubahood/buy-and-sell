@@ -33,12 +33,20 @@ if( request()->segment(1) != null){
     {{--
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/slick.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/bootstrap.min.css') }}">
+
+    @if (config('app.id') == "s")
+    <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/main-s.css') }}">
+    @else
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/main.css') }}">
+    @endif
+
+
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/index.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/custom/ad-details.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/vendor/simple-lightbox.css') }}">
     @yield('head')
 </head>
+
 
 
 <?php 
@@ -85,7 +93,7 @@ $key_word = trim($_GET['search']);
                     <ul class="header-list">
 
                         <li class="header-item"><a type="button" href="{{url("messages")}}" class="header-widget"><i
-                                    class="fas fa-envelope"></i><sup>0</sup></a>
+                                    class="fas fa-envelope"></i><sup>0</sup></a> 
                         </li>
                     </ul>
 
@@ -307,42 +315,49 @@ if(!Request::ajax()){
                         <ul class="footer-widget">
                             <li>
                                 <i class="fas fa-dollar-sign"></i>
-                                <a class="text-white" href="/sell-fast">How to sell on <?= config('app.domain') ?></a></li>
+                                <a class="text-white" href="/sell-fast">How to sell on
+                                    <?= config('app.domain') ?>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="footer-content">
                         <ul class="footer-widget">
                             <li>
                                 <i class="fas fa-info-circle"></i>
-                                <a class="text-white" href="<?= URL::asset('/about') ?>">About us</a></li>
+                                <a class="text-white" href="<?= URL::asset('/about') ?>">About us</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="footer-content">
                         <ul class="footer-widget">
                             <li>
                                 <i class="fas fa-address-book"></i>
-                                <a class="text-white" href="<?= URL::asset('/about') ?>">Contact us</a></li>
+                                <a class="text-white" href="<?= URL::asset('/about') ?>">Contact us</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="footer-content">
                         <ul class="footer-widget">
                             <li>
                                 <i class="fas fa-store"></i>
-                                <a class="text-white" href="<?= URL::asset('/about') ?>">Download our App on Playstore</a></li>
+                                <a class="text-white" href="<?= URL::asset('/about') ?>">Download our App on
+                                    Playstore</a>
+                            </li>
                         </ul>
                     </div>
-                </div> 
-                 
-            </div> 
+                </div>
+
+            </div>
         </div>
         <div class="footer-end">
             <div class="container">
