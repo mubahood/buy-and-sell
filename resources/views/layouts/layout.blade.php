@@ -339,7 +339,7 @@ if(!Request::ajax()){
                         <ul class="footer-widget">
                             <li>
                                 <i class="fas fa-address-book"></i>
-                                <a class="text-white" href="<?= URL::asset('/about') ?>">Contact us</a>
+                                <a class="text-white" href="<?= URL::asset('/contact') ?>">Contact us</a>
                             </li>
                         </ul>
                     </div>

@@ -2,8 +2,8 @@
 
 return [
 
-    'id' => env('id', 's'),
-    'currency' => env('currency', 'UGX'),
+    'id' => env('id', 'j'),
+    'currency' => env('currency', 'USD'),
     'domain' => env('domain', 'jotrace.com'),
     'address' => env('address', '1420 West Jalkuri Fatullah, <span>Narayanganj, BD</span>'),
     'phone_1' => env('phone_1', '+256783204665'),
@@ -27,7 +27,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Jotrace.com'),
 
     /*
     |--------------------------------------------------------------------------

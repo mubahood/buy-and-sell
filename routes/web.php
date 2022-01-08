@@ -28,6 +28,7 @@ Route::match(['get', 'post'], 'test', [
     MainController::class, 'test'
 ]);
 Route::get('/sell-fast', [MainController::class, 'sell_fast']);
+Route::get('/contact', [MainController::class, 'contact']);
 
 Route::match(['get', 'post'], '/{id}', [MainController::class, 'slugSwitcher']);
 

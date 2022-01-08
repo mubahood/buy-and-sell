@@ -171,12 +171,17 @@ class MainController extends Controller
 
     public function about()
     {
-        dd("about us!");
+        return view('about.about_us'); 
     }
     
     public function sell_fast()
     {
         return view('about.sell_fast'); 
+    }
+    
+    public function contact()
+    {
+        return view('about.contact'); 
     }
 
     public function test()
