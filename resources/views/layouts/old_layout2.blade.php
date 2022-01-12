@@ -451,7 +451,7 @@ $id = Auth::id();
         <div class="footer-end">
             <div class="container">
                 <div class="footer-end-content">
-                    <p>All Copyrights Reserved &copy; 2021 - Developed by <a href="#">Mironcoder</a></p>
+                    <p>All Copyrights Reserved &copy; 2022 - Developed by <a href="# <?= config('app.developer_link') ?>"> <?= config('app.developer_name') ?></a></p>
                     <ul class="footer-social">
                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>

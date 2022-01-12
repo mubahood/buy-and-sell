@@ -215,7 +215,7 @@ $key_word = trim($_GET['search']);
                 </div>
                 <div class="sidebar-footer">
                     <p>All Rights Reserved By <a href="javascript:;">JO-Trace</a></p>
-                    <p>Developed By <a href="javascript:;">##########</a></p>
+                    <p>Developed By <a href="javascript:;">M. Muhindo</a></p>
                 </div>
             </div>
         </div>
@@ -362,7 +362,7 @@ if(!Request::ajax()){
         <div class="footer-end">
             <div class="container">
                 <div class="footer-end-content">
-                    <p>All Copyrights Reserved &copy; 2021 - Developed by <a href="<?= config('app.developer_link') ?>">
+                    <p>All Copyrights Reserved &copy; 2022 - Developed by <a href="<?= config('app.developer_link') ?>">
                             <?= config('app.developer_name') ?>
                         </a></p>
                     <ul class="footer-social">
