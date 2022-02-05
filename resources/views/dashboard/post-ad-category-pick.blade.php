@@ -44,7 +44,7 @@ $cats = Category::where("parent",0)->get();
                                             <button class="btn  btn-block text-left border-0 pt-3 pb-0" type="button"
                                                 data-toggle="collapse" data-target="#__{{$item->id}}"
                                                 aria-expanded="true" aria-controls="__{{$item->id}}">
-                                                <img width="25" height="25" src="storage/{{$item->image}}" alt="">
+                                                <img width="25" height="25" src="{{$item->image}}" alt="">
                                                 {{$item->name}}
                                             </button>
                                         </h2>
