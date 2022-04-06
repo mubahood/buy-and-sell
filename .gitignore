@@ -1,4 +1,8 @@
 /.env
+.env
+.htaccess
+/.htaccess
+env
 /.env.example
 ./config/admin.php
 ./config/app.php

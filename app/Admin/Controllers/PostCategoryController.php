@@ -1,32 +1,38 @@
 <?php
 
 namespace App\Admin\Controllers;
- 
+
+use App\Models\PostCategory;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class CityController extends AdminController
+class PostCategoryController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Areas';
+    protected $title = 'PostCategory';
 
     /**
-     * Make a grid builder. 
+     * Make a grid builder.
      *
      * @return Grid
      */
     protected function grid()
     {
-        $grid = new Grid(new \App\Models\City());
+        $grid = new Grid(new PostCategory());
 
         $grid->column('id', __('Id'));
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
         $grid->column('name', __('Name'));
+        $grid->column('details', __('Details'));
+        $grid->column('thumnnail', __('Thumnnail'));
+        $grid->column('posts', __('Posts'));
 
         return $grid;
     }
@@ -39,18 +45,15 @@ class CityController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(\App\Models\City::findOrFail($id));
+        $show = new Show(PostCategory::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
-        $show->field('country_id', __('Country id'));
         $show->field('name', __('Name'));
-        $show->field('longitude', __('Longitude'));
-        $show->field('latitude', __('Latitude'));
         $show->field('details', __('Details'));
-        $show->field('image', __('Image'));
-        $show->field('listed', __('Listed'));
+        $show->field('thumnnail', __('Thumnnail'));
+        $show->field('posts', __('Posts'));
 
         return $show;
     }
@@ -62,15 +65,12 @@ class CityController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new \App\Models\City());
+        $form = new Form(new PostCategory());
 
-        $form->number('country_id', __('Country id'));
         $form->text('name', __('Name'));
-        $form->text('longitude', __('Longitude'));
-        $form->text('latitude', __('Latitude'));
         $form->text('details', __('Details'));
-        $form->image('image', __('Image'));
-        $form->text('listed', __('Listed'));
+        $form->image('thumnnail', __('Thumnnail'));
+        $form->number('posts', __('Posts'));
 
         return $form;
     }

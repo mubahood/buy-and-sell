@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Encore\Admin\Auth\Database\Administrator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
+use phpDocumentor\Reflection\Types\This;
 use Psy\CodeCleaner\ValidConstructorPass;
 
 use function PHPUnit\Framework\fileExists;
@@ -14,9 +17,67 @@ class Product extends Model
 {
     use HasFactory;
 
+ 
+
+
+    public function getCityIdAttribute($value)
+    {
+        $city_id = (int)($value);
+
+        $city = City::find($city_id);
+        if($city == null){
+            return "-";
+        }
+        return $city->name;
+    }
+
+    public function getSubCategoryIdAttribute($value)
+    {
+        $id = (int)($value);
+
+        $cat = Category::find($id);
+        if($cat == null){
+            return "-";
+        }
+        return $cat->name;
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->diffForHumans();
+    }
+ 
+
+    public function getQuantityAttribute($value)
+    {
+        return (int)($value);
+    }
+
+    public function getFixedPriceAttribute($value)
+    {
+        if ($value == null) {
+            return false;
+        }
+        if ($value == false) {
+            return false;
+        }
+        return true;
+    }
+
+
     public static function boot()
     {
         parent::boot();
+
+        self::creating(function($p){
+            $p->slug = Utils::make_slug($p->name);
+            $p->status = 1;
+
+
+            return $p;
+        });
+     
+
 
         static::deleting(function ($model) {
 
@@ -41,13 +102,13 @@ class Product extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Administrator::class,'user_id');
     }
 
 
     public function category()
     {
-        return $this->belongsTo(category::class, "category_id");
+        return $this->belongsTo(Category::class, "category_id");
     }
 
     public function country()
@@ -68,7 +129,7 @@ class Product extends Model
 
     public function sub_category()
     {
-        return $this->belongsTo(category::class, "sub_category_id");
+        return $this->belongsTo(Category::class, "sub_category_id");
     }
 
     public function get_name_short($min_length = 50)
@@ -86,11 +147,7 @@ class Product extends Model
                 $thumb = json_decode($this->thumbnail);
                 if (isset($thumb->thumbnail)) {
 
-                    $thumb->thumbnail = str_replace("public/", "", $thumb->thumbnail);
-                    $thumb->thumbnail = str_replace("storage/", "", $thumb->thumbnail);
-                    $thumb->thumbnail = str_replace("/storage", "", $thumb->thumbnail);
-                    $thumb->thumbnail = str_replace("/", "", $thumb->thumbnail);
-                    $thumbnail = URL::asset('storage/' . $thumb->thumbnail);
+                    $thumbnail = url($thumb->thumbnail);
                 }
             }
         }
@@ -104,8 +161,8 @@ class Product extends Model
             if (strlen($this->images) > 3) {
                 $images_json = json_decode($this->images);
                 foreach ($images_json as $key => $img) {
-                    $img->src = URL::asset('storage/' . str_replace("public/", "", $img->src));
-                    $img->thumbnail = URL::asset('storage/' . str_replace("public/", "", $img->thumbnail));
+                    $img->src = url($img->src);
+                    $img->thumbnail = url( $img->thumbnail);
                     $images[] = $img;
                 }
             }
@@ -127,5 +184,6 @@ class Product extends Model
         'status',
         'attributes',
         'images',
+        'city',
     ];
 }

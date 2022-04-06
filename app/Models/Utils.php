@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Encore\Admin\Auth\Database\Administrator;
 use Hamcrest\Arrays\IsArray;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,48 @@ use function PHPUnit\Framework\fileExists;
 
 class Utils
 {
+    public static function get_locations()
+    {
+        $locations = [];
+
+        $countries = Country::all();
+
+
+        foreach ($countries as $key => $value) {
+            $value->parent_id = 0;
+            $value->type = 'main_location';
+            $locations[] = $value;
+        }
+
+        $cities = City::all();
+
+
+        foreach ($cities as $key => $value) {
+            $value->parent_id = $value->country_id;
+            $value->type = 'sub_location';
+            $locations[] = $value;
+        }
+
+
+        return $locations;
+    }
+    public static function response($data = [])
+    {
+        $resp['status'] = "1";
+        $resp['message'] = "Success";
+        $resp['data'] = null;
+        if (isset($data['status'])) {
+            $resp['status'] = $data['status'] . "";
+        }
+        if (isset($data['message'])) {
+            $resp['message'] = $data['message'];
+        }
+        if (isset($data['data'])) {
+            $resp['data'] = $data['data'];
+        }
+        return $resp;
+    }
+
     public static function tell_status($status)
     {
         if (!$status)
@@ -66,6 +109,85 @@ class Utils
         return $ready_threads;
     }
 
+
+    public static function send_message($msg = [])
+    {
+        $sender = 0;
+        $receiver = 0;
+        $product_id = 0;
+        if (
+            (isset($msg['sender'])) &&
+            (isset($msg['receiver'])) &&
+            (isset($msg['product_id']))
+        ) {
+            $product_id = ((int)($msg['product_id']));
+            $receiver = ((int)($msg['receiver']));
+            $sender = ((int)($msg['sender']));
+        }
+
+        if (
+            ($product_id < 1) ||
+            ($receiver < 1) ||
+            ($sender < 1)
+        ) {
+            return 'Sender or receiver was not set.';
+        }
+        
+        if (
+            ($receiver < 1) ||
+            ($product_id < 1) ||
+            ($sender < 1)
+        ) {
+            return 'Sender or receiver or product id were not set.';
+        }
+        
+        if (
+            $receiver ==  $sender
+        ) {
+            return 'Sender and receiver cannot be the same.';
+        }
+        $sender_user = Administrator::find($sender);
+        if($sender_user == null){
+            return "Sender not found";
+        }
+
+        $receiver_user = Administrator::find($receiver);
+        if($receiver_user == null){
+            return "Receiver not found";
+        }
+
+        $product = Product::find($product_id);
+        if($product == null){
+            return "Product not found";
+        }
+
+        $chat = new Chat();
+        $chat->sender = $sender;
+        $chat->receiver = $receiver;
+        $chat->product_id = $product_id;
+        $chat->body = isset($msg['body']) ?$msg['body']: "";
+        $chat->thread = "";
+        $chat->received = false;
+        $chat->seen = false;
+        $chat->receiver_pic = $receiver_user->avatar;
+        $chat->receiver_name = $receiver_user->name;
+        $chat->sender_pic = $sender_user->avatar;
+        $chat->sender_name = $sender_user->name;
+        $chat->type = "text";
+        $chat->contact = "";
+        $chat->gps = "";
+        $chat->file = "";
+        $chat->image = "";
+        $chat->audio = "";
+
+        $chat->thread = Utils::get_chat_thread($chat->sender,$chat->receiver,$chat->product_id);
+
+        if(!$chat->save()){
+            return "Failed to save message.";
+        }
+
+        return null;
+    }
 
     public static function get_chat_thread($sender, $receiver, $product)
     {
@@ -124,6 +246,17 @@ class Utils
 
         return $slug;
     }
+
+
+    public static function upload_file($file)
+    {
+        if (!isset($file['tmp_name'])) {
+            return "";
+        }
+
+        $path = Storage::putFile('/public/storage', $file['tmp_name']);
+        return $path;
+    }
     public static function upload_images($files)
     {
 
@@ -155,8 +288,8 @@ class Utils
                     $img['size'] = $files['size'][$i];
 
 
-                    $path = Storage::putFile('/public/storage', $img['tmp_name']); 
-  
+                    $path = Storage::putFile('/public/storage', $img['tmp_name']);
+
                     $path_not_optimized =  "./" . $path;
                     $file_name = str_replace("public/storage/", "", $path);
                     $file_name = str_replace("public/", "", $file_name);
@@ -166,14 +299,14 @@ class Utils
                     $file_name = str_replace("/", "", $file_name);
 
                     $path_optimized = "./public/storage/thumb_" . $file_name;
-                    
+
                     $thumbnail = Utils::create_thumbail(
                         array(
                             "source" => $path_not_optimized,
                             "target" => $path_optimized,
                         )
                     );
-                    
+
 
 
                     if (strlen($thumbnail) > 3) {
@@ -183,10 +316,10 @@ class Utils
                         $thumbnail = str_replace("storage", "", $thumbnail);
                         $thumbnail = str_replace("public/", "", $thumbnail);
                         $thumbnail = str_replace("public", "", $thumbnail);
-                        $thumbnail = str_replace("./", "", $thumbnail); 
+                        $thumbnail = str_replace("./", "", $thumbnail);
                     } else {
                         $thumbnail = $file_name;
-                    } 
+                    }
                     $ready_image['src'] = $file_name;
                     $ready_image['thumbnail'] = $thumbnail;
 
@@ -194,14 +327,14 @@ class Utils
                     if (!$ready_image['user_id']) {
                         $ready_image['user_id'] = 1;
                     }
-                    
+
                     $_ready_image = new Image($ready_image);
                     $_ready_image->save();
                     $uploaded_images[] = $ready_image;
                 }
             }
-        } 
-          
+        }
+
         return $uploaded_images;
     }
 
@@ -213,17 +346,17 @@ class Utils
         ) {
             return [];
         }
- 
+
         $image = new Zebra_Image();
 
         $image->auto_handle_exif_orientation = false;
-        $image->source_path = "".$params['source'];
-        $image->target_path = "".$params['target'];
-        
+        $image->source_path = "" . $params['source'];
+        $image->target_path = "" . $params['target'];
 
-         
- 
- 
+
+
+
+
         $image->jpeg_quality = 100;
         if (isset($params['quality'])) {
             $image->jpeg_quality = $params['quality'];
@@ -234,20 +367,20 @@ class Utils
         $image->preserve_time = true;
         $image->handle_exif_orientation_tag = true;
 
-        $width = 380;
-        $heigt = 220;
+        $width = 220;
+        $heigt = 380;
         if (isset($params['width'])) {
             $width = $params['width'];
         }
         if (isset($params['heigt'])) {
             $width = $params['heigt'];
         }
- 
+
         if (!$image->resize($width, $heigt, ZEBRA_IMAGE_CROP_CENTER)) {
-          
+
             return $image->source_path;
-        } else { 
-            
+        } else {
+
             return $image->target_path;
         }
     }

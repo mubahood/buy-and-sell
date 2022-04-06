@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\URL;
 
 class CategoryController extends AdminController
 {
+
+    function __construct()
+    {
+        if(isset($_POST['name'])){ 
+            die("time to upload shit");
+        }
+    }
+
     /**
      * Title for current resource.
      *
@@ -28,25 +36,35 @@ class CategoryController extends AdminController
     {
         $grid = new Grid(new Category());
 
+        $grid->disableRowSelector();
+
         $grid->column('id', __('Id'))->sortable();
         //$grid->column('created_at', __('Created at'));
         //$grid->column('updated_at', __('Updated at'));
-        $grid->column('name', __('Name'))->sortable();
-        $grid->parent()->display(function ($category_id) {
-            $cat = Category::find($category_id);
+        $grid->column('name', __('Name'))->display(function ($name) {
+
+            $cat = Category::find($this->parent);
+            $cat_name = "";
             if (!$cat) {
-                return "-";
+                $cat_name = "";
+            } else if (isset($cat->name)) {
+                $cat_name = $cat->name;
             }
-            if (!isset($cat->name)) {
-                return "-";
+
+            $src = "";
+            if ($this->image != null && strlen($this->image) > 2) {
+                $src =  URL::asset('/public/storage/' . $this->image);
             }
-            return $cat->name;
+
+            return view('components.symbol-image-text', [
+                'title' => $this->name,
+                'sub_title' => $cat_name,
+                'image' => $src,
+            ]);;
         })->sortable();
 
-        $grid->image()->display(function ($src) {
-            $src =  URL::asset('storage') . "/" . $src;
-            return '<img width="20" src="' . $src . '" alt="' . $src . '">';
-        });
+
+
 
         //$grid->column('description', __('Description'));
         //$grid->column('slug', __('Slug'));
@@ -84,24 +102,47 @@ class CategoryController extends AdminController
      */
     protected function form()
     {
+
         $form = new Form(new Category());
 
-        $form->setWidth(8, 4);
-        $form->radio('has_parent', __("Has parent category?"))
-            ->required()
-            ->options([
-                "0" => "No",
-                "1" => "Yes"
-            ])
-            ->when("1", function ($form) {
-                $form->select('parent', 'Parent category')->options(Category::where('parent', '<', 1)->get()->pluck('name', 'id'))->default(0);
-            });
+        return view('admin.forms.category');
 
 
-        $form->text('name', __('Category Name'))->required();
-        $form->textarea('description', __('Description'))->required()->default('Buy and sell all kinds of ... in Uganda');
-        $form->text('slug', __('Slug'))->readonly();
-        $form->image('image', __('Image'));
+
+        // $form->radio('has_parent', __("Has parent category?"))
+        //     ->required()
+        //     ->options([
+        //         "0" => "No",
+        //         "1" => "Yes"
+        //     ])
+        //     ->when("1", function ($form) {
+
+        //     });
+
+
+        $form->column(4, function ($form) {
+            $form->select('parent', 'Parent category')->options(Category::where('parent', '<', 1)->get()->pluck('name', 'id'))->default(0);
+        });
+
+        $form->column(4, function ($form) {
+            $form->text('name', __('Category Name'))->required();
+        });
+
+        $form->column(4, function ($form) {
+            $form->text('slug', __('Slug'))->readonly();
+        });
+
+        $form->column(12, function ($form) {
+            $form->textarea('description', __('Description'))->required()->default('Buy and sell all kinds of ... in Uganda');
+        });
+ 
+                
+        $form->column(6, function ($form) {
+            $form->image('image', __('Image'));
+        });
+                
+/*
+
         $form->hasMany('attributes', __('Click on "New" to add category attributes'), function (NestedForm $form) {
 
             $form->text('name', __('Name'))->rules('required');
@@ -111,7 +152,6 @@ class CategoryController extends AdminController
             $options["select"] = "select";
             $options["radio"] = "radio";
             $options["checkbox"] = "checkbox";
-            //$form->select('type')->options(['', 'text', 'textarea', 'number', 'select', 'radio', 'checkbox'])->rules('required');
             $form->select('type')->options($options)->rules('required');
 
             $form->tags('options', __('Options'));
@@ -121,7 +161,7 @@ class CategoryController extends AdminController
                 '0' => 'No',
                 '1' => 'Yes',
             ])->required();
-        });
+        }); */
 
 
         return $form;
